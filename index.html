@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ROX | Premium AI Wallpapers</title>
+
+<title>ROX | Premium Wallpapers</title>
 
 <style>
 
@@ -18,216 +22,349 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
 background:#000;
-color:#fff;
+
+color:white;
+
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
 line-height:1.6;
+
 }
 
 header{
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 padding:24px 8%;
-border-bottom:1px solid #1b1b1b;
+
+border-bottom:1px solid #1a1a1a;
+
+background:black;
+
 position:sticky;
+
 top:0;
-background:#000;
-z-index:100;
+
+z-index:999;
+
+backdrop-filter:blur(20px);
+
 }
 
 .logo{
-font-size:30px;
+
+font-size:32px;
+
 font-weight:700;
-letter-spacing:8px;
+
+letter-spacing:10px;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
 }
 
 nav a{
-color:#aaa;
+
+color:#a8a8a8;
+
 text-decoration:none;
-margin-left:25px;
+
 transition:.3s;
+
 font-size:15px;
+
 }
 
 nav a:hover{
-color:#fff;
+
+color:white;
+
 }
 
 .hero{
-padding:100px 8%;
+
+padding:110px 8%;
+
 text-align:center;
+
 }
 
 .hero h1{
-font-size:56px;
+
+font-size:64px;
+
 font-weight:700;
+
 margin-bottom:20px;
+
 }
 
 .hero p{
-max-width:700px;
+
+max-width:720px;
+
 margin:auto;
+
 color:#9f9f9f;
-font-size:18px;
-margin-bottom:35px;
+
+font-size:20px;
+
+margin-bottom:45px;
+
 }
 
 .button{
+
 display:inline-block;
-background:#fff;
-color:#000;
-padding:16px 36px;
+
+background:white;
+
+color:black;
+
+padding:18px 38px;
+
 border-radius:999px;
-text-decoration:none;
+
 font-weight:700;
-transition:.25s;
+
+text-decoration:none;
+
+transition:.3s;
+
 }
 
 .button:hover{
-transform:translateY(-2px);
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 35px rgba(255,255,255,.18);
+
 }
 
 .section{
+
 padding:80px 8%;
+
 }
 
 .card{
+
 background:#111;
-border-radius:30px;
-padding:25px;
-max-width:900px;
+
+border-radius:34px;
+
+padding:26px;
+
+max-width:960px;
+
 margin:auto;
+
+box-shadow:0 25px 70px rgba(0,0,0,.45);
+
 }
 
 .card img{
+
 width:100%;
-border-radius:24px;
+
 display:block;
+
+border-radius:24px;
+
 }
 
 .price{
-font-size:42px;
-font-weight:700;
-margin:20px 0;
+
+font-size:46px;
+
+font-weight:bold;
+
+margin:22px 0;
+
 }
 
 .buy{
+
 display:inline-block;
-background:#fff;
-color:#000;
-padding:16px 36px;
+
+padding:18px 40px;
+
+background:white;
+
+color:black;
+
 text-decoration:none;
+
+font-weight:700;
+
 border-radius:999px;
-font-weight:bold;
+
+transition:.3s;
+
 }
 
 .buy:hover{
-transform:translateY(-2px);
+
+transform:translateY(-3px);
+
 }
 
 .gallery{
+
 display:grid;
+
 grid-template-columns:repeat(2,1fr);
-gap:15px;
-margin-top:30px;
+
+gap:16px;
+
+margin-top:35px;
+
 }
 
 .gallery-item{
+
 position:relative;
+
 overflow:hidden;
-border-radius:18px;
+
+border-radius:20px;
+
 }
 
-.gallery-item::before{
-content:"";
-position:absolute;
-top:50%;
-left:-30%;
-width:160%;
-height:10px;
-background:white;
-transform:rotate(45deg);
-z-index:100;
-pointer-events:none;
-opacity:.9;
-}
+.gallery img{
 
-.gallery-item::after{
-content:"";
-position:absolute;
-top:50%;
-left:-30%;
-width:160%;
-height:10px;
-background:white;
-transform:rotate(-45deg);
-z-index:100;
-pointer-events:none;
-opacity:.9;
-}
+width:100%;
 
-.gallery-item::before,
-.gallery-item::after{
-content:"";
-position:absolute;
-top:50%;
-left:-20%;
-width:140%;
-height:10px;
-background:rgba(255,255,255,0.9);
-z-index:5;
-pointer-events:none;
-}
+display:block;
 
-.gallery-item::before{
-transform:rotate(45deg);
-}
+border-radius:20px;
 
-.gallery-item::after{
-transform:rotate(-45deg);
+transition:.35s;
+
 }
 
 .gallery img:hover{
-transform:scale(1.02);
+
+transform:scale(1.04);
+
+}
+
+.gallery-item::before{
+
+content:"";
+
+position:absolute;
+
+width:170%;
+
+height:8px;
+
+background:rgba(255,255,255,.55);
+
+top:50%;
+
+left:-35%;
+
+transform:rotate(45deg);
+
+z-index:50;
+
+pointer-events:none;
+
+}
+
+.gallery-item::after{
+
+content:"";
+
+position:absolute;
+
+width:170%;
+
+height:8px;
+
+background:rgba(255,255,255,.55);
+
+top:50%;
+
+left:-35%;
+
+transform:rotate(-45deg);
+
+z-index:50;
+
+pointer-events:none;
+
 }
 
 .features{
+
 margin-top:60px;
-background:#111;
-padding:30px;
-border-radius:25px;
+
+background:#101010;
+
+border-radius:28px;
+
+padding:35px;
+
 }
 
 .features h2{
-margin-bottom:20px;
-}
 
-.features ul{
-list-style:none;
+margin-bottom:20px;
+
+font-size:30px;
+
 }
 
 .features li{
-margin:12px 0;
-color:#ddd;
+
+list-style:none;
+
+margin:14px 0;
+
+color:#d8d8d8;
+
 }
 
 footer{
-padding:40px;
-text-align:center;
-color:#777;
-border-top:1px solid #1d1d1d;
+
 margin-top:80px;
+
+padding:45px;
+
+text-align:center;
+
+border-top:1px solid #1a1a1a;
+
+color:#888;
+
 }
 
-@media (min-width:768px){
+@media(min-width:900px){
 
 .gallery{
+
 grid-template-columns:repeat(5,1fr);
+
 }
 
 .hero h1{
-font-size:68px;
+
+font-size:78px;
+
 }
 
 }
@@ -241,7 +378,9 @@ font-size:68px;
 <header>
 
 <div class="logo">
+
 ROX
+
 </div>
 
 <nav>
@@ -263,63 +402,95 @@ ROX
 <section class="hero">
 
 <h1>
-Premium AI Wallpapers
+
+Luxury Wallpapers.
+
 </h1>
 
 <p>
-Minimal luxury wallpapers inspired by futuristic architecture, modern skylines and iconic waterfront living.
-Designed for iPhone and Android.
+
+Premium 4K wallpaper collections inspired by futuristic architecture, iconic skylines and luxury modern design.
+
 </p>
 
 <a href="#collections" class="button">
+
 View Collection
+
 </a>
 
 </section>
 
-<section class="section" id="collections"><div class="card">
+<section class="section" id="collections">
+  <div class="card">
 
 <img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City Cover">
 
-<h2 style="font-size:40px;margin-top:25px;">
+<h2 style="font-size:42px;margin-top:28px;">
+
 Glass City
+
 </h2>
 
-<p style="margin-top:15px;color:#bdbdbd;font-size:18px;line-height:1.7;">
-A collection of 10 ultra-premium 4K wallpapers inspired by futuristic glass architecture, luxury waterfront skylines and modern city design.
-Perfect for iPhone and Android devices.
+<p style="margin-top:18px;color:#bfbfbf;font-size:18px;line-height:1.8;max-width:720px;">
+
+A collection of 10 ultra-premium 4K wallpapers inspired by futuristic glass architecture, luxury waterfront skylines and modern city design. Built for iPhone and Android with a clean, minimal aesthetic.
+
 </p>
 
 <div class="price">
+
 £2.99
+
 </div>
 
-<a class="buy"
-href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
+<a class="buy" href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
+
 Buy Now
+
 </a>
 
 <div class="gallery">
 
+<div class="gallery-item">
 <img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Wallpaper 1">
+</div>
 
+<div class="gallery-item">
 <img src="737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="Wallpaper 2">
+</div>
 
+<div class="gallery-item">
 <img src="B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="Wallpaper 3">
+</div>
 
+<div class="gallery-item">
 <img src="B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="Wallpaper 4">
+</div>
 
+<div class="gallery-item">
 <img src="IMG_4154.PNG" alt="Wallpaper 5">
+</div>
 
+<div class="gallery-item">
 <img src="IMG_4157.PNG" alt="Wallpaper 6">
+</div>
 
+<div class="gallery-item">
 <img src="IMG_4158.PNG" alt="Wallpaper 7">
+</div>
 
+<div class="gallery-item">
 <img src="IMG_4161.PNG" alt="Wallpaper 8">
+</div>
 
+<div class="gallery-item">
 <img src="IMG_4167.PNG" alt="Wallpaper 9">
+</div>
 
+<div class="gallery-item">
 <img src="IMG_4169.PNG" alt="Wallpaper 10">
+</div>
 
 </div>
 
@@ -328,54 +499,74 @@ Buy Now
 <div class="features">
 
 <h2>
+
 What's Included
+
 </h2>
 
 <ul>
 
 <li>✔ 10 Premium 4K Wallpapers</li>
 
-<li>✔ Optimised for iPhone & Android</li>
+<li>✔ Ultra High Resolution PNG Images</li>
+
+<li>✔ Compatible with iPhone & Android</li>
 
 <li>✔ Instant Digital Download</li>
 
-<li>✔ High Resolution PNG Images</li>
+<li>✔ One-Time Purchase</li>
 
 <li>✔ Lifetime Personal Use</li>
 
-<li>✔ Premium ROX Collection</li>
-
 </ul>
 
-</div></section>
+</div>
+</section>
 
 <footer>
 
-<h3 style="margin-bottom:15px;">
-ROX
-</h3>
+<h2 style="font-size:32px;margin-bottom:15px;letter-spacing:6px;">
 
-<p style="color:#999;max-width:600px;margin:0 auto 20px;">
-Premium digital wallpaper collections designed for people who love luxury, modern architecture and minimalist design.
+ROX
+
+</h2>
+
+<p style="max-width:650px;margin:auto;color:#9a9a9a;font-size:17px;line-height:1.8;">
+
+Premium digital wallpaper collections inspired by luxury architecture, futuristic skylines and modern design.
+
+Built for people who appreciate minimalist aesthetics.
+
 </p>
 
-<div style="margin-bottom:20px;">
+<div style="margin-top:35px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;">
 
-<a href="contact.html" style="color:#888;text-decoration:none;margin:0 10px;">Contact</a>
+<a href="contact.html" style="color:#9a9a9a;text-decoration:none;">
+Contact
+</a>
 
-<a href="privacy.html" style="color:#888;text-decoration:none;margin:0 10px;">Privacy</a>
+<a href="privacy.html" style="color:#9a9a9a;text-decoration:none;">
+Privacy
+</a>
 
-<a href="terms.html" style="color:#888;text-decoration:none;margin:0 10px;">Terms</a>
+<a href="terms.html" style="color:#9a9a9a;text-decoration:none;">
+Terms
+</a>
 
-<a href="refund.html" style="color:#888;text-decoration:none;margin:0 10px;">Refunds</a>
+<a href="refund.html" style="color:#9a9a9a;text-decoration:none;">
+Refund
+</a>
 
 </div>
 
-<p style="color:#666;font-size:14px;">
+<p style="margin-top:35px;color:#666;font-size:14px;">
+
 © 2026 ROX. All rights reserved.
+
 </p>
 
 </footer>
 
 </body>
+
 </html>
