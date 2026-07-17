@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ROX | Premium AI Wallpapers</title>
 
 <style>
@@ -12,123 +11,176 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 background:#000;
-color:white;
+color:#fff;
+line-height:1.6;
 }
 
 header{
-padding:25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-border-bottom:1px solid #222;
+padding:24px 8%;
+border-bottom:1px solid #1b1b1b;
+position:sticky;
+top:0;
+background:#000;
+z-index:100;
 }
 
 .logo{
-font-size:34px;
+font-size:30px;
 font-weight:700;
-letter-spacing:10px;
+letter-spacing:8px;
 }
 
 nav a{
-color:white;
+color:#aaa;
 text-decoration:none;
-margin-left:20px;
-opacity:.8;
+margin-left:25px;
+transition:.3s;
+font-size:15px;
+}
+
+nav a:hover{
+color:#fff;
 }
 
 .hero{
-
-padding:90px 30px;
+padding:100px 8%;
 text-align:center;
-
 }
 
 .hero h1{
-
-font-size:50px;
+font-size:56px;
+font-weight:700;
 margin-bottom:20px;
-
 }
 
 .hero p{
-
-font-size:20px;
-color:#999;
-max-width:650px;
+max-width:700px;
 margin:auto;
-
+color:#9f9f9f;
+font-size:18px;
+margin-bottom:35px;
 }
 
 .button{
-
 display:inline-block;
-margin-top:40px;
-padding:18px 38px;
-background:white;
-color:black;
+background:#fff;
+color:#000;
+padding:16px 36px;
+border-radius:999px;
 text-decoration:none;
-border-radius:40px;
-font-weight:bold;
+font-weight:700;
+transition:.25s;
+}
 
+.button:hover{
+transform:translateY(-2px);
 }
 
 .section{
-
-padding:70px 25px;
-
-}
-
-.grid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-
+padding:80px 8%;
 }
 
 .card{
-
 background:#111;
-border-radius:20px;
+border-radius:30px;
 padding:25px;
-
+max-width:900px;
+margin:auto;
 }
 
-.preview{
-
-height:260px;
-background:linear-gradient(180deg,#7ecbff,#001f3f);
-border-radius:16px;
-margin-bottom:20px;
-
+.card img{
+width:100%;
+border-radius:24px;
+display:block;
 }
 
 .price{
+font-size:42px;
+font-weight:700;
+margin:20px 0;
+}
 
-font-size:22px;
-margin-top:15px;
+.buy{
+display:inline-block;
+background:#fff;
+color:#000;
+padding:16px 36px;
+text-decoration:none;
+border-radius:999px;
 font-weight:bold;
+}
 
+.buy:hover{
+transform:translateY(-2px);
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:30px;
+}
+
+.gallery img{
+width:100%;
+border-radius:18px;
+display:block;
+transition:.25s;
+}
+
+.gallery img:hover{
+transform:scale(1.02);
+}
+
+.features{
+margin-top:60px;
+background:#111;
+padding:30px;
+border-radius:25px;
+}
+
+.features h2{
+margin-bottom:20px;
+}
+
+.features ul{
+list-style:none;
+}
+
+.features li{
+margin:12px 0;
+color:#ddd;
 }
 
 footer{
-
 padding:40px;
 text-align:center;
-border-top:1px solid #222;
 color:#777;
-
+border-top:1px solid #1d1d1d;
+margin-top:80px;
 }
 
-.small{
+@media (min-width:768px){
 
-font-size:15px;
-margin-top:15px;
+.gallery{
+grid-template-columns:repeat(5,1fr);
+}
+
+.hero h1{
+font-size:68px;
+}
 
 }
 
@@ -146,11 +198,7 @@ ROX
 
 <nav>
 
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="#">Collections</a>
+<a href="#collections">Collections</a>
 
 <a href="contact.html">Contact</a>
 
@@ -158,7 +206,7 @@ ROX
 
 <a href="terms.html">Terms</a>
 
-<a href="refund.html">Refunds</a>
+<a href="refund.html">Refund</a>
 
 </nav>
 
@@ -166,113 +214,120 @@ ROX
 
 <section class="hero">
 
-<h1>Premium AI Wallpapers</h1>
+<h1>
+Premium AI Wallpapers
+</h1>
 
 <p>
-
-Minimal, luxury wallpapers designed for iPhone and Samsung devices.
-
-Instant digital download after purchase.
-
+Minimal luxury wallpapers inspired by futuristic architecture, modern skylines and iconic waterfront living.
+Designed for iPhone and Android.
 </p>
 
 <a href="#collections" class="button">
 View Collection
 </a>
-    
-
-</a>
 
 </section>
 
-<section class="section" id="collections">
+<section class="section" id="collections"><div class="card">
 
-<h2 style="margin-bottom:35px;">
-Featured Collections
+<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City Cover">
+
+<h2 style="font-size:40px;margin-top:25px;">
+Glass City
 </h2>
 
-<div class="grid">
-
-<div class="card">
-
-<div class="preview">
-    <img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
-</div>
-
-<h3>Glass City</h3>
-
-<p>10 ultra-premium 4K wallpapers featuring futuristic architecture, luxury waterfront skylines and modern glass towers.</p>
+<p style="margin-top:15px;color:#bdbdbd;font-size:18px;line-height:1.7;">
+A collection of 10 ultra-premium 4K wallpapers inspired by futuristic glass architecture, luxury waterfront skylines and modern city design.
+Perfect for iPhone and Android devices.
+</p>
 
 <div class="price">
 £2.99
 </div>
 
-<a href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00" class="button">Buy Now</a>
+<a class="buy"
+href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
+Buy Now
+</a>
 
-</div>
+<div class="gallery">
 
-<div class="card">
+<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Wallpaper 1">
 
-<div class="preview" style="background:linear-gradient(180deg,#444,#000);"></div>
+<img src="737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="Wallpaper 2">
 
-<h3>OLED Black</h3>
+<img src="B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="Wallpaper 3">
 
-<p>Pure black wallpapers for OLED displays.</p>
+<img src="B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="Wallpaper 4">
 
-<div class="price">
+<img src="IMG_4154.PNG" alt="Wallpaper 5">
 
-£1.99
+<img src="IMG_4157.PNG" alt="Wallpaper 6">
 
-</div>
+<img src="IMG_4158.PNG" alt="Wallpaper 7">
 
-</div>
+<img src="IMG_4161.PNG" alt="Wallpaper 8">
 
-<div class="card">
+<img src="IMG_4167.PNG" alt="Wallpaper 9">
 
-<div class="preview" style="background:linear-gradient(180deg,#ddd,#666);"></div>
-
-<h3>Titanium</h3>
-
-<p>Luxury metallic inspired designs.</p>
-
-<div class="price">
-
-£1.99
+<img src="IMG_4169.PNG" alt="Wallpaper 10">
 
 </div>
 
 </div>
 
-</div>
+<div class="features">
 
-</section>
+<h2>
+What's Included
+</h2>
 
-<section class="section">
+<ul>
 
-<h2>About ROX</h2>
+<li>✔ 10 Premium 4K Wallpapers</li>
 
-<br>
+<li>✔ Optimised for iPhone & Android</li>
 
-<p style="color:#999;line-height:1.8;max-width:700px;">
+<li>✔ Instant Digital Download</li>
 
-ROX creates premium AI-generated mobile wallpapers for iPhone and Samsung devices. Every purchase includes a high-resolution digital wallpaper for personal use.
+<li>✔ High Resolution PNG Images</li>
 
-</p>
+<li>✔ Lifetime Personal Use</li>
 
-</section>
+<li>✔ Premium ROX Collection</li>
+
+</ul>
+
+</div></section>
 
 <footer>
 
-ROX © 2026
+<h3 style="margin-bottom:15px;">
+ROX
+</h3>
 
-<div class="small">
+<p style="color:#999;max-width:600px;margin:0 auto 20px;">
+Premium digital wallpaper collections designed for people who love luxury, modern architecture and minimalist design.
+</p>
 
-Digital Downloads • Secure Checkout • Instant Delivery
+<div style="margin-bottom:20px;">
+
+<a href="contact.html" style="color:#888;text-decoration:none;margin:0 10px;">Contact</a>
+
+<a href="privacy.html" style="color:#888;text-decoration:none;margin:0 10px;">Privacy</a>
+
+<a href="terms.html" style="color:#888;text-decoration:none;margin:0 10px;">Terms</a>
+
+<a href="refund.html" style="color:#888;text-decoration:none;margin:0 10px;">Refunds</a>
 
 </div>
+
+<p style="color:#666;font-size:14px;">
+© 2026 ROX. All rights reserved.
+</p>
 
 </footer>
 
 </body>
-
 </html>
