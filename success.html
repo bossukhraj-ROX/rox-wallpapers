@@ -1,56 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You | ROX</title>
+
+<title>Purchase Successful | ROX</title>
 
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#000;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:#f5f5f7;
+color:#111;
+line-height:1.7;
+}
+
+header{
+position:sticky;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 8%;
+background:rgba(255,255,255,.85);
+backdrop-filter:blur(18px);
+border-bottom:1px solid #ececec;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+letter-spacing:10px;
+}
+
+nav{
+display:flex;
+gap:28px;
+}
+
+nav a{
+text-decoration:none;
+color:#666;
+transition:.3s;
+}
+
+nav a:hover{
+color:#111;
+}
+
+.hero{
+padding:90px 8%;
 text-align:center;
 }
 
-.box{
-max-width:420px;
-padding:30px;
+.hero h1{
+font-size:64px;
+margin-bottom:20px;
 }
 
-a{
-display:inline-block;
-margin-top:20px;
-padding:15px 30px;
-background:white;
-color:black;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
+.hero p{
+max-width:760px;
+margin:auto;
+font-size:22px;
+color:#666;
 }
+
+.section{
+padding:0 8% 80px;
+}
+
+.card{
+background:white;
+max-width:900px;
+margin:auto;
+padding:50px;
+border-radius:32px;
+box-shadow:0 18px 60px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.card h2{
+font-size:34px;
+margin-bottom:20px;
+}
+
+.card p{
+color:#555;
+margin-bottom:20px;
+}
+
+.button{
+display:inline-block;
+margin-top:18px;
+padding:16px 34px;
+background:#111;
+color:white;
+text-decoration:none;
+border-radius:999px;
+font-weight:600;
+}
+
+footer{
+padding:70px 8%;
+text-align:center;
+color:#777;
+border-top:1px solid #ececec;
+margin-top:70px;
+}
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+gap:18px;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:46px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.card{
+padding:35px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="box">
+<header>
 
-<h1>Thank You!</h1>
+<div class="logo">ROX</div>
 
-<p>Your payment was successful.</p>
+<nav>
 
-<p>Tap below to download your Glass City Collection.</p>
+<a href="index.html">Home</a>
+<a href="index.html#collections">Collections</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
 
-<a href="ROX-Glass-City.zip" download>
-Download Wallpapers
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>
+
+🎉 Thank You!
+
+</h1>
+
+<p>
+
+Your purchase has been completed successfully. Welcome to ROX, and thank you for supporting our wallpaper collections.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<div class="card">
+
+<h2>
+
+Your Order Is Complete
+
+</h2>
+
+<p>
+
+Your payment has been securely processed and your order has been confirmed.
+
+</p>
+
+<p>
+
+You should receive your download shortly. Please check your email, including your spam or junk folder if you don't see it within a few minutes.
+
+</p>
+
+<p>
+
+Each wallpaper collection includes high-quality images designed for modern iPhone and Samsung devices.
+  <h2>Getting Started</h2>
+
+<p>
+
+Your wallpaper collection is ready to enjoy. If your download is provided as a ZIP file, simply extract it before choosing your favourite wallpaper. You can then apply it through your device's wallpaper settings in just a few taps.
+
+</p>
+
+<h2>Need Help?</h2>
+
+<p>
+
+If you experience any issues with your download or have questions about your purchase, our support team is here to help. Visit our Contact page and we'll do our best to assist you as quickly as possible.
+
+</p>
+
+<a href="contact.html" class="button">
+
+Contact Support
+
+</a>
+
+<a href="index.html" class="button" style="margin-left:15px;background:#444;">
+
+Back to Home
+
 </a>
 
 </div>
 
+</section>
+
+<footer>
+
+<h2 style="font-size:34px;letter-spacing:8px;margin-bottom:18px;">
+
+ROX
+
+</h2>
+
+<p style="font-size:18px;color:#666;margin-bottom:25px;">
+
+Premium Wallpapers for iPhone & Samsung
+
+</p>
+
+<div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:30px;">
+
+<a href="index.html">Home</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="privacy.html">Privacy</a>
+
+<a href="refund.html">Refund</a>
+
+<a href="terms.html">Terms</a>
+
+</div>
+
+<p style="max-width:700px;margin:auto;color:#777;line-height:1.8;">
+
+Thank you for choosing ROX. We hope you enjoy personalising your device with our premium wallpaper collections. Your support helps us continue creating new designs and future collections.
+
+</p>
+
+<br>
+
+<p style="color:#999;">
+
+© 2026 ROX. All Rights Reserved.
+
+</p>
+
+</footer>
+
 </body>
+
 </html>
+  
+
+</p>
