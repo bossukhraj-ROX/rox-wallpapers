@@ -89,7 +89,11 @@ text-align:center;
 
 .card h2{
 font-size:34px;
-margin-bottom:20px;
+margin:30px 0 20px;
+}
+
+.card h2:first-child{
+margin-top:0;
 }
 
 .card p{
@@ -106,6 +110,12 @@ color:white;
 text-decoration:none;
 border-radius:999px;
 font-weight:600;
+transition:.3s;
+}
+
+.button:hover{
+opacity:.9;
+transform:translateY(-2px);
 }
 
 footer{
@@ -114,6 +124,15 @@ text-align:center;
 color:#777;
 border-top:1px solid #ececec;
 margin-top:70px;
+}
+
+footer a{
+text-decoration:none;
+color:#666;
+}
+
+footer a:hover{
+color:#111;
 }
 
 @media(max-width:900px){
@@ -166,11 +185,7 @@ padding:35px;
 
 <section class="hero">
 
-<h1>
-
-🎉 Thank You!
-
-</h1>
+<h1>🎉 Thank You!</h1>
 
 <p>
 
@@ -184,11 +199,7 @@ Your purchase has been completed successfully. Welcome to ROX, and thank you for
 
 <div class="card">
 
-<h2>
-
-Your Order Is Complete
-
-</h2>
+<h2>Your Order Is Complete</h2>
 
 <p>
 
@@ -210,14 +221,11 @@ Download Glass City
 
 </a>
 
-<p>
-
-Each wallpaper collection includes high-quality images designed for modern iPhone and Samsung devices.
-  <h2>Getting Started</h2>
+<h2>Getting Started</h2>
 
 <p>
 
-Your wallpaper collection is ready to enjoy. If your download is provided as a ZIP file, simply extract it before choosing your favourite wallpaper. You can then apply it through your device's wallpaper settings in just a few taps.
+After downloading, extract the ZIP file to access all 10 premium wallpapers. Once extracted, open your Photos app and set your favourite wallpaper through your device's wallpaper settings.
 
 </p>
 
@@ -262,13 +270,9 @@ Premium Wallpapers for iPhone & Samsung
 <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:30px;">
 
 <a href="index.html">Home</a>
-
 <a href="contact.html">Contact</a>
-
 <a href="privacy.html">Privacy</a>
-
 <a href="refund.html">Refund</a>
-
 <a href="terms.html">Terms</a>
 
 </div>
@@ -292,4 +296,3 @@ Thank you for choosing ROX. We hope you enjoy personalising your device with our
 </body>
 
 </html>
-  
