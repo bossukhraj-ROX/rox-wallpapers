@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ROX | Premium Wallpapers</title>
+
+<meta name="description" content="Premium AI wallpaper collections for iPhone and Samsung.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <style>
 
@@ -23,17 +26,43 @@ scroll-behavior:smooth;
 
 body{
 
-background:#000;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 
-color:white;
+background:#f5f5f7;
 
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+color:#111;
 
 line-height:1.6;
+
+overflow-x:hidden;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+a{
+
+text-decoration:none;
 
 }
 
 header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
 
 display:flex;
 
@@ -41,29 +70,25 @@ justify-content:space-between;
 
 align-items:center;
 
-padding:24px 8%;
+background:rgba(255,255,255,.82);
 
-border-bottom:1px solid #1a1a1a;
+backdrop-filter:blur(18px);
 
-background:black;
-
-position:sticky;
-
-top:0;
+border-bottom:1px solid #ececec;
 
 z-index:999;
-
-backdrop-filter:blur(20px);
 
 }
 
 .logo{
 
-font-size:32px;
+font-size:30px;
 
 font-weight:700;
 
 letter-spacing:10px;
+
+color:#111;
 
 }
 
@@ -77,25 +102,25 @@ gap:30px;
 
 nav a{
 
-color:#a8a8a8;
-
-text-decoration:none;
-
-transition:.3s;
+color:#666;
 
 font-size:15px;
+
+font-weight:500;
+
+transition:.3s;
 
 }
 
 nav a:hover{
 
-color:white;
+color:#111;
 
 }
 
 .hero{
 
-padding:110px 8%;
+padding:180px 8% 110px;
 
 text-align:center;
 
@@ -103,23 +128,25 @@ text-align:center;
 
 .hero h1{
 
-font-size:64px;
+font-size:88px;
+
+line-height:1.05;
 
 font-weight:700;
 
-margin-bottom:20px;
+margin-bottom:22px;
 
 }
 
 .hero p{
 
-max-width:720px;
+font-size:23px;
+
+max-width:760px;
 
 margin:auto;
 
-color:#9f9f9f;
-
-font-size:20px;
+color:#666;
 
 margin-bottom:45px;
 
@@ -129,17 +156,15 @@ margin-bottom:45px;
 
 display:inline-block;
 
-background:white;
+padding:18px 42px;
 
-color:black;
+background:#111;
 
-padding:18px 38px;
-
-border-radius:999px;
+color:white;
 
 font-weight:700;
 
-text-decoration:none;
+border-radius:999px;
 
 transition:.3s;
 
@@ -147,77 +172,91 @@ transition:.3s;
 
 .button:hover{
 
-transform:translateY(-3px);
+transform:translateY(-4px);
 
-box-shadow:0 15px 35px rgba(255,255,255,.18);
+box-shadow:0 18px 45px rgba(0,0,0,.18);
 
 }
 
 .section{
 
-padding:80px 8%;
+padding:90px 8%;
 
 }
 
 .card{
 
-background:#111;
+background:white;
+
+padding:45px;
 
 border-radius:34px;
 
-padding:26px;
+box-shadow:0 18px 60px rgba(0,0,0,.08);
 
-max-width:960px;
+max-width:1300px;
 
 margin:auto;
 
-box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.section-title{
+
+font-size:52px;
+
+margin-bottom:18px;
 
 }
 
-.card img{
+.section-text{
 
-width:100%;
+font-size:20px;
 
-display:block;
+color:#666;
 
-border-radius:24px;
+max-width:760px;
 
-}
-
-.price{
-
-font-size:46px;
-
-font-weight:bold;
-
-margin:22px 0;
+margin-bottom:35px;
 
 }
 
-.buy{
+.buy-button{
 
 display:inline-block;
 
 padding:18px 40px;
 
-background:white;
+background:#111;
 
-color:black;
+color:white;
 
-text-decoration:none;
+border-radius:999px;
 
 font-weight:700;
 
-border-radius:999px;
+margin-top:18px;
 
 transition:.3s;
 
 }
 
-.buy:hover{
+.buy-button:hover{
 
-transform:translateY(-3px);
+transform:translateY(-4px);
+
+box-shadow:0 18px 45px rgba(0,0,0,.18);
+
+}
+
+.price{
+
+font-size:48px;
+
+font-weight:700;
+
+margin-top:25px;
+
+margin-bottom:20px;
 
 }
 
@@ -227,59 +266,54 @@ display:grid;
 
 grid-template-columns:repeat(2,1fr);
 
-gap:16px;
+gap:22px;
 
-margin-top:35px;
+margin-top:45px;
 
 }
 
 .gallery-item{
 
-position:relative;
-
 overflow:hidden;
 
-border-radius:20px;
+border-radius:26px;
+
+position:relative;
+
+background:white;
+
+box-shadow:0 12px 40px rgba(0,0,0,.08);
 
 }
 
-.gallery img{
+.gallery-item img{
 
-width:100%;
-
-display:block;
-
-border-radius:20px;
-
-transition:.35s;
+transition:.4s;
 
 }
 
-.gallery img:hover{
+.gallery-item:hover img{
 
-transform:scale(1.04);
+transform:scale(1.03);
 
 }
-
-.gallery-item::before{
+  .gallery-item::before{
 
 content:"";
 
 position:absolute;
 
-width:170%;
-
-height:8px;
-
-background:rgba(255,255,255,.55);
-
 top:50%;
 
-left:-35%;
+left:-40%;
+
+width:180%;
+
+height:6px;
+
+background:rgba(255,255,255,.65);
 
 transform:rotate(45deg);
-
-z-index:50;
 
 pointer-events:none;
 
@@ -291,19 +325,17 @@ content:"";
 
 position:absolute;
 
-width:170%;
-
-height:8px;
-
-background:rgba(255,255,255,.55);
-
 top:50%;
 
-left:-35%;
+left:-40%;
+
+width:180%;
+
+height:6px;
+
+background:rgba(255,255,255,.65);
 
 transform:rotate(-45deg);
-
-z-index:50;
 
 pointer-events:none;
 
@@ -311,59 +343,115 @@ pointer-events:none;
 
 .features{
 
-margin-top:60px;
+display:grid;
 
-background:#101010;
+grid-template-columns:repeat(2,1fr);
 
-border-radius:28px;
+gap:24px;
 
-padding:35px;
-
-}
-
-.features h2{
-
-margin-bottom:20px;
-
-font-size:30px;
+margin-top:40px;
 
 }
 
-.features li{
+.feature{
 
-list-style:none;
+background:#fafafa;
 
-margin:14px 0;
+border-radius:24px;
 
-color:#d8d8d8;
+padding:28px;
+
+border:1px solid #ececec;
+
+}
+
+.feature h3{
+
+margin-bottom:10px;
+
+font-size:22px;
+
+}
+
+.feature p{
+
+color:#666;
 
 }
 
 footer{
 
-margin-top:80px;
-
-padding:45px;
+padding:80px 8%;
 
 text-align:center;
 
-border-top:1px solid #1a1a1a;
+color:#777;
 
-color:#888;
+font-size:15px;
+
+border-top:1px solid #ececec;
+
+margin-top:80px;
 
 }
 
-@media(min-width:900px){
+@media(max-width:900px){
 
-.gallery{
+header{
 
-grid-template-columns:repeat(5,1fr);
+flex-direction:column;
+
+gap:18px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:18px;
+
+}
+
+.hero{
+
+padding-top:170px;
 
 }
 
 .hero h1{
 
-font-size:78px;
+font-size:52px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(min-width:901px){
+
+.gallery{
+
+grid-template-columns:repeat(5,1fr);
 
 }
 
@@ -377,13 +465,11 @@ font-size:78px;
 
 <header>
 
-<div class="logo">
-
-ROX
-
-</div>
+<div class="logo">ROX</div>
 
 <nav>
+
+<a href="#featured">Featured</a>
 
 <a href="#collections">Collections</a>
 
@@ -391,9 +477,9 @@ ROX
 
 <a href="privacy.html">Privacy</a>
 
-<a href="terms.html">Terms</a>
-
 <a href="refund.html">Refund</a>
+
+<a href="terms.html">Terms</a>
 
 </nav>
 
@@ -403,38 +489,41 @@ ROX
 
 <h1>
 
-Luxury Wallpapers.
+Premium<br>Phone Wallpapers
 
 </h1>
 
 <p>
 
-Premium 4K wallpaper collections inspired by futuristic architecture, iconic skylines and luxury modern design.
+Exclusive wallpaper collections crafted for iPhone and Samsung.
+Clean. Modern. Premium.
 
 </p>
 
-<a href="#collections" class="button">
+<a class="button" href="#featured">
 
-View Collection
+Explore Glass City
 
 </a>
 
 </section>
+<section class="section" id="featured">
 
-<section class="section" id="collections">
-  <div class="card">
+<div class="card">
 
-<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City Cover">
+<h2 class="section-title">
 
-<h2 style="font-size:42px;margin-top:28px;">
-
-Glass City
+Glass City Collection
 
 </h2>
 
-<p style="margin-top:18px;color:#bfbfbf;font-size:18px;line-height:1.8;max-width:720px;">
+<p class="section-text">
 
-A collection of 10 ultra-premium 4K wallpapers inspired by futuristic glass architecture, luxury waterfront skylines and modern city design. Built for iPhone and Android with a clean, minimal aesthetic.
+Glass City is ROX's first premium wallpaper collection.
+
+Featuring 10 futuristic architectural wallpapers designed in ultra-high resolution for both iPhone and Samsung devices.
+
+Perfect for Lock Screen and Home Screen.
 
 </p>
 
@@ -444,7 +533,8 @@ A collection of 10 ultra-premium 4K wallpapers inspired by futuristic glass arch
 
 </div>
 
-<a class="buy" href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
+<a class="buy-button"
+href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
 
 Buy Now
 
@@ -453,115 +543,423 @@ Buy Now
 <div class="gallery">
 
 <div class="gallery-item">
-<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Wallpaper 1">
+
+<img src="images/glasscity1.jpg" alt="Glass City Wallpaper 1">
+
 </div>
 
 <div class="gallery-item">
-<img src="737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="Wallpaper 2">
+
+<img src="images/glasscity2.jpg" alt="Glass City Wallpaper 2">
+
 </div>
 
 <div class="gallery-item">
-<img src="B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="Wallpaper 3">
+
+<img src="images/glasscity3.jpg" alt="Glass City Wallpaper 3">
+
 </div>
 
 <div class="gallery-item">
-<img src="B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="Wallpaper 4">
+
+<img src="images/glasscity4.jpg" alt="Glass City Wallpaper 4">
+
 </div>
 
 <div class="gallery-item">
-<img src="IMG_4154.PNG" alt="Wallpaper 5">
+
+<img src="images/glasscity5.jpg" alt="Glass City Wallpaper 5">
+
 </div>
 
 <div class="gallery-item">
-<img src="IMG_4157.PNG" alt="Wallpaper 6">
+
+<img src="images/glasscity6.jpg" alt="Glass City Wallpaper 6">
+
 </div>
 
 <div class="gallery-item">
-<img src="IMG_4158.PNG" alt="Wallpaper 7">
+
+<img src="images/glasscity7.jpg" alt="Glass City Wallpaper 7">
+
 </div>
 
 <div class="gallery-item">
-<img src="IMG_4161.PNG" alt="Wallpaper 8">
+
+<img src="images/glasscity8.jpg" alt="Glass City Wallpaper 8">
+
 </div>
 
 <div class="gallery-item">
-<img src="IMG_4167.PNG" alt="Wallpaper 9">
+
+<img src="images/glasscity9.jpg" alt="Glass City Wallpaper 9">
+
 </div>
 
 <div class="gallery-item">
-<img src="IMG_4169.PNG" alt="Wallpaper 10">
-</div>
+
+<img src="images/glasscity10.jpg" alt="Glass City Wallpaper 10">
 
 </div>
 
 </div>
+
+</div>
+
+</section>
+<section class="section">
+
+<div class="card">
+
+<h2 class="section-title">
+
+Why Choose ROX?
+
+</h2>
+
+<p class="section-text">
+
+Every wallpaper is designed to look clean, modern and premium across today's smartphones. Our collections are built to make your phone feel fresh every time you unlock it.
+
+</p>
 
 <div class="features">
 
-<h2>
+<div class="feature">
+
+<h3>📱 iPhone & Samsung</h3>
+
+<p>
+
+Designed for modern smartphones with crisp, high-resolution quality.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>⚡ Instant Download</h3>
+
+<p>
+
+Download your wallpapers immediately after purchasing through Stripe.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🎨 Premium Designs</h3>
+
+<p>
+
+Exclusive collections created with a luxury, minimalist style.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🖼 4K Quality</h3>
+
+<p>
+
+Sharp, vibrant wallpapers that look great on Lock Screen and Home Screen.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="collections">
+
+<div class="card">
+
+<h2 class="section-title">
+
+Collections
+
+</h2>
+
+<p class="section-text">
+
+ROX is growing. Glass City is our first collection, with more premium wallpaper packs arriving soon.
+
+</p>
+
+<div class="features">
+
+<div class="feature">
+
+<h3>🏙 Glass City</h3>
+
+<p>
+
+10 Premium Wallpapers
+
+<br><br>
+
+<a class="buy-button" href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
+
+Buy £2.99
+
+</a>
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🌿 Nature Escape</h3>
+
+<p>
+
+Coming Soon
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🌌 Cosmic</h3>
+
+<p>
+
+Coming Soon
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🌊 Ocean Blue</h3>
+
+<p>
+
+Coming Soon
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="section">
+
+<div class="card">
+
+<h2 class="section-title">
 
 What's Included
 
 </h2>
 
-<ul>
+<p class="section-text">
 
-<li>✔ 10 Premium 4K Wallpapers</li>
+Every ROX collection is carefully prepared to give you everything you need for a premium wallpaper experience.
 
-<li>✔ Ultra High Resolution PNG Images</li>
+</p>
 
-<li>✔ Compatible with iPhone & Android</li>
+<div class="features">
 
-<li>✔ Instant Digital Download</li>
+<div class="feature">
 
-<li>✔ One-Time Purchase</li>
+<h3>🖼 10 Wallpapers</h3>
 
-<li>✔ Lifetime Personal Use</li>
+<p>
 
-</ul>
+A curated collection of premium high-resolution wallpapers.
+
+</p>
 
 </div>
+
+<div class="feature">
+
+<h3>📥 Instant Download</h3>
+
+<p>
+
+Receive your download immediately after completing your purchase.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>📱 iPhone Ready</h3>
+
+<p>
+
+Optimised for modern iPhone displays and Lock Screens.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🤖 Samsung Ready</h3>
+
+<p>
+
+Designed to look great on Samsung Galaxy devices too.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="card">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="feature">
+
+<h3>How do I receive my wallpapers?</h3>
+
+<p>
+
+Immediately after payment you'll receive access to download your collection.
+
+</p>
+
+</div>
+
+<br>
+
+<div class="feature">
+
+<h3>What devices are supported?</h3>
+
+<p>
+
+ROX wallpapers are designed for modern iPhone and Samsung smartphones.
+
+</p>
+
+</div>
+
+<br>
+
+<div class="feature">
+
+<h3>Will more collections be released?</h3>
+
+<p>
+
+Yes. Glass City is only the beginning. New premium collections will continue to be added.
+
+</p>
+
+</div>
+
+<br>
+
+<div class="feature">
+
+<h3>Can I use these wallpapers commercially?</h3>
+
+<p>
+
+No. All wallpapers are licensed for personal use only and may not be redistributed or resold.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<section class="section">
+
+<div class="card">
+
+<h2 class="section-title">
+
+Ready to Upgrade Your Phone?
+
+</h2>
+
+<p class="section-text">
+
+Transform your home screen with the Glass City collection today. Download instantly and enjoy a premium wallpaper experience designed for modern smartphones.
+
+</p>
+
+<a class="buy-button" href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">
+
+Get Glass City – £2.99
+
+</a>
+
+</div>
+
 </section>
 
 <footer>
 
-<h2 style="font-size:32px;margin-bottom:15px;letter-spacing:6px;">
+<h2 style="font-size:34px;margin-bottom:18px;letter-spacing:8px;">
 
 ROX
 
 </h2>
 
-<p style="max-width:650px;margin:auto;color:#9a9a9a;font-size:17px;line-height:1.8;">
+<p style="margin-bottom:25px;">
 
-Premium digital wallpaper collections inspired by luxury architecture, futuristic skylines and modern design.
-
-Built for people who appreciate minimalist aesthetics.
+Premium Wallpapers for iPhone & Samsung
 
 </p>
 
-<div style="margin-top:35px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;">
+<div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:35px;">
 
-<a href="contact.html" style="color:#9a9a9a;text-decoration:none;">
-Contact
-</a>
+<a href="contact.html">Contact</a>
 
-<a href="privacy.html" style="color:#9a9a9a;text-decoration:none;">
-Privacy
-</a>
+<a href="privacy.html">Privacy Policy</a>
 
-<a href="terms.html" style="color:#9a9a9a;text-decoration:none;">
-Terms
-</a>
+<a href="refund.html">Refund Policy</a>
 
-<a href="refund.html" style="color:#9a9a9a;text-decoration:none;">
-Refund
-</a>
+<a href="terms.html">Terms & Conditions</a>
 
 </div>
 
-<p style="margin-top:35px;color:#666;font-size:14px;">
+<p style="margin-bottom:10px;">
 
-© 2026 ROX. All rights reserved.
+© 2026 ROX. All Rights Reserved.
+
+</p>
+
+<p style="font-size:13px;color:#999;">
+
+Glass City is the first official ROX wallpaper collection.
+
+More premium collections are coming soon.
 
 </p>
 
