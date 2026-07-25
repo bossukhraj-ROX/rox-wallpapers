@@ -4,172 +4,164 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Collections | ROX</title>
+<title>ROX | Collections</title>
 
-<meta
-name="description"
-content="Browse every premium wallpaper collection from ROX. Glass City available now with more collections coming soon.">
+<meta name="description"
+content="Browse every premium wallpaper collection available from ROX.">
+
+<meta name="theme-color" content="#08101f">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-
---bg:#f6f8fb;
---surface:rgba(255,255,255,.55);
---surface-dark:rgba(255,255,255,.72);
-
---text:#111827;
---muted:#6b7280;
-
---accent:#5aa9ff;
-
---border:rgba(255,255,255,.45);
-
---radius:28px;
-
---shadow:
-0 20px 60px rgba(15,23,42,.10);
-
---transition:.45s cubic-bezier(.2,.8,.2,1);
-
---max-width:1280px;
-
-}
 
 *{
 
 margin:0;
+
 padding:0;
+
 box-sizing:border-box;
-
-}
-
-html{
 
 scroll-behavior:smooth;
 
 }
 
+:root{
+
+--bg:#050914;
+
+--bg2:#0b1730;
+
+--glass:rgba(255,255,255,.08);
+
+--glass-border:rgba(255,255,255,.12);
+
+--text:#ffffff;
+
+--muted:#bfc8d8;
+
+--accent:#4da3ff;
+
+--radius:24px;
+
+--shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
 body{
 
-font-family:'Inter',sans-serif;
+font-family:"Inter",sans-serif;
 
 background:
-linear-gradient(
-180deg,
-#ffffff,
-#f4f8ff,
-#edf5ff);
+radial-gradient(circle at top,#18396f 0%,#08101f 40%,#050914 100%);
+
+background-attachment:fixed;
 
 color:var(--text);
 
 overflow-x:hidden;
 
+min-height:100vh;
+
 }
 
-img{
+body::before{
 
-display:block;
-width:100%;
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 20%,
+rgba(77,163,255,.12),
+transparent 35%),
+
+radial-gradient(circle at 80% 30%,
+rgba(140,180,255,.08),
+transparent 35%),
+
+radial-gradient(circle at 50% 100%,
+rgba(77,163,255,.08),
+transparent 45%);
+
+animation:bgMove 18s ease-in-out infinite alternate;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+@keyframes bgMove{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(-80px);
+
+}
+
+}
+
+.container{
+
+width:min(1200px,92%);
+
+margin:auto;
+
+}
+
+.glass{
+
+background:var(--glass);
+
+backdrop-filter:blur(22px);
+
+-webkit-backdrop-filter:blur(22px);
+
+border:1px solid var(--glass-border);
+
+box-shadow:var(--shadow);
+
+border-radius:var(--radius);
 
 }
 
 a{
 
 text-decoration:none;
-color:inherit;
+
+color:white;
 
 }
 
-ul{
+img{
 
-list-style:none;
+display:block;
 
-}
-
-.container{
-
-width:min(
-92%,
-var(--max-width));
-
-margin:auto;
+max-width:100%;
 
 }
 
 section{
 
-padding:110px 0;
-
-}
-
-.glass{
-
-background:var(--surface);
-
-backdrop-filter:blur(28px);
-
--webkit-backdrop-filter:blur(28px);
-
-border:1px solid var(--border);
-
-border-radius:var(--radius);
-
-box-shadow:var(--shadow);
-
-transition:var(--transition);
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.glass::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:
-
-linear-gradient(
-
-135deg,
-
-rgba(255,255,255,.45),
-
-transparent,
-
-rgba(255,255,255,.12)
-
-);
-
-pointer-events:none;
-
-}
-
-.glass:hover{
-
-transform:translateY(-6px);
-
-box-shadow:
-
-0 28px 70px rgba(15,23,42,.14);
+padding:120px 0;
 
 }
 
@@ -181,37 +173,51 @@ align-items:center;
 
 justify-content:center;
 
-padding:15px 30px;
+padding:16px 34px;
 
 border-radius:999px;
 
-background:linear-gradient(
-
-135deg,
-
-#6ab8ff,
-
-#3b82f6);
-
-color:white;
-
 font-weight:700;
 
-transition:var(--transition);
+transition:.35s;
+
+cursor:pointer;
 
 }
 
-.button:hover{
+.button-primary{
 
-transform:translateY(-3px);
+background:linear-gradient(135deg,#4da3ff,#78b8ff);
 
-box-shadow:
-
-0 20px 50px
-
-rgba(59,130,246,.30);
+color:#08101f;
 
 }
+
+.button-primary:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 18px 40px rgba(77,163,255,.35);
+
+}
+
+.button-secondary{
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+}
+
+.button-secondary:hover{
+
+background:rgba(255,255,255,.14);
+
+transform:translateY(-6px);
+
+}
+
+/* ---------- NAVBAR ---------- */
 
 .navbar{
 
@@ -223,37 +229,29 @@ left:50%;
 
 transform:translateX(-50%);
 
-width:min(94%,1200px);
-
-z-index:9999;
-
-}
-
-.nav-inner{
+width:min(1180px,94%);
 
 display:flex;
 
-justify-content:space-between;
-
 align-items:center;
 
+justify-content:space-between;
+
 padding:18px 28px;
+
+z-index:1000;
+
+transition:.4s;
 
 }
 
 .logo{
 
-font-size:1.6rem;
+font-size:1.5rem;
 
-font-weight:800;
+font-weight:900;
 
-letter-spacing:.06em;
-
-}
-
-.logo:hover{
-
-opacity:.85;
+letter-spacing:.08em;
 
 }
 
@@ -261,7 +259,7 @@ opacity:.85;
 
 display:flex;
 
-gap:34px;
+gap:26px;
 
 align-items:center;
 
@@ -271,33 +269,15 @@ align-items:center;
 
 font-weight:600;
 
-position:relative;
-
-}
-
-.nav-links a::after{
-
-content:"";
-
-position:absolute;
-
-left:0;
-
-bottom:-6px;
-
-width:0;
-
-height:2px;
-
-background:var(--accent);
+color:white;
 
 transition:.3s;
 
 }
 
-.nav-links a:hover::after{
+.nav-links a:hover{
 
-width:100%;
+color:#8dc6ff;
 
 }
 
@@ -307,17 +287,17 @@ position:relative;
 
 }
 
-.dropdown-menu{
+.dropdown-content{
 
 position:absolute;
 
-top:130%;
+top:45px;
 
 right:0;
 
-width:250px;
+min-width:220px;
 
-padding:16px;
+padding:14px;
 
 display:none;
 
@@ -325,13 +305,20 @@ flex-direction:column;
 
 gap:12px;
 
+border-radius:18px;
+
+background:rgba(15,20,40,.92);
+
+backdrop-filter:blur(18px);
+
 }
 
-.dropdown:hover .dropdown-menu{
+.dropdown:hover .dropdown-content{
 
 display:flex;
 
 }
+    /* ---------- HERO ---------- */
 
 .hero{
 
@@ -343,165 +330,424 @@ text-align:center;
 
 }
 
-.hero h1{
+.hero-badge{
 
-font-size:clamp(2.8rem,6vw,4.8rem);
+display:inline-flex;
 
-font-weight:800;
+align-items:center;
+
+justify-content:center;
+
+padding:12px 24px;
+
+border-radius:999px;
 
 margin-bottom:24px;
+
+font-size:.95rem;
+
+font-weight:700;
+
+}
+
+.hero h1{
+
+font-size:clamp(3rem,7vw,5rem);
+
+font-weight:900;
+
+line-height:1.05;
+
+margin-bottom:22px;
 
 }
 
 .hero p{
 
-max-width:720px;
+max-width:760px;
 
 margin:auto;
 
 font-size:1.15rem;
 
-line-height:1.8;
-
-color:var(--muted);
-
-}
-    }
-
-.hero-badge{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:10px 18px;
-margin-bottom:30px;
-border-radius:999px;
-background:rgba(255,255,255,.55);
-backdrop-filter:blur(20px);
-font-size:.9rem;
-font-weight:600;
-}
-
-.collection{
-padding:90px 0;
-}
-
-.collection-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
-
-.collection-image{
-display:flex;
-justify-content:center;
-}
-
-.collection-image img{
-width:320px;
-border-radius:36px;
-box-shadow:0 30px 70px rgba(0,0,0,.18);
-transition:var(--transition);
-}
-
-.collection-image img:hover{
-transform:translateY(-10px);
-}
-
-.collection-content h2{
-font-size:2.8rem;
-margin-bottom:20px;
-}
-
-.collection-content p{
 line-height:1.9;
+
 color:var(--muted);
-margin-bottom:28px;
+
 }
+
+/* ---------- FEATURED COLLECTION ---------- */
+
+.featured-grid{
+
+display:grid;
+
+grid-template-columns:1.1fr 1fr;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+.featured-image img{
+
+border-radius:32px;
+
+box-shadow:0 35px 80px rgba(0,0,0,.45);
+
+}
+
+.featured-content h2{
+
+font-size:2.8rem;
+
+margin:20px 0;
+
+font-weight:900;
+
+}
+
+.featured-content p{
+
+line-height:1.9;
+
+color:var(--muted);
+
+margin-bottom:20px;
+
+}
+
+.compatibility{
+
+display:inline-flex;
+
+align-items:center;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+margin:18px 0 28px;
+
+font-weight:600;
+
+}
+
+/* ---------- PREVIEW GRID ---------- */
 
 .preview-grid{
+
 display:grid;
+
 grid-template-columns:repeat(5,1fr);
-gap:16px;
-margin:35px 0;
+
+gap:18px;
+
+margin:40px 0;
+
 }
 
 .preview-card{
-aspect-ratio:9/19.5;
-border-radius:24px;
+
 overflow:hidden;
-position:relative;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.10);
+
+transition:.4s;
+
 cursor:pointer;
+
 }
 
 .preview-card img{
+
 width:100%;
-height:100%;
-object-fit:cover;
-transition:var(--transition);
+
+display:block;
+
+transition:.45s;
+
+}
+
+.preview-card:hover{
+
+transform:translateY(-12px);
+
 }
 
 .preview-card:hover img{
-transform:scale(1.06);
-}
 
-.preview-card::after{
-content:"ROX";
-position:absolute;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:3rem;
-font-weight:800;
-color:rgba(255,255,255,.28);
+transform:scale(1.06);
+
 }
 
 .price{
-font-size:2.2rem;
-font-weight:800;
-margin-bottom:25px;
+
+font-size:2.5rem;
+
+font-weight:900;
+
+margin:18px 0;
+
 }
 
-.coming-soon{
-display:inline-flex;
-padding:15px 28px;
-border-radius:999px;
-background:rgba(255,255,255,.6);
-font-weight:700;
+.collection-buttons{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
 }
+
+/* ---------- COMING SOON ---------- */
+
+.coming-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:28px;
+
+margin-top:60px;
+
+}
+
+.coming-card{
+
+padding:28px;
+
+text-align:center;
+
+transition:.4s;
+
+}
+
+.coming-card:hover{
+
+transform:translateY(-12px);
+
+}
+
+.coming-image{
+
+height:180px;
+
+border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:1.4rem;
+
+font-weight:700;
+
+margin-bottom:22px;
+
+background:linear-gradient(135deg,
+rgba(77,163,255,.10),
+rgba(255,255,255,.05));
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.coming-card h3{
+
+margin-bottom:14px;
+
+font-size:1.45rem;
+
+}
+
+.coming-card p{
+
+color:var(--muted);
+
+line-height:1.8;
+
+margin-bottom:22px;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:10px 20px;
+
+border-radius:999px;
+
+background:rgba(77,163,255,.15);
+
+color:#9ed0ff;
+
+font-weight:700;
+
+}
+
+/* ---------- FOOTER ---------- */
 
 footer{
-padding:80px 0;
-text-align:center;
-color:var(--muted);
+
+padding:80px 0 50px;
+
 }
 
-@media(max-width:960px){
+.footer-card{
 
-.collection-grid{
-grid-template-columns:1fr;
+padding:60px;
+
 text-align:center;
+
+}
+
+.footer-card h2{
+
+font-size:2rem;
+
+margin-bottom:18px;
+
+}
+
+.footer-card p{
+
+max-width:700px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:var(--muted);
+
+}
+
+.footer-links{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:24px;
+
+margin:40px 0;
+
+}
+
+.footer-links a{
+
+transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+color:#8dc6ff;
+
+}
+
+.footer-email{
+
+margin-bottom:24px;
+
+}
+
+.footer-copy{
+
+color:rgba(255,255,255,.55);
+
+font-size:.95rem;
+
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:980px){
+
+.featured-grid{
+
+grid-template-columns:1fr;
+
 }
 
 .preview-grid{
+
 grid-template-columns:repeat(2,1fr);
+
 }
 
 .nav-links{
+
 gap:18px;
-}
 
 }
 
-@media(max-width:640px){
+}
 
-.preview-grid{
-grid-template-columns:1fr 1fr;
+@media(max-width:768px){
+
+.navbar{
+
+padding:16px 20px;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.hero{
+
+padding-top:160px;
+
 }
 
 .hero h1{
-font-size:2.7rem;
+
+font-size:2.8rem;
+
+}
+
+.preview-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.collection-buttons{
+
+flex-direction:column;
+
+}
+
+.button{
+
+width:100%;
+
+}
+
+.footer-card{
+
+padding:40px 28px;
+
 }
 
 }
@@ -509,36 +755,63 @@ font-size:2.7rem;
 </style>
 
 </head>
-
 <body>
 
-<nav class="navbar">
+<nav class="navbar glass">
 
-<div class="glass nav-inner">
+<a href="index.html" class="logo">
 
-<a href="index.html" class="logo">ROX</a>
+ROX
+
+</a>
 
 <div class="nav-links">
 
-<a href="index.html">Home</a>
+<a href="index.html">
 
-<a href="collections.html">Collections</a>
+Home
+
+</a>
+
+<a href="collections.html">
+
+Collections
+
+</a>
 
 <div class="dropdown">
 
-<a href="#">Support ▾</a>
+<a href="#">
 
-<div class="glass dropdown-menu">
+Support ▾
 
-<a href="contact.html">Contact</a>
+</a>
 
-<a href="privacy.html">Privacy Policy</a>
+<div class="dropdown-content glass">
 
-<a href="refund.html">Refund Policy</a>
+<a href="contact.html">
 
-<a href="terms.html">Terms &amp; Conditions</a>
+Contact
 
-</div>
+</a>
+
+<a href="privacy.html">
+
+Privacy Policy
+
+</a>
+
+<a href="refund.html">
+
+Refund Policy
+
+</a>
+
+<a href="terms.html">
+
+Terms &amp; Conditions
+
+</a>
 
 </div>
 
@@ -553,98 +826,158 @@ font-size:2.7rem;
 <div class="container">
 
 <div class="hero-badge glass">
-Premium Wallpaper Collections
+
+🖼️ Premium Wallpaper Collections
+
 </div>
 
-<h1>Explore the ROX Collection</h1>
+<h1>
+
+Explore the ROX Collection
+
+</h1>
 
 <p>
-Discover every wallpaper collection from ROX. Glass City is available now, with more premium collections arriving soon.
+
+Browse every premium wallpaper collection from ROX. Glass City is available now, with more carefully crafted collections arriving soon. Every wallpaper is designed with the same clean, Apple-inspired aesthetic to elevate your device.
+
 </p>
 
 </div>
 
 </section>
-    <section class="collection">
+
+<section>
 
 <div class="container">
 
-<div class="collection-grid">
+<div class="featured-grid">
 
-<div class="collection-image">
+<div class="featured-image">
 
 <img
-src="images/glass-city/86D37BE9-D966-4042-B608-EF9773121786.PNG"
-alt="Glass City">
+src="86D37BE9-D966-4042-B608-EF9773121786.PNG"
+alt="Glass City Collection">
 
 </div>
 
-<div class="collection-content">
+<div class="featured-content">
 
-<h2>Glass City</h2>
+<div class="hero-badge glass">
+
+⭐ Available Now
+
+</div>
+
+<h2>
+
+Glass City
+
+</h2>
 
 <p>
 
-A premium collection inspired by modern architecture, reflections and
-minimal city aesthetics. Designed for iPhone and Samsung with crisp
-high-resolution wallpapers that complement any home screen.
+Glass City is ROX's first premium wallpaper collection, inspired by reflective architecture, clean lines and modern design. Created with a premium aesthetic, each wallpaper is crafted to look stunning on both iPhone and Samsung devices.
+
+</p>
+
+<div class="compatibility">
+
+📱 Compatible with iPhone &amp; Samsung
+
+</div>
+
+<p>
+
+Your purchase includes 10 premium wallpapers. After completing your secure Stripe checkout, you'll be able to download them from the confirmation page and you'll also receive them by email.
 
 </p>
 
 <div class="preview-grid">
 
-<div class="glass preview-card">
-<img src="images/glass-city/737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="">
+<div class="preview-card">
+
+<img src="737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="Wallpaper 1">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="">
+<div class="preview-card">
+
+<img src="B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="Wallpaper 2">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="">
+<div class="preview-card">
+
+<img src="B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="Wallpaper 3">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/IMG_4154.PNG" alt="">
+<div class="preview-card">
+
+<img src="IMG_4154.PNG" alt="Wallpaper 4">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/IMG_4157.PNG" alt="">
+<div class="preview-card">
+
+<img src="IMG_4157.PNG" alt="Wallpaper 5">
+
+</div>
+<div class="preview-card">
+
+<img src="IMG_4158.PNG" alt="Wallpaper 6">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/IMG_4158.PNG" alt="">
+<div class="preview-card">
+
+<img src="IMG_4161.PNG" alt="Wallpaper 7">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/IMG_4161.PNG" alt="">
+<div class="preview-card">
+
+<img src="IMG_4167.PNG" alt="Wallpaper 8">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/IMG_4167.PNG" alt="">
+<div class="preview-card">
+
+<img src="IMG_4169.PNG" alt="Wallpaper 9">
+
 </div>
 
-<div class="glass preview-card">
-<img src="images/glass-city/IMG_4169.PNG" alt="">
-</div>
+<div class="preview-card">
 
-<div class="glass preview-card">
-<img src="images/glass-city/86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="">
+<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Wallpaper 10">
+
 </div>
 
 </div>
 
 <div class="price">
+
 £2.99
+
 </div>
 
+<div class="collection-buttons">
+
 <a
-class="button"
 href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00"
-target="_blank">
+target="_blank"
+class="button button-primary">
 
 Buy Glass City
+
+</a>
+
+<a
+href="index.html"
+class="button button-secondary">
+
+Back to Home
 
 </a>
 
@@ -654,318 +987,173 @@ Buy Glass City
 
 </div>
 
-</section>
-    <section class="collection">
-
-<div class="container">
-
-<div class="collection-grid">
-
-<div class="collection-image">
-
-<div class="glass" style="width:320px;height:640px;display:flex;align-items:center;justify-content:center;border-radius:36px;">
-
-<span style="font-size:1.2rem;font-weight:700;color:var(--muted);">
-Luminar Preview
-</span>
-
-</div>
-
-</div>
-
-<div class="collection-content">
-
-<h2>Luminar</h2>
-
-<p>
-
-Luminar is an upcoming wallpaper collection focused on clean lighting,
-soft gradients and premium glass-inspired visuals. Designed with a
-minimal aesthetic that blends perfectly with modern smartphones.
-
-</p>
-
-<div class="preview-grid">
-
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-
-</div>
-
-<div class="price">
-
-Coming Soon
-
-</div>
-
-<span class="coming-soon">
-
-Coming Soon
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-<section class="collection">
-
-<div class="container">
-
-<div class="collection-grid">
-
-<div class="collection-image">
-
-<div class="glass" style="width:320px;height:640px;display:flex;align-items:center;justify-content:center;border-radius:36px;">
-
-<span style="font-size:1.2rem;font-weight:700;color:var(--muted);">
-Crystal District Preview
-</span>
-
-</div>
-
-</div>
-
-<div class="collection-content">
-
-<h2>Crystal District</h2>
-
-<p>
-
-Crystal District is an upcoming collection featuring elegant glass
-textures, reflective surfaces and refined minimal compositions.
-Designed to give your device a clean, premium appearance with every
-wallpaper.
-
-</p>
-
-<div class="preview-grid">
-
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-
-</div>
-
-<div class="price">
-
-Coming Soon
-
-</div>
-
-<span class="coming-soon">
-
-Coming Soon
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-    <section class="collection">
-
-<div class="container">
-
-<div class="collection-grid">
-
-<div class="collection-image">
-
-<div class="glass" style="width:320px;height:640px;display:flex;align-items:center;justify-content:center;border-radius:36px;">
-
-<span style="font-size:1.2rem;font-weight:700;color:var(--muted);">
-Elevation Preview
-</span>
-
-</div>
-
-</div>
-
-<div class="collection-content">
-
-<h2>Elevation</h2>
-
-<p>
-
-Elevation is an upcoming collection inspired by mountain landscapes,
-modern architecture and subtle gradients. Every wallpaper is designed
-to create a clean, spacious and premium feel across your device.
-
-</p>
-
-<div class="preview-grid">
-
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-
-</div>
-
-<div class="price">
-
-Coming Soon
-
-</div>
-
-<span class="coming-soon">
-
-Coming Soon
-
-</span>
-
-</div>
-
-</div>
-
 </div>
 
 </section>
 
-<section class="collection">
+<section>
 
 <div class="container">
 
-<div class="collection-grid">
+<div style="text-align:center;max-width:760px;margin:0 auto 70px;">
 
-<div class="collection-image">
+<div class="hero-badge glass">
 
-<div class="glass" style="width:320px;height:640px;display:flex;align-items:center;justify-content:center;border-radius:36px;">
-
-<span style="font-size:1.2rem;font-weight:700;color:var(--muted);">
-Mono Leaf Preview
-</span>
+🚀 More Collections Coming Soon
 
 </div>
 
-</div>
+<h2 style="font-size:3rem;font-weight:900;margin:25px 0;">
 
-<div class="collection-content">
+More Premium Collections
 
-<h2>Mono Leaf</h2>
+</h2>
 
-<p>
+<p style="color:var(--muted);line-height:1.9;">
 
-Mono Leaf is an upcoming monochrome-inspired collection featuring
-minimal botanical artwork with a calm, modern aesthetic that works
-beautifully on both light and dark home screens.
+ROX is just getting started. Every upcoming collection follows the same
+clean, premium design philosophy as Glass City, giving you more ways to
+personalise your device with exclusive wallpapers.
 
 </p>
 
-<div class="preview-grid">
+</div>
 
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
+<div class="coming-grid">
+
+<div class="glass coming-card">
+
+<div class="coming-image">
+
+Luminar
 
 </div>
 
-<div class="price">
+<h3>
 
-Coming Soon
+Luminar
 
-</div>
-
-<span class="coming-soon">
-
-Coming Soon
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-    <section class="collection">
-
-<div class="container">
-
-<div class="collection-grid">
-
-<div class="collection-image">
-
-<div class="glass" style="width:320px;height:640px;display:flex;align-items:center;justify-content:center;border-radius:36px;">
-
-<span style="font-size:1.2rem;font-weight:700;color:var(--muted);">
-Horizon Preview
-</span>
-
-</div>
-
-</div>
-
-<div class="collection-content">
-
-<h2>Horizon</h2>
+</h3>
 
 <p>
 
-Horizon is an upcoming wallpaper collection inspired by expansive
-landscapes, peaceful skies and soft colour palettes. Designed with a
-clean, modern style, it brings a calm and premium aesthetic to your
-device while maintaining the signature ROX look.
+Elegant light, reflections and premium glowing wallpapers.
 
 </p>
 
-<div class="preview-grid">
-
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-<div class="glass preview-card"></div>
-
-</div>
-
-<div class="price">
+<span class="badge">
 
 Coming Soon
 
+</span>
+
 </div>
 
-<span class="coming-soon">
+<div class="glass coming-card">
+
+<div class="coming-image">
+
+Crystal District
+
+</div>
+
+<h3>
+
+Crystal District
+
+</h3>
+
+<p>
+
+Inspired by glass architecture and modern city aesthetics.
+
+</p>
+
+<span class="badge">
+
+Coming Soon
+
+</span>
+
+</div>
+
+<div class="glass coming-card">
+
+<div class="coming-image">
+
+Elevation
+
+</div>
+
+<h3>
+
+Elevation
+
+</h3>
+
+<p>
+
+Minimal landscapes with rich colours and depth.
+
+</p>
+
+<span class="badge">
+
+Coming Soon
+
+</span>
+
+</div>
+
+<div class="glass coming-card">
+
+<div class="coming-image">
+
+Mono Leaf
+
+</div>
+
+<h3>
+
+Mono Leaf
+
+</h3>
+
+<p>
+
+Simple botanical artwork with a timeless monochrome style.
+
+</p>
+
+<span class="badge">
+
+Coming Soon
+
+</span>
+
+</div>
+
+<div class="glass coming-card">
+
+<div class="coming-image">
+
+Horizon
+
+</div>
+
+<h3>
+
+Horizon
+
+</h3>
+
+<p>
+
+Beautiful horizon-inspired wallpapers with soft gradients and calm tones.
+
+</p>
+
+<span class="badge">
 
 Coming Soon
 
@@ -982,23 +1170,23 @@ Coming Soon
 
 <div class="container">
 
-<div class="glass" style="padding:50px;">
+<div class="glass footer-card">
 
-<h2 style="margin-bottom:20px;font-size:2rem;">
+<h2>
 
 ROX
 
 </h2>
 
-<p style="max-width:650px;margin:0 auto 30px;line-height:1.8;color:var(--muted);">
+<p>
 
-Premium wallpaper collections designed with a clean, Apple-inspired
-aesthetic for iPhone and Samsung devices. More exclusive collections
-are coming soon.
+Premium wallpapers designed to elevate your device with clean,
+minimal, Apple-inspired artwork. Explore Glass City today and
+stay tuned as the ROX collection continues to grow.
 
 </p>
 
-<div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:30px;">
+<div class="footer-links">
 
 <a href="index.html">Home</a>
 
@@ -1014,44 +1202,136 @@ are coming soon.
 
 </div>
 
-<p>
+<div class="footer-email">
 
-Support:
 <a href="mailto:roxhelpp@gmail.com">
 
 roxhelpp@gmail.com
 
 </a>
 
-</p>
+</div>
 
-<p style="margin-top:20px;">
+<div class="footer-copy">
 
-&copy; 2025 ROX. All rights reserved.
+© 2025 ROX. All Rights Reserved.
 
-</p>
+</div>
+
+</div>
 
 </div>
 
 </footer>
 
+<button
+id="backToTop"
+class="button button-primary"
+style="
+position:fixed;
+right:25px;
+bottom:25px;
+display:none;
+z-index:999;
+padding:15px 18px;
+border-radius:50%;
+">
+
+↑
+
+</button>
+
 <script>
 
 const navbar=document.querySelector(".navbar");
 
+const backToTop=document.getElementById("backToTop");
+
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY>50){
+if(window.scrollY>60){
 
 navbar.style.transform="translateX(-50%) scale(.96)";
 
-}
+navbar.style.top="12px";
 
-else{
+backToTop.style.display="flex";
+
+}else{
 
 navbar.style.transform="translateX(-50%) scale(1)";
 
+navbar.style.top="18px";
+
+backToTop.style.display="none";
+
 }
+
+});
+
+backToTop.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+
+{
+
+opacity:0,
+
+transform:"translateY(40px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0)"
+
+}
+
+],{
+
+duration:700,
+
+fill:"forwards",
+
+easing:"ease-out"
+
+});
+
+observer.unobserve(entry.target);
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll("section").forEach(section=>{
+
+section.style.opacity="0";
+
+observer.observe(section);
 
 });
 
@@ -1060,5 +1340,3 @@ navbar.style.transform="translateX(-50%) scale(1)";
 </body>
 
 </html>
-
-    
