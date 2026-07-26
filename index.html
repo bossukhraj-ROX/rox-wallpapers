@@ -4,56 +4,65 @@
 <head>
 
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ROX | Premium Wallpapers</title>
 
-<meta name="description" content="Premium Apple-inspired wallpapers designed to elevate your device. Explore the Glass City collection from ROX.">
+<meta name="description"
+content="Premium wallpapers designed to elevate your device. Discover Glass City and future exclusive collections from ROX.">
 
-<meta name="keywords" content="ROX, Premium Wallpapers, iPhone Wallpapers, Apple Inspired Wallpapers, Glass City">
+<meta name="keywords"
+content="ROX, Premium Wallpapers, Glass City, Apple Inspired Wallpapers, Digital Wallpapers">
 
-<meta name="theme-color" content="#08101f">
+<meta name="author"
+content="ROX">
 
-<meta property="og:title" content="ROX | Premium Wallpapers">
+<meta name="theme-color"
+content="#08101f">
 
-<meta property="og:description" content="Premium wallpapers designed to elevate your device.">
+<meta property="og:title"
+content="ROX | Premium Wallpapers">
 
-<meta property="og:type" content="website">
+<meta property="og:description"
+content="Premium wallpapers designed to elevate your device.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta property="og:type"
+content="website">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta property="og:image"
+content="86D37BE9-D966-4042-B608-EF9773121786.PNG">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
 <style>
 
+/* ==========================================
+   RESET
+========================================== */
+
 *{
+
 margin:0;
+
 padding:0;
+
 box-sizing:border-box;
-scroll-behavior:smooth;
+
 }
 
-:root{
+html{
 
---bg:#050914;
---bg-secondary:#08101f;
---card:rgba(255,255,255,.07);
---glass:rgba(255,255,255,.08);
---glass-border:rgba(255,255,255,.14);
-
---text:#ffffff;
---muted:#cfd8e8;
-
---accent:#63b2ff;
---accent-light:#9fd2ff;
-
---radius:26px;
-
---shadow:
-0 25px 70px rgba(0,0,0,.38);
+scroll-behavior:smooth;
 
 }
 
@@ -61,18 +70,53 @@ body{
 
 font-family:"Inter",sans-serif;
 
-background:
-radial-gradient(circle at top,#1b3d73 0%,#08101f 45%,#050914 100%);
+background:#050914;
 
-background-attachment:fixed;
-
-color:var(--text);
+color:#ffffff;
 
 overflow-x:hidden;
 
 min-height:100vh;
 
+line-height:1.7;
+
 }
+
+/* ==========================================
+   DESIGN VARIABLES
+========================================== */
+
+:root{
+
+--navy:#050914;
+
+--navy-light:#08101f;
+
+--royal:#17386d;
+
+--glass:rgba(255,255,255,.08);
+
+--glass-border:rgba(255,255,255,.15);
+
+--white:#ffffff;
+
+--muted:#cfd7e7;
+
+--blue:#63b2ff;
+
+--blue-light:#9fd4ff;
+
+--radius:28px;
+
+--shadow:
+
+0 30px 80px rgba(0,0,0,.40);
+
+}
+
+/* ==========================================
+   ANIMATED BACKGROUND
+========================================== */
 
 body::before{
 
@@ -82,25 +126,38 @@ position:fixed;
 
 inset:0;
 
-pointer-events:none;
-
 z-index:-2;
+
+pointer-events:none;
 
 background:
 
-radial-gradient(circle at 15% 20%,
-rgba(95,170,255,.13),
+radial-gradient(circle at 12% 18%,
+rgba(99,178,255,.14),
 transparent 35%),
 
-radial-gradient(circle at 85% 15%,
+radial-gradient(circle at 88% 12%,
 rgba(255,255,255,.05),
-transparent 30%),
+transparent 28%),
 
 radial-gradient(circle at 50% 100%,
-rgba(95,170,255,.08),
-transparent 42%);
+rgba(99,178,255,.10),
+transparent 45%);
 
 animation:backgroundFloat 18s ease-in-out infinite alternate;
+
+}
+
+body{
+
+background:
+
+radial-gradient(circle at top,
+#18396f 0%,
+#08101f 45%,
+#050914 100%);
+
+background-attachment:fixed;
 
 }
 
@@ -119,6 +176,10 @@ transform:translateY(-70px);
 }
 
 }
+
+/* ==========================================
+   GLOBAL ELEMENTS
+========================================== */
 
 .container{
 
@@ -150,23 +211,43 @@ color:inherit;
 
 }
 
+h1,h2,h3{
+
+font-weight:900;
+
+letter-spacing:-0.03em;
+
+line-height:1.1;
+
+}
+
+p{
+
+color:var(--muted);
+
+}
+
+/* ==========================================
+   LIQUID GLASS
+========================================== */
+
 .glass{
+
+position:relative;
+
+overflow:hidden;
 
 background:var(--glass);
 
 border:1px solid var(--glass-border);
 
-backdrop-filter:blur(24px);
-
--webkit-backdrop-filter:blur(24px);
-
 border-radius:var(--radius);
 
+backdrop-filter:blur(26px);
+
+-webkit-backdrop-filter:blur(26px);
+
 box-shadow:var(--shadow);
-
-position:relative;
-
-overflow:hidden;
 
 }
 
@@ -176,13 +257,13 @@ content:"";
 
 position:absolute;
 
-top:-120%;
+top:-140%;
 
-left:-50%;
+left:-45%;
 
-width:70%;
+width:60%;
 
-height:300%;
+height:360%;
 
 background:
 
@@ -198,23 +279,29 @@ transparent
 
 );
 
-transform:rotate(25deg);
+transform:rotate(24deg);
 
-animation:glassShine 9s linear infinite;
+animation:glassReflection 10s linear infinite;
 
 }
 
-@keyframes glassShine{
+@keyframes glassReflection{
 
 100%{
 
 transform:
-translateX(220%)
-rotate(25deg);
+
+translateX(250%)
+
+rotate(24deg);
 
 }
 
 }
+
+/* ==========================================
+   BUTTON SYSTEM
+========================================== */
 
 .button{
 
@@ -224,26 +311,23 @@ align-items:center;
 
 justify-content:center;
 
-padding:16px 34px;
+padding:17px 36px;
 
 border-radius:999px;
 
 font-weight:700;
 
-transition:
-transform .35s cubic-bezier(.2,1,.2,1),
-box-shadow .35s,
-background .35s;
+font-size:1rem;
 
 cursor:pointer;
 
-}
+transition:
 
-.button:hover{
+transform .35s cubic-bezier(.22,1,.36,1),
 
-transform:
-translateY(-8px)
-scale(1.03);
+box-shadow .35s,
+
+background .35s;
 
 }
 
@@ -257,7 +341,7 @@ linear-gradient(
 
 #63b2ff,
 
-#9fd2ff
+#9fd4ff
 
 );
 
@@ -265,15 +349,7 @@ color:#08101f;
 
 box-shadow:
 
-0 18px 40px rgba(99,178,255,.35);
-
-}
-
-.button-primary:hover{
-
-box-shadow:
-
-0 28px 60px rgba(99,178,255,.45);
+0 18px 45px rgba(99,178,255,.35);
 
 }
 
@@ -287,19 +363,38 @@ border:
 
 1px solid rgba(255,255,255,.15);
 
+color:#ffffff;
+
+}
+
+.button:hover{
+
+transform:
+
+translateY(-8px)
+
+scale(1.03);
+
+}
+
+.button-primary:hover{
+
+box-shadow:
+
+0 28px 60px rgba(99,178,255,.45);
+
 }
 
 .button-secondary:hover{
 
 background:
 
-rgba(255,255,255,.14);
+rgba(255,255,255,.15);
 
 }
-
-/* ==========================
+   /* ==========================================
    NAVIGATION
-========================== */
+========================================== */
 
 .navbar{
 
@@ -311,19 +406,35 @@ left:50%;
 
 transform:translateX(-50%);
 
-width:min(1180px,94%);
+width:min(1200px,94%);
 
 padding:18px 30px;
 
 display:flex;
 
-align-items:center;
-
 justify-content:space-between;
 
-transition:.4s;
+align-items:center;
 
 z-index:1000;
+
+transition:
+
+top .35s ease,
+
+transform .35s ease,
+
+background .35s ease,
+
+box-shadow .35s ease;
+
+}
+
+.navbar.scrolled{
+
+top:10px;
+
+transform:translateX(-50%) scale(.97);
 
 }
 
@@ -333,7 +444,17 @@ font-size:1.55rem;
 
 font-weight:900;
 
-letter-spacing:.12em;
+letter-spacing:.18em;
+
+color:#ffffff;
+
+transition:.3s;
+
+}
+
+.logo:hover{
+
+color:var(--blue-light);
 
 }
 
@@ -343,23 +464,61 @@ display:flex;
 
 align-items:center;
 
-gap:28px;
+gap:30px;
 
 }
 
-.nav-links a{
+.nav-links>a{
+
+position:relative;
 
 font-weight:600;
 
+font-size:1rem;
+
 transition:.3s;
 
-}
-
-.nav-links a:hover{
-
-color:var(--accent-light);
+padding:8px 0;
 
 }
+
+.nav-links>a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-4px;
+
+width:0;
+
+height:2px;
+
+border-radius:999px;
+
+background:var(--blue);
+
+transition:.35s;
+
+}
+
+.nav-links>a:hover{
+
+color:var(--blue-light);
+
+}
+
+.nav-links>a:hover::after{
+
+width:100%;
+
+}
+
+/* ==========================================
+   SUPPORT DROPDOWN
+========================================== */
 
 .dropdown{
 
@@ -367,534 +526,111 @@ position:relative;
 
 }
 
-.dropdown-content{
+.dropdown>a{
 
-display:none;
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+.dropdown-content{
 
 position:absolute;
 
-top:46px;
+top:58px;
 
 right:0;
 
-min-width:240px;
+min-width:260px;
 
-padding:16px;
+padding:18px;
+
+display:flex;
 
 flex-direction:column;
 
-gap:14px;
+gap:12px;
 
-background:rgba(10,16,35,.96);
+opacity:0;
 
-border-radius:22px;
+visibility:hidden;
 
-backdrop-filter:blur(24px);
+transform:translateY(15px);
 
-}
+transition:.35s;
 
-.dropdown:hover .dropdown-content{
-
-display:flex;
-/* ==========================
-   HERO
-========================== */
-
-.hero{
-
-padding-top:180px;
-
-padding-bottom:110px;
-
-}
-
-.hero-grid{
-
-display:grid;
-
-grid-template-columns:1.05fr .95fr;
-
-gap:80px;
-
-align-items:center;
-
-}
-
-.hero-text h1{
-
-font-size:clamp(3.4rem,7vw,5.8rem);
-
-line-height:1.02;
-
-font-weight:900;
-
-margin-bottom:26px;
-
-letter-spacing:-.04em;
-
-}
-
-.hero-text p{
-
-font-size:1.15rem;
-
-line-height:1.9;
-
-color:var(--muted);
-
-max-width:620px;
-
-margin-bottom:38px;
-
-}
-
-.hero-buttons{
-
-display:flex;
-
-gap:18px;
-
-flex-wrap:wrap;
-
-}
-
-.hero-image{
-
-padding:18px;
-
-}
-
-.hero-image img{
-
-width:100%;
-
-border-radius:28px;
-
-animation:heroFloat 8s ease-in-out infinite;
-
-box-shadow:
-
-0 35px 80px rgba(0,0,0,.45);
-
-}
-
-@keyframes heroFloat{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-12px);
-
-}
-
-}
-
-/* ==========================
-   FEATURED COLLECTION
-========================== */
-
-.featured-grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:70px;
-
-align-items:center;
-
-}
-
-.featured-image{
-
-padding:18px;
-
-}
-
-.featured-image img{
-
-width:100%;
-
-border-radius:28px;
-
-}
-
-.featured-content h2{
-
-font-size:3rem;
-
-margin-bottom:24px;
-
-font-weight:900;
-
-}
-
-.featured-content p{
-
-color:var(--muted);
-
-line-height:1.9;
-
-margin-bottom:20px;
-
-}
-
-/* ==========================
-   PREVIEW GRID
-========================== */
-
-.preview-grid{
-
-display:grid;
-
-grid-template-columns:repeat(5,1fr);
-
-gap:18px;
-
-margin:45px 0;
-
-}
-
-.preview-card{
-
-position:relative;
-
-overflow:hidden;
-
-border-radius:22px;
-
-aspect-ratio:9 / 19.5;
-
-background:#08101f;
-
-border:1px solid rgba(255,255,255,.08);
-
-transition:
-
-transform .45s,
-
-box-shadow .45s;
-
-}
-
-.preview-card img{
-
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-
-display:block;
-
-transition:transform .5s;
-
-}
-
-.preview-card:hover{
-
-transform:
-
-translateY(-14px)
-
-scale(1.03);
-
-box-shadow:
-
-0 25px 60px rgba(0,0,0,.35);
-
-}
-
-.preview-card:hover img{
-
-transform:scale(1.08);
-
-}
-
-.preview-card::after{
-
-content:"ROX";
-
-position:absolute;
-
-bottom:12px;
-
-right:12px;
-
-padding:7px 14px;
-
-border-radius:999px;
-
-font-size:.72rem;
-
-font-weight:800;
-
-letter-spacing:.18em;
-
-background:rgba(0,0,0,.45);
+background:rgba(10,16,35,.95);
 
 border:1px solid rgba(255,255,255,.12);
 
-backdrop-filter:blur(10px);
-
-}
-
-/* ==========================
-   PRICE
-========================== */
-
-.price{
-
-font-size:3rem;
-
-font-weight:900;
-
-margin-bottom:35px;
-
-}
-
-.collection-buttons{
-
-display:flex;
-
-gap:18px;
-
-flex-wrap:wrap;
-
-}
-
-/* ==========================
-   COMING SOON
-========================== */
-
-.section-title{
-
-text-align:center;
-
-max-width:760px;
-
-margin:0 auto 70px;
-
-}
-
-.section-title h2{
-
-font-size:3rem;
-
-margin-bottom:20px;
-
-}
-
-.section-title p{
-
-color:var(--muted);
-
-line-height:1.9;
-
-}
-
-.coming-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
-gap:28px;
-
-}
-
-.coming-card{
-
-padding:34px;
-
-text-align:center;
-
-transition:.45s;
-
-}
-
-.coming-card:hover{
-
-transform:
-
-translateY(-14px)
-
-scale(1.03);
-
-}
-
-.coming-image{
-
-height:190px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:2.6rem;
-
 border-radius:22px;
 
-margin-bottom:24px;
+backdrop-filter:blur(22px);
 
-background:
+-webkit-backdrop-filter:blur(22px);
 
-linear-gradient(
+box-shadow:
 
-135deg,
-
-rgba(99,178,255,.12),
-
-rgba(255,255,255,.04)
-
-);
+0 25px 70px rgba(0,0,0,.35);
 
 }
 
-.badge{
+.dropdown-content a{
 
-display:inline-block;
+padding:12px 14px;
 
-margin-top:20px;
+border-radius:14px;
 
-padding:10px 20px;
-
-border-radius:999px;
-
-background:
-
-rgba(99,178,255,.15);
-
-color:#9fd2ff;
-
-font-weight:700;
-
-}
-
-/* ==========================
-   WHY ROX
-========================== */
-
-.why-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
-gap:28px;
-
-}
-
-.why-card{
-
-padding:34px;
-
-text-align:center;
-
-transition:.45s;
-
-}
-
-.why-card:hover{
-
-transform:
-
-translateY(-14px)
-
-scale(1.03);
-
-}
-
-.why-icon{
-
-font-size:2.8rem;
-
-margin-bottom:20px;
-
-}
-
-/* ==========================
-   FOOTER
-========================== */
-
-footer{
-
-padding:90px 0 60px;
-
-}
-
-.footer-card{
-
-padding:60px;
-
-text-align:center;
-
-}
-
-.footer-links{
-
-display:flex;
-
-justify-content:center;
-
-flex-wrap:wrap;
-
-gap:26px;
-
-margin:40px 0;
-
-}
-
-.footer-links a{
+font-weight:500;
 
 transition:.3s;
 
 }
 
-.footer-links a:hover{
+.dropdown-content a:hover{
 
-color:var(--accent-light);
+background:rgba(255,255,255,.08);
 
-}
+padding-left:18px;
 
-.footer-email{
-
-margin-top:10px;
+color:var(--blue-light);
 
 }
 
-.footer-copy{
+.dropdown:hover .dropdown-content{
 
-margin-top:30px;
+opacity:1;
 
-color:rgba(255,255,255,.55);
+visibility:visible;
 
-}
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:980px){
-
-.hero-grid,
-
-.featured-grid{
-
-grid-template-columns:1fr;
+transform:translateY(0);
 
 }
 
-.preview-grid{
+/* ==========================================
+   MOBILE NAVIGATION
+========================================== */
 
-grid-template-columns:repeat(2,1fr);
+@media(max-width:900px){
+
+.navbar{
+
+padding:16px 22px;
+
+}
+
+.nav-links{
+
+gap:18px;
+
+}
+
+.logo{
+
+font-size:1.35rem;
 
 }
 
@@ -908,23 +644,322 @@ display:none;
 
 }
 
+.navbar{
+
+width:94%;
+
+}
+
+}
+   /* ==========================================
+   HERO SECTION
+========================================== */
+
 .hero{
 
-padding-top:160px;
+padding-top:180px;
+
+padding-bottom:120px;
+
+position:relative;
 
 }
 
-.hero-buttons,
+.hero-grid{
 
-.collection-buttons{
+display:grid;
 
-flex-direction:column;
+grid-template-columns:1.1fr .9fr;
+
+gap:90px;
+
+align-items:center;
 
 }
 
-.button{
+.hero-text{
+
+max-width:620px;
+
+}
+
+.hero-text h1{
+
+font-size:clamp(3.8rem,7vw,6rem);
+
+font-weight:900;
+
+line-height:.98;
+
+letter-spacing:-.05em;
+
+margin-bottom:28px;
+
+color:#ffffff;
+
+}
+
+.hero-text p{
+
+font-size:1.18rem;
+
+line-height:1.9;
+
+margin-bottom:42px;
+
+max-width:560px;
+
+color:var(--muted);
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+/* ==========================================
+   HERO IMAGE
+========================================== */
+
+.hero-image{
+
+position:relative;
+
+padding:18px;
+
+}
+
+.hero-image::before{
+
+content:"";
+
+position:absolute;
+
+inset:-20px;
+
+border-radius:34px;
+
+background:
+
+radial-gradient(circle,
+
+rgba(99,178,255,.22),
+
+transparent 70%);
+
+filter:blur(45px);
+
+z-index:-1;
+
+animation:heroGlow 5s ease-in-out infinite alternate;
+
+}
+
+@keyframes heroGlow{
+
+0%{
+
+transform:scale(.95);
+
+opacity:.7;
+
+}
+
+100%{
+
+transform:scale(1.08);
+
+opacity:1;
+
+}
+
+}
+
+.hero-image img{
 
 width:100%;
+
+border-radius:28px;
+
+display:block;
+
+box-shadow:
+
+0 40px 90px rgba(0,0,0,.45);
+
+animation:heroFloat 8s ease-in-out infinite;
+
+transition:
+
+transform .5s ease,
+
+box-shadow .5s ease;
+
+}
+
+.hero-image:hover img{
+
+transform:
+
+scale(1.02)
+
+rotate(.3deg);
+
+box-shadow:
+
+0 55px 120px rgba(0,0,0,.55);
+
+}
+
+@keyframes heroFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================================
+   HERO BADGE
+========================================== */
+
+.hero-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 22px;
+
+margin-bottom:24px;
+
+border-radius:999px;
+
+font-size:.9rem;
+
+font-weight:700;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.14);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+}
+
+/* ==========================================
+   HERO DECORATION
+========================================== */
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+right:-140px;
+
+top:140px;
+
+width:320px;
+
+height:320px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(99,178,255,.12),
+
+transparent 70%);
+
+filter:blur(40px);
+
+pointer-events:none;
+
+}
+
+/* ==========================================
+   RESPONSIVE HERO
+========================================== */
+
+@media(max-width:1100px){
+
+.hero-grid{
+
+grid-template-columns:1fr;
+
+gap:60px;
+
+text-align:center;
+
+}
+
+.hero-text{
+
+margin:auto;
+
+}
+
+.hero-text p{
+
+margin-left:auto;
+
+margin-right:auto;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image{
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+
+padding-top:150px;
+
+padding-bottom:90px;
 
 }
 
@@ -934,752 +969,706 @@ font-size:3rem;
 
 }
 
-.footer-card{
+.hero-text p{
 
-padding:40px 28px;
+font-size:1rem;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-buttons .button{
+
+width:100%;
 
 }
 
 }
+  /* ==========================================
+   FEATURED COLLECTION
+========================================== */
+
+.featured{
+
+padding:120px 0;
+
+}
+
+.featured-card{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:70px;
+
+align-items:center;
+
+padding:45px;
+
+}
+
+.featured-image{
+
+position:relative;
+
+}
+
+.featured-image img{
+
+width:100%;
+
+display:block;
+
+border-radius:26px;
+
+box-shadow:
+
+0 35px 90px rgba(0,0,0,.45);
+
+transition:
+
+transform .45s ease,
+
+box-shadow .45s ease;
+
+}
+
+.featured-image:hover img{
+
+transform:
+
+translateY(-8px)
+
+scale(1.02);
+
+box-shadow:
+
+0 50px 110px rgba(0,0,0,.55);
+
+}
+
+.featured-content h2{
+
+font-size:3rem;
+
+margin-bottom:20px;
+
+}
+
+.featured-content p{
+
+font-size:1.08rem;
+
+line-height:1.9;
+
+margin-bottom:18px;
+
+max-width:520px;
+
+}
+
+.price{
+
+display:inline-block;
+
+margin-top:16px;
+
+margin-bottom:30px;
+
+font-size:2.5rem;
+
+font-weight:900;
+
+color:var(--blue-light);
+
+letter-spacing:-0.03em;
+
+}
+
+.product-buttons{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+margin-top:10px;
+
+}
+
+/* ==========================================
+   WALLPAPER PREVIEW GRID
+========================================== */
+
+.preview-grid{
+
+margin-top:80px;
+
+display:grid;
+
+grid-template-columns:
+
+repeat(5,1fr);
+
+gap:22px;
+
+}
+
+.preview{
+
+overflow:hidden;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.12);
+
+transition:
+
+transform .35s ease,
+
+box-shadow .35s ease;
+
+}
+
+.preview img{
+
+width:100%;
+
+display:block;
+
+transition:
+
+transform .45s ease;
+
+}
+
+.preview:hover{
+
+transform:
+
+translateY(-10px);
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.preview:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1100px){
+
+.featured-card{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.featured-content{
+
+margin:auto;
+
+}
+
+.product-buttons{
+
+justify-content:center;
+
+}
+
+.preview-grid{
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:700px){
+
+.featured{
+
+padding:90px 0;
+
+}
+
+.featured-card{
+
+padding:28px;
+
+gap:40px;
+
+}
+
+.featured-content h2{
+
+font-size:2.3rem;
+
+}
+
+.price{
+
+font-size:2rem;
+
+}
+
+.preview-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+   /* ==========================================
+   EXPAND YOUR WALLPAPER LIBRARY
+========================================== */
+
+.collections{
+
+padding:120px 0;
+
+text-align:center;
+
+}
+
+.collections h2{
+
+font-size:clamp(2.4rem,5vw,3.5rem);
+
+margin-bottom:18px;
+
+}
+
+.collections p{
+
+max-width:700px;
+
+margin:0 auto 60px;
+
+font-size:1.05rem;
+
+}
+
+.collection-grid{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+gap:24px;
+
+}
+
+.collection-card{
+
+padding:36px 20px;
+
+text-align:center;
+
+transition:
+
+transform .35s ease,
+
+box-shadow .35s ease;
+
+}
+
+.collection-card h3{
+
+font-size:1.3rem;
+
+margin-bottom:12px;
+
+}
+
+.collection-card span{
+
+display:inline-block;
+
+margin-top:18px;
+
+padding:8px 18px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+font-size:.85rem;
+
+font-weight:600;
+
+}
+
+/* ==========================================
+   WHY CHOOSE ROX
+========================================== */
+
+.features{
+
+padding:120px 0;
+
+}
+
+.features h2{
+
+text-align:center;
+
+font-size:clamp(2.4rem,5vw,3.5rem);
+
+margin-bottom:60px;
+
+}
+
+.feature-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:24px;
+
+}
+
+.feature-box{
+
+padding:34px;
+
+text-align:center;
+
+transition:
+
+transform .35s ease,
+
+box-shadow .35s ease;
+
+}
+
+.feature-box:hover,
+
+.collection-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.feature-box h3{
+
+margin-bottom:16px;
+
+font-size:1.3rem;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+
+padding:80px 0 40px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+margin-top:60px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr;
+
+gap:40px;
+
+}
+
+.footer-brand h2{
+
+font-size:2rem;
+
+margin-bottom:14px;
+
+}
+
+.footer-links{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+}
+
+.footer-links a{
+
+transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+color:var(--blue-light);
+
+}
+
+.footer-bottom{
+
+margin-top:50px;
+
+padding-top:30px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+color:var(--muted);
+
+font-size:.95rem;
+
+}
+
+/* ==========================================
+   BACK TO TOP BUTTON
+========================================== */
+
+.back-top{
+
+position:fixed;
+
+right:24px;
+
+bottom:24px;
+
+width:54px;
+
+height:54px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#63b2ff,#9fd4ff);
+
+color:#08101f;
+
+font-size:1.2rem;
+
+font-weight:700;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+box-shadow:0 20px 45px rgba(99,178,255,.35);
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.35s;
+
+z-index:999;
+
+}
+
+.back-top.show{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1100px){
+
+.collection-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.feature-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.collection-grid,
+
+.feature-grid{
+
+grid-template-columns:1fr;
+
+}
+
+footer{
+
+padding-top:60px;
+
+}
+
+}
+
+/* ==========================================
+   END OF CSS
+========================================== */
 
 </style>
 
 </head>
-}
- <body>
+<body>
 
 <nav class="navbar glass">
 
-<a href="index.html" class="logo">ROX</a>
+    <a href="index.html" class="logo">
+        ROX
+    </a>
 
-<div class="nav-links">
+    <div class="nav-links">
 
-<a href="index.html">Home</a>
+        <a href="index.html">Home</a>
 
-<a href="collections.html">Collections</a>
+        <a href="collections.html">Collections</a>
 
-<div class="dropdown">
+        <div class="dropdown">
 
-<a href="support.html">Support ▾</a>
+            <a href="support.html">
+                Support
+            </a>
 
-<div class="dropdown-content glass">
+            <div class="dropdown-content">
 
-<a href="support.html">Support Centre</a>
+                <a href="support.html">
+                    Support Centre
+                </a>
 
-<a href="contact.html">Contact</a>
+                <a href="contact.html">
+                    Contact
+                </a>
 
-<a href="privacy.html">Privacy Policy</a>
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
 
-<a href="refund.html">Refund Policy</a>
+                <a href="refund.html">
+                    Refund Policy
+                </a>
 
-<a href="terms.html">Terms &amp; Conditions</a>
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </nav>
 
 <section class="hero">
 
-<div class="container">
+    <div class="container">
 
-<div class="hero-grid">
+        <div class="hero-grid">
 
-<div class="hero-text">
+            <div class="hero-text">
 
-<h1>
+                <div class="hero-badge glass">
+                    Premium Wallpaper Collection
+                </div>
 
-Premium Wallpapers.<br>
+                <h1>
 
-Designed to Elevate.
+                    Premium Wallpapers.<br>
 
-</h1>
+                    Designed to Elevate.
 
-<p>
+                </h1>
 
-ROX creates premium, Apple-inspired wallpapers that combine minimalist
-design with modern architecture and refined colour palettes.
-Every collection is crafted to bring a clean, elegant look to your device.
+                <p>
 
-</p>
+                    Discover exclusive Apple-inspired wallpaper collections
+                    crafted with premium detail, modern design and elegant
+                    aesthetics. Start with Glass City and grow your library
+                    with future ROX releases.
 
-<div class="hero-buttons">
+                </p>
 
-<a
-href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00"
-target="_blank"
-class="button button-primary">
+                <div class="hero-buttons">
 
-Buy Glass City
+                    <a href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00"
+                       class="button button-primary">
 
-</a>
+                        Buy Glass City
 
-<a
-href="collections.html"
-class="button button-secondary">
+                    </a>
 
-Browse Collections
+                    <a href="collections.html"
+                       class="button button-secondary">
 
-</a>
+                        Browse Collections
 
-</div>
+                    </a>
 
-</div>
+                </div>
 
-<div class="hero-image glass">
+            </div>
 
-<img
-src="86D37BE9-D966-4042-B608-EF9773121786.PNG"
-alt="Glass City Wallpaper">
+            <div class="hero-image">
 
-</div>
+                <img
+                src="86D37BE9-D966-4042-B608-EF9773121786.PNG"
+                alt="Glass City Wallpaper Collection">
 
-</div>
+            </div>
 
-</div>
+        </div>
+
+    </div>
 
 </section>
-
-<section>
-
-<div class="container">
-
-<div class="featured-grid">
-
-<div class="featured-image glass">
-
-<img
-src="86D37BE9-D966-4042-B608-EF9773121786.PNG"
-alt="Glass City Collection">
-
-</div>
-
-<div class="featured-content">
-
-<h2>
-
-Glass City
-
-</h2>
-
-<p>
-
-Glass City is the debut collection from ROX, inspired by reflective
-architecture, premium materials and modern minimalism. Every wallpaper
-has been carefully designed to create a clean, luxurious appearance
-without distracting from your device.
-
-</p>
-
-<p>
-
-This collection includes ten exclusive premium wallpapers created
-specifically for the ROX library. Each image has been designed with the
-same attention to detail, making Glass City the perfect starting point
-for your collection.
-
-</p>
-<div class="preview-grid">
-
-<div class="preview-card">
-<img src="737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="Glass City Wallpaper 1">
-</div>
-
-<div class="preview-card">
-<img src="B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="Glass City Wallpaper 2">
-</div>
-
-<div class="preview-card">
-<img src="B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="Glass City Wallpaper 3">
-</div>
-
-<div class="preview-card">
-<img src="IMG_4154.PNG" alt="Glass City Wallpaper 4">
-</div>
-
-<div class="preview-card">
-<img src="IMG_4157.PNG" alt="Glass City Wallpaper 5">
-</div>
-
-<div class="preview-card">
-<img src="IMG_4158.PNG" alt="Glass City Wallpaper 6">
-</div>
-
-<div class="preview-card">
-<img src="IMG_4161.PNG" alt="Glass City Wallpaper 7">
-</div>
-
-<div class="preview-card">
-<img src="IMG_4167.PNG" alt="Glass City Wallpaper 8">
-</div>
-
-<div class="preview-card">
-<img src="IMG_4169.PNG" alt="Glass City Wallpaper 9">
-</div>
-
-<div class="preview-card">
-<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City Wallpaper 10">
-</div>
-
-</div>
-
-<div class="price">
-
-£2.99
-
-</div>
-
-<div class="collection-buttons">
-
-<a
-href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00"
-target="_blank"
-class="button button-primary">
-
-Buy Glass City
-
-</a>
-
-<a
-href="collections.html"
-class="button button-secondary">
-
-View All Collections
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-
-Expand Your Wallpaper Library
-
-</h2>
-
-<p>
-
-Glass City is just the beginning. New premium collections are already in development, each designed with the same attention to detail, modern aesthetic and premium quality that defines ROX.
-
-</p>
-
-</div>
-
-<div class="coming-grid">
-
-<div class="glass coming-card">
-
-<div class="coming-image">✨</div>
-
-<h3>Luminar</h3>
-
-<p>
-
-Elegant lighting, reflections and premium colour palettes designed to create a sophisticated look.
-
-</p>
-
-<div class="badge">
-
-Coming Soon
-
-</div>
-
-</div>
-
-<div class="glass coming-card">
-
-<div class="coming-image">🏙️</div>
-
-<h3>Crystal District</h3>
-
-<p>
-
-Inspired by contemporary architecture, glass structures and luxury city environments.
-
-</p>
-
-<div class="badge">
-
-Coming Soon
-
-</div>
-
-</div>
-
-<div class="glass coming-card">
-
-<div class="coming-image">⛰️</div>
-
-<h3>Elevation</h3>
-
-<p>
-
-Minimal mountain landscapes, dramatic horizons and beautifully balanced compositions.
-
-</p>
-
-<div class="badge">
-
-Coming Soon
-
-</div>
-
-</div>
-
-<div class="glass coming-card">
-
-<div class="coming-image">🌿</div>
-
-<h3>Mono Leaf</h3>
-
-<p>
-
-Clean botanical artwork with monochrome styling and timeless minimalist design.
-
-</p>
-
-<div class="badge">
-
-Coming Soon
-
-</div>
-
-</div>
-
-<div class="glass coming-card">
-
-<div class="coming-image">🌅</div>
-
-<h3>Horizon</h3>
-
-<p>
-
-Soft cinematic skies and peaceful colour gradients crafted for a premium home screen.
-
-</p>
-
-<div class="badge">
-
-Coming Soon
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-<section>
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-
-Why Choose ROX
-
-</h2>
-
-<p>
-
-ROX is built around premium design, simplicity and quality. Every wallpaper collection is created to deliver a clean, refined experience from purchase through to download.
-
-</p>
-
-</div>
-
-<div class="why-grid">
-
-<div class="glass why-card">
-
-<div class="why-icon">
-
-✨
-
-</div>
-
-<h3>
-
-Premium Quality
-
-</h3>
-
-<p>
-
-Every wallpaper is carefully designed with a minimalist, Apple-inspired aesthetic and crafted to a consistently high standard.
-
-</p>
-
-</div>
-
-<div class="glass why-card">
-
-<div class="why-icon">
-
-⚡
-
-</div>
-
-<h3>
-
-Fast Access
-
-</h3>
-
-<p>
-
-Complete your purchase securely through Stripe and access your wallpaper collection immediately from the download page.
-
-</p>
-
-</div>
-
-<div class="glass why-card">
-
-<div class="why-icon">
-
-🔒
-
-</div>
-
-<h3>
-
-Secure Checkout
-
-</h3>
-
-<p>
-
-Every payment is processed securely through Stripe, providing a trusted and reliable checkout experience.
-
-</p>
-
-</div>
-
-<div class="glass why-card">
-
-<div class="why-icon">
-
-🚀
-
-</div>
-
-<h3>
-
-Growing Collection
-
-</h3>
-
-<p>
-
-Glass City is only the beginning. New premium wallpaper collections are already in development and will continue expanding the ROX library.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<div class="container">
-
-<div class="glass footer-card">
-
-<h2 style="font-size:2rem;font-weight:900;margin-bottom:18px;">
-
-ROX
-
-</h2>
-
-<p style="max-width:650px;margin:0 auto;color:var(--muted);line-height:1.9;">
-
-Premium wallpapers designed to elevate your device through modern design, elegant colours and a clean, premium aesthetic.
-
-</p>
-
-<div class="footer-links">
-
-<a href="index.html">Home</a>
-
-<a href="collections.html">Collections</a>
-
-<a href="support.html">Support</a>
-
-<a href="contact.html">Contact</a>
-
-<a href="privacy.html">Privacy Policy</a>
-
-<a href="refund.html">Refund Policy</a>
-
-<a href="terms.html">Terms &amp; Conditions</a>
-
-</div>
-
-<div class="footer-email">
-
-<a href="mailto:roxhelpp@gmail.com">
-
-roxhelpp@gmail.com
-
-</a>
-
-</div>
-
-<div class="footer-copy">
-
-© 2026 ROX. All Rights Reserved.
-
-</div>
-
-</div>
-
-</div>
-
-</footer>
-<button
-id="backToTop"
-class="button button-primary"
-style="
-position:fixed;
-right:24px;
-bottom:24px;
-width:58px;
-height:58px;
-padding:0;
-border-radius:50%;
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-font-size:1.2rem;
-">
-
-↑
-
-</button>
-
-<script>
-
-/* ==========================
-   SHRINKING NAVBAR
-========================== */
-
-const navbar=document.querySelector(".navbar");
-const backToTop=document.getElementById("backToTop");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>60){
-
-navbar.style.top="10px";
-navbar.style.transform="translateX(-50%) scale(.96)";
-backToTop.style.display="flex";
-
-}else{
-
-navbar.style.top="18px";
-navbar.style.transform="translateX(-50%) scale(1)";
-backToTop.style.display="none";
-
-}
-
-});
-
-/* ==========================
-   BACK TO TOP
-========================== */
-
-backToTop.addEventListener("click",()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-});
-
-/* ==========================
-   SCROLL REVEAL
-========================== */
-
-const observer=new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.animate([
-
-{
-
-opacity:0,
-
-transform:"translateY(50px) scale(.96)"
-
-},
-
-{
-
-opacity:1,
-
-transform:"translateY(0) scale(1)"
-
-}
-
-],{
-
-duration:800,
-
-easing:"cubic-bezier(.22,1,.36,1)",
-
-fill:"forwards"
-
-});
-
-observer.unobserve(entry.target);
-
-}
-
-});
-
-},{
-
-threshold:.15
-
-});
-
-document.querySelectorAll("section").forEach(section=>{
-
-section.style.opacity="0";
-
-observer.observe(section);
-
-});
-
-/* ==========================
-   PREVIEW TILT
-========================== */
-
-document.querySelectorAll(".preview-card").forEach(card=>{
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect=card.getBoundingClientRect();
-
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
-
-const rotateY=((x/rect.width)-0.5)*18;
-const rotateX=((rect.height/2-y)/rect.height)*18;
-
-card.style.transform=
-
-`perspective(900px)
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)
-translateY(-14px)
-scale(1.03)`;
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="perspective(900px) rotateX(0) rotateY(0) translateY(0) scale(1)";
-
-});
-
-});
-
-/* ==========================
-   BUTTON POP
-========================== */
-
-document.querySelectorAll(".button").forEach(button=>{
-
-button.addEventListener("mouseenter",()=>{
-
-button.animate([
-
-{
-
-transform:"scale(1)"
-
-},
-
-{
-
-transform:"scale(1.08)"
-
-},
-
-{
-
-transform:"scale(1.03)"
-
-}
-
-],{
-
-duration:300,
-
-fill:"forwards"
-
-});
-
-});
-
-});
-
-/* ==========================
-   CARD HOVER
-========================== */
-
-document.querySelectorAll(".coming-card,.why-card").forEach(card=>{
-
-card.addEventListener("mouseenter",()=>{
-
-card.style.transform="translateY(-16px) scale(1.03)";
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="translateY(0) scale(1)";
-
-});
-
-});
-
-</script>
-
-</body>
-
-</html>
