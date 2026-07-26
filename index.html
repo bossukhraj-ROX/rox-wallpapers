@@ -4,96 +4,56 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ROX | Premium Wallpapers</title>
 
-<meta
-name="description"
-content="Premium Apple-inspired wallpapers for iPhone and Samsung. Discover Glass City and elevate your device with minimal, high-resolution wallpaper collections.">
+<meta name="description" content="Premium Apple-inspired wallpapers designed to elevate your device. Explore the Glass City collection from ROX.">
 
-<meta
-name="keywords"
-content="ROX, wallpapers, iPhone wallpapers, Samsung wallpapers, premium wallpapers, Glass City">
+<meta name="keywords" content="ROX, Premium Wallpapers, iPhone Wallpapers, Apple Inspired Wallpapers, Glass City">
 
-<meta
-name="theme-color"
-content="#08101f">
+<meta name="theme-color" content="#08101f">
 
-<meta
-property="og:title"
-content="ROX | Premium Wallpapers">
+<meta property="og:title" content="ROX | Premium Wallpapers">
 
-<meta
-property="og:description"
-content="Premium Wallpapers. Designed to Elevate.">
+<meta property="og:description" content="Premium wallpapers designed to elevate your device.">
 
-<meta
-property="og:type"
-content="website">
+<meta property="og:type" content="website">
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
 :root{
 
---bg:#040913;
-
---bg2:#081427;
-
---bg3:#0d2144;
-
---surface:rgba(255,255,255,.08);
-
---surface2:rgba(255,255,255,.12);
-
---glass-border:rgba(255,255,255,.18);
+--bg:#050914;
+--bg-secondary:#08101f;
+--card:rgba(255,255,255,.07);
+--glass:rgba(255,255,255,.08);
+--glass-border:rgba(255,255,255,.14);
 
 --text:#ffffff;
+--muted:#cfd8e8;
 
---muted:#b5bfd3;
+--accent:#63b2ff;
+--accent-light:#9fd2ff;
 
---accent:#5aa9ff;
-
---accent2:#9fd3ff;
-
---success:#7fd8ff;
-
---radius:30px;
+--radius:26px;
 
 --shadow:
-0 25px 80px rgba(0,0,0,.35);
-
---transition:
-.45s cubic-bezier(.2,.8,.2,1);
-
---max-width:1320px;
-
-}
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-}
-
-html{
-
-scroll-behavior:smooth;
+0 25px 70px rgba(0,0,0,.38);
 
 }
 
@@ -101,50 +61,16 @@ body{
 
 font-family:"Inter",sans-serif;
 
-color:var(--text);
-
 background:
+radial-gradient(circle at top,#1b3d73 0%,#08101f 45%,#050914 100%);
 
-linear-gradient(
-135deg,
-#040913,
-#071426,
-#0b1d39,
-#10284c,
-#071426,
-#040913);
+background-attachment:fixed;
 
-background-size:400% 400%;
-
-animation:
-
-gradientMove 18s ease infinite;
+color:var(--text);
 
 overflow-x:hidden;
 
 min-height:100vh;
-
-}
-
-@keyframes gradientMove{
-
-0%{
-
-background-position:0% 50%;
-
-}
-
-50%{
-
-background-position:100% 50%;
-
-}
-
-100%{
-
-background-position:0% 50%;
-
-}
 
 }
 
@@ -154,87 +80,49 @@ content:"";
 
 position:fixed;
 
-width:700px;
-
-height:700px;
-
-top:-250px;
-
-right:-180px;
-
-background:
-
-radial-gradient(circle,
-rgba(70,140,255,.22),
-transparent 70%);
-
-filter:blur(80px);
+inset:0;
 
 pointer-events:none;
 
 z-index:-2;
 
-}
-
-body::after{
-
-content:"";
-
-position:fixed;
-
-width:650px;
-
-height:650px;
-
-bottom:-250px;
-
-left:-180px;
-
 background:
 
-radial-gradient(circle,
-rgba(120,220,255,.16),
-transparent 70%);
+radial-gradient(circle at 15% 20%,
+rgba(95,170,255,.13),
+transparent 35%),
 
-filter:blur(90px);
+radial-gradient(circle at 85% 15%,
+rgba(255,255,255,.05),
+transparent 30%),
 
-pointer-events:none;
+radial-gradient(circle at 50% 100%,
+rgba(95,170,255,.08),
+transparent 42%);
 
-z-index:-2;
-
-}
-
-img{
-
-display:block;
-
-width:100%;
+animation:backgroundFloat 18s ease-in-out infinite alternate;
 
 }
 
-a{
+@keyframes backgroundFloat{
 
-text-decoration:none;
+0%{
 
-color:inherit;
-
-}
-
-button{
-
-font-family:inherit;
+transform:translateY(0);
 
 }
 
-ul{
+100%{
 
-list-style:none;
+transform:translateY(-70px);
+
+}
 
 }
 
 .container{
 
-width:min(92%,var(--max-width));
+width:min(1220px,92%);
 
 margin:auto;
 
@@ -246,15 +134,31 @@ padding:120px 0;
 
 }
 
+img{
+
+display:block;
+
+max-width:100%;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
 .glass{
 
-background:var(--surface);
-
-backdrop-filter:blur(30px);
-
--webkit-backdrop-filter:blur(30px);
+background:var(--glass);
 
 border:1px solid var(--glass-border);
+
+backdrop-filter:blur(24px);
+
+-webkit-backdrop-filter:blur(24px);
 
 border-radius:var(--radius);
 
@@ -264,8 +168,6 @@ position:relative;
 
 overflow:hidden;
 
-transition:var(--transition);
-
 }
 
 .glass::before{
@@ -274,27 +176,43 @@ content:"";
 
 position:absolute;
 
-inset:0;
+top:-120%;
+
+left:-50%;
+
+width:70%;
+
+height:300%;
 
 background:
 
 linear-gradient(
-135deg,
-rgba(255,255,255,.20),
-transparent 40%,
-rgba(255,255,255,.06));
 
-pointer-events:none;
+120deg,
+
+transparent,
+
+rgba(255,255,255,.08),
+
+transparent
+
+);
+
+transform:rotate(25deg);
+
+animation:glassShine 9s linear infinite;
 
 }
 
-.glass:hover{
+@keyframes glassShine{
 
-transform:translateY(-8px);
+100%{
 
-box-shadow:
+transform:
+translateX(220%)
+rotate(25deg);
 
-0 35px 90px rgba(0,0,0,.42);
+}
 
 }
 
@@ -312,11 +230,20 @@ border-radius:999px;
 
 font-weight:700;
 
-font-size:1rem;
-
-transition:var(--transition);
+transition:
+transform .35s cubic-bezier(.2,1,.2,1),
+box-shadow .35s,
+background .35s;
 
 cursor:pointer;
+
+}
+
+.button:hover{
+
+transform:
+translateY(-8px)
+scale(1.03);
 
 }
 
@@ -325,46 +252,56 @@ cursor:pointer;
 background:
 
 linear-gradient(
-135deg,
-#5aa9ff,
-#3f84ff);
 
-color:#fff;
+135deg,
+
+#63b2ff,
+
+#9fd2ff
+
+);
+
+color:#08101f;
 
 box-shadow:
 
-0 15px 40px rgba(90,169,255,.35);
+0 18px 40px rgba(99,178,255,.35);
 
 }
 
 .button-primary:hover{
 
-transform:translateY(-4px);
-
 box-shadow:
 
-0 25px 55px rgba(90,169,255,.45);
+0 28px 60px rgba(99,178,255,.45);
 
 }
 
 .button-secondary{
 
-background:rgba(255,255,255,.10);
+background:
 
-border:1px solid rgba(255,255,255,.15);
+rgba(255,255,255,.08);
 
-color:#fff;
+border:
+
+1px solid rgba(255,255,255,.15);
 
 }
 
 .button-secondary:hover{
 
-background:rgba(255,255,255,.16);
+background:
 
-transform:translateY(-4px);
+rgba(255,255,255,.14);
 
 }
- .navbar{
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.navbar{
 
 position:fixed;
 
@@ -374,43 +311,29 @@ left:50%;
 
 transform:translateX(-50%);
 
-width:min(94%,1280px);
+width:min(1180px,94%);
 
-z-index:10000;
-
-transition:var(--transition);
-
-}
-
-.nav-inner{
+padding:18px 30px;
 
 display:flex;
 
-justify-content:space-between;
-
 align-items:center;
 
-padding:18px 30px;
+justify-content:space-between;
+
+transition:.4s;
+
+z-index:1000;
 
 }
 
 .logo{
 
-font-size:1.75rem;
+font-size:1.55rem;
 
 font-weight:900;
 
-letter-spacing:.08em;
-
-color:#fff;
-
-transition:var(--transition);
-
-}
-
-.logo:hover{
-
-opacity:.85;
+letter-spacing:.12em;
 
 }
 
@@ -420,43 +343,21 @@ display:flex;
 
 align-items:center;
 
-gap:38px;
+gap:28px;
 
 }
 
-.nav-links>a{
+.nav-links a{
 
 font-weight:600;
 
-position:relative;
-
-transition:var(--transition);
+transition:.3s;
 
 }
 
-.nav-links>a::after{
+.nav-links a:hover{
 
-content:"";
-
-position:absolute;
-
-left:0;
-
-bottom:-7px;
-
-width:0;
-
-height:2px;
-
-background:var(--accent);
-
-transition:.35s;
-
-}
-
-.nav-links>a:hover::after{
-
-width:100%;
+color:var(--accent-light);
 
 }
 
@@ -466,89 +367,44 @@ position:relative;
 
 }
 
-.dropdown>a{
+.dropdown-content{
 
-font-weight:600;
-
-}
-
-.dropdown-menu{
+display:none;
 
 position:absolute;
 
-top:140%;
+top:46px;
 
 right:0;
 
-width:260px;
+min-width:240px;
 
-display:flex;
+padding:16px;
 
 flex-direction:column;
 
-gap:12px;
+gap:14px;
 
-padding:18px;
-
-background:rgba(10,18,35,.75);
-
-backdrop-filter:blur(30px);
-
--webkit-backdrop-filter:blur(30px);
-
-border:1px solid rgba(255,255,255,.12);
+background:rgba(10,16,35,.96);
 
 border-radius:22px;
 
-box-shadow:var(--shadow);
-
-opacity:0;
-
-visibility:hidden;
-
-transform:translateY(12px);
-
-transition:var(--transition);
+backdrop-filter:blur(24px);
 
 }
 
-.dropdown:hover .dropdown-menu{
+.dropdown:hover .dropdown-content{
 
-opacity:1;
-
-visibility:visible;
-
-transform:translateY(0);
-
-}
-
-.dropdown-menu a{
-
-padding:10px 14px;
-
-border-radius:14px;
-
-transition:var(--transition);
-
-}
-
-.dropdown-menu a:hover{
-
-background:rgba(255,255,255,.08);
-
-padding-left:20px;
-
-}
+display:flex;
+/* ==========================
+   HERO
+========================== */
 
 .hero{
 
-padding-top:190px;
+padding-top:180px;
 
-padding-bottom:140px;
-
-position:relative;
-
-overflow:hidden;
+padding-bottom:110px;
 
 }
 
@@ -556,63 +412,29 @@ overflow:hidden;
 
 display:grid;
 
-grid-template-columns:1.1fr .9fr;
-
-align-items:center;
+grid-template-columns:1.05fr .95fr;
 
 gap:80px;
 
-}
-
-.hero-content{
-
-position:relative;
-
-z-index:2;
-
-}
-
-.hero-badge{
-
-display:inline-flex;
-
 align-items:center;
 
-gap:10px;
-
-padding:12px 20px;
-
-margin-bottom:28px;
-
-border-radius:999px;
-
-font-size:.92rem;
-
-font-weight:700;
-
-background:rgba(255,255,255,.08);
-
-border:1px solid rgba(255,255,255,.12);
-
-backdrop-filter:blur(22px);
-
 }
 
-.hero h1{
+.hero-text h1{
 
-font-size:clamp(3.2rem,7vw,5.8rem);
+font-size:clamp(3.4rem,7vw,5.8rem);
 
-line-height:1.05;
+line-height:1.02;
 
 font-weight:900;
 
-margin-bottom:24px;
+margin-bottom:26px;
 
-max-width:720px;
+letter-spacing:-.04em;
 
 }
 
-.hero p{
+.hero-text p{
 
 font-size:1.15rem;
 
@@ -622,7 +444,7 @@ color:var(--muted);
 
 max-width:620px;
 
-margin-bottom:42px;
+margin-bottom:38px;
 
 }
 
@@ -634,136 +456,47 @@ gap:18px;
 
 flex-wrap:wrap;
 
-margin-bottom:60px;
-
 }
 
 .hero-image{
 
-position:relative;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
+padding:18px;
 
 }
 
 .hero-image img{
 
-width:380px;
+width:100%;
 
-border-radius:42px;
+border-radius:28px;
+
+animation:heroFloat 8s ease-in-out infinite;
 
 box-shadow:
 
-0 40px 100px rgba(0,0,0,.45);
-
-transition:var(--transition);
-
-position:relative;
-
-z-index:2;
+0 35px 80px rgba(0,0,0,.45);
 
 }
 
-.hero-image img:hover{
+@keyframes heroFloat{
 
-transform:translateY(-12px) scale(1.02);
+0%,100%{
 
-}
-
-.hero-glow{
-
-position:absolute;
-
-width:520px;
-
-height:520px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle,
-
-rgba(90,169,255,.35),
-
-transparent 70%);
-
-filter:blur(45px);
-
-animation:glowFloat 8s ease-in-out infinite;
-
-}
-
-@keyframes glowFloat{
-
-0%{
-
-transform:translateY(0px);
+transform:translateY(0);
 
 }
 
 50%{
 
-transform:translateY(-18px);
-
-}
-
-100%{
-
-transform:translateY(0px);
+transform:translateY(-12px);
 
 }
 
 }
 
-.stats{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:20px;
-
-margin-top:20px;
-
-}
-
-.stat-card{
-
-padding:24px;
-
-text-align:center;
-
-}
-
-.stat-card h3{
-
-font-size:2rem;
-
-font-weight:800;
-
-margin-bottom:8px;
-
-}
-
-.stat-card p{
-
-color:var(--muted);
-
-font-size:.95rem;
-
-}
- .featured{
-
-padding:120px 0;
-
-position:relative;
-
-}
+/* ==========================
+   FEATURED COLLECTION
+========================== */
 
 .featured-grid{
 
@@ -771,7 +504,7 @@ display:grid;
 
 grid-template-columns:1fr 1fr;
 
-gap:80px;
+gap:70px;
 
 align-items:center;
 
@@ -779,31 +512,15 @@ align-items:center;
 
 .featured-image{
 
-display:flex;
-
-justify-content:center;
-
-position:relative;
+padding:18px;
 
 }
 
 .featured-image img{
 
-width:360px;
+width:100%;
 
-border-radius:40px;
-
-box-shadow:
-
-0 45px 100px rgba(0,0,0,.45);
-
-transition:var(--transition);
-
-}
-
-.featured-image img:hover{
-
-transform:translateY(-12px);
+border-radius:28px;
 
 }
 
@@ -811,45 +528,25 @@ transform:translateY(-12px);
 
 font-size:3rem;
 
-font-weight:800;
+margin-bottom:24px;
 
-margin-bottom:22px;
+font-weight:900;
 
 }
 
 .featured-content p{
 
-font-size:1.05rem;
+color:var(--muted);
 
 line-height:1.9;
 
-color:var(--muted);
-
-margin-bottom:24px;
+margin-bottom:20px;
 
 }
 
-.compatibility{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:12px;
-
-padding:12px 20px;
-
-margin-bottom:35px;
-
-border-radius:999px;
-
-background:rgba(255,255,255,.08);
-
-border:1px solid rgba(255,255,255,.12);
-
-font-weight:600;
-
-}
+/* ==========================
+   PREVIEW GRID
+========================== */
 
 .preview-grid{
 
@@ -859,33 +556,29 @@ grid-template-columns:repeat(5,1fr);
 
 gap:18px;
 
-margin:40px 0;
+margin:45px 0;
 
 }
 
 .preview-card{
 
-aspect-ratio:9/19.5;
-
-border-radius:24px;
+position:relative;
 
 overflow:hidden;
 
-position:relative;
+border-radius:22px;
 
-cursor:pointer;
+aspect-ratio:9 / 19.5;
 
-background:rgba(255,255,255,.06);
+background:#08101f;
 
-border:1px solid rgba(255,255,255,.10);
+border:1px solid rgba(255,255,255,.08);
 
-transition:var(--transition);
+transition:
 
-}
+transform .45s,
 
-.preview-card:hover{
-
-transform:translateY(-8px);
+box-shadow .45s;
 
 }
 
@@ -897,13 +590,29 @@ height:100%;
 
 object-fit:cover;
 
-transition:var(--transition);
+display:block;
+
+transition:transform .5s;
+
+}
+
+.preview-card:hover{
+
+transform:
+
+translateY(-14px)
+
+scale(1.03);
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.35);
 
 }
 
 .preview-card:hover img{
 
-transform:scale(1.06);
+transform:scale(1.08);
 
 }
 
@@ -913,43 +622,39 @@ content:"ROX";
 
 position:absolute;
 
-inset:0;
+bottom:12px;
 
-display:flex;
+right:12px;
 
-align-items:center;
+padding:7px 14px;
 
-justify-content:center;
+border-radius:999px;
 
-font-size:2.4rem;
+font-size:.72rem;
 
-font-weight:900;
+font-weight:800;
 
-letter-spacing:.08em;
+letter-spacing:.18em;
 
-color:rgba(255,255,255,.18);
+background:rgba(0,0,0,.45);
 
-background:
+border:1px solid rgba(255,255,255,.12);
 
-linear-gradient(
-
-180deg,
-
-transparent,
-
-rgba(0,0,0,.12)
-
-);
+backdrop-filter:blur(10px);
 
 }
 
+/* ==========================
+   PRICE
+========================== */
+
 .price{
 
-font-size:2.4rem;
+font-size:3rem;
 
 font-weight:900;
 
-margin-bottom:28px;
+margin-bottom:35px;
 
 }
 
@@ -963,9 +668,33 @@ flex-wrap:wrap;
 
 }
 
-.coming-soon{
+/* ==========================
+   COMING SOON
+========================== */
 
-padding:120px 0;
+.section-title{
+
+text-align:center;
+
+max-width:760px;
+
+margin:0 auto 70px;
+
+}
+
+.section-title h2{
+
+font-size:3rem;
+
+margin-bottom:20px;
+
+}
+
+.section-title p{
+
+color:var(--muted);
+
+line-height:1.9;
 
 }
 
@@ -973,39 +702,35 @@ padding:120px 0;
 
 display:grid;
 
-grid-template-columns:repeat(5,1fr);
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 
-gap:24px;
-
-margin-top:60px;
+gap:28px;
 
 }
 
 .coming-card{
 
-padding:26px;
+padding:34px;
 
 text-align:center;
 
-transition:var(--transition);
+transition:.45s;
 
 }
 
 .coming-card:hover{
 
-transform:translateY(-10px);
+transform:
+
+translateY(-14px)
+
+scale(1.03);
 
 }
 
 .coming-image{
 
-width:100%;
-
-aspect-ratio:9/19.5;
-
-border-radius:24px;
-
-margin-bottom:22px;
+height:190px;
 
 display:flex;
 
@@ -1013,58 +738,93 @@ align-items:center;
 
 justify-content:center;
 
-background:rgba(255,255,255,.05);
+font-size:2.6rem;
 
-border:1px solid rgba(255,255,255,.08);
+border-radius:22px;
 
-font-weight:700;
+margin-bottom:24px;
 
-color:var(--muted);
+background:
 
-}
+linear-gradient(
 
-.coming-card h3{
+135deg,
 
-font-size:1.35rem;
+rgba(99,178,255,.12),
 
-margin-bottom:12px;
+rgba(255,255,255,.04)
 
-}
-
-.coming-card p{
-
-color:var(--muted);
-
-font-size:.96rem;
-
-line-height:1.7;
-
-margin-bottom:22px;
+);
 
 }
 
 .badge{
 
-display:inline-flex;
+display:inline-block;
 
-align-items:center;
+margin-top:20px;
 
-justify-content:center;
-
-padding:12px 22px;
+padding:10px 20px;
 
 border-radius:999px;
 
-background:rgba(255,255,255,.08);
+background:
 
-border:1px solid rgba(255,255,255,.12);
+rgba(99,178,255,.15);
+
+color:#9fd2ff;
 
 font-weight:700;
 
-font-size:.92rem;
+}
+
+/* ==========================
+   WHY ROX
+========================== */
+
+.why-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:28px;
 
 }
- footer{
+
+.why-card{
+
+padding:34px;
+
+text-align:center;
+
+transition:.45s;
+
+}
+
+.why-card:hover{
+
+transform:
+
+translateY(-14px)
+
+scale(1.03);
+
+}
+
+.why-icon{
+
+font-size:2.8rem;
+
+margin-bottom:20px;
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer{
 
 padding:90px 0 60px;
 
@@ -1072,31 +832,9 @@ padding:90px 0 60px;
 
 .footer-card{
 
-padding:50px;
+padding:60px;
 
 text-align:center;
-
-}
-
-.footer-card h2{
-
-font-size:2rem;
-
-font-weight:800;
-
-margin-bottom:18px;
-
-}
-
-.footer-card p{
-
-max-width:700px;
-
-margin:0 auto 30px;
-
-line-height:1.8;
-
-color:var(--muted);
 
 }
 
@@ -1108,43 +846,43 @@ justify-content:center;
 
 flex-wrap:wrap;
 
-gap:28px;
+gap:26px;
 
-margin-bottom:30px;
+margin:40px 0;
 
 }
 
 .footer-links a{
 
-font-weight:600;
-
-transition:var(--transition);
+transition:.3s;
 
 }
 
 .footer-links a:hover{
 
-color:var(--accent2);
+color:var(--accent-light);
 
 }
 
 .footer-email{
 
-font-weight:700;
-
-margin-bottom:18px;
+margin-top:10px;
 
 }
 
 .footer-copy{
 
-font-size:.92rem;
+margin-top:30px;
 
-color:var(--muted);
+color:rgba(255,255,255,.55);
 
 }
 
-@media(max-width:1100px){
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:980px){
 
 .hero-grid,
 
@@ -1152,45 +890,11 @@ color:var(--muted);
 
 grid-template-columns:1fr;
 
-text-align:center;
-
-}
-
-.hero-content p{
-
-margin-left:auto;
-
-margin-right:auto;
-
-}
-
-.hero-buttons{
-
-justify-content:center;
-
-}
-
-.hero-image{
-
-margin-top:40px;
-
 }
 
 .preview-grid{
 
 grid-template-columns:repeat(2,1fr);
-
-}
-
-.coming-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.stats{
-
-grid-template-columns:1fr;
 
 }
 
@@ -1198,77 +902,23 @@ grid-template-columns:1fr;
 
 @media(max-width:768px){
 
-.nav-inner{
-
-padding:16px 20px;
-
-}
-
 .nav-links{
 
-gap:18px;
-
-font-size:.95rem;
+display:none;
 
 }
 
 .hero{
 
-padding-top:170px;
+padding-top:160px;
 
 }
 
-.hero h1{
-
-font-size:3rem;
-
-}
-
-.hero-image img{
-
-width:300px;
-
-}
-
-.featured-image img{
-
-width:300px;
-
-}
+.hero-buttons,
 
 .collection-buttons{
 
-justify-content:center;
-
-}
-
-}
-
-@media(max-width:560px){
-
-.nav-links{
-
-gap:14px;
-
-font-size:.88rem;
-
-}
-
-.dropdown-menu{
-
-width:220px;
-
-}
-
-.preview-grid{
-
-grid-template-columns:1fr 1fr;
-
-}
-
-.coming-grid{
-
-grid-template-columns:1fr;
+flex-direction:column;
 
 }
 
@@ -1278,9 +928,15 @@ width:100%;
 
 }
 
-.hero-buttons{
+.hero-text h1{
 
-flex-direction:column;
+font-size:3rem;
+
+}
+
+.footer-card{
+
+padding:40px 28px;
 
 }
 
@@ -1289,67 +945,34 @@ flex-direction:column;
 </style>
 
 </head>
-<body>
+}
+ <body>
 
-<nav class="navbar">
+<nav class="navbar glass">
 
-<div class="glass nav-inner">
-
-<a href="index.html" class="logo">
-
-ROX
-
-</a>
+<a href="index.html" class="logo">ROX</a>
 
 <div class="nav-links">
 
-<a href="index.html">
+<a href="index.html">Home</a>
 
-Home
-
-</a>
-
-<a href="collections.html">
-
-Collections
-
-</a>
+<a href="collections.html">Collections</a>
 
 <div class="dropdown">
 
-<a href="#">
+<a href="support.html">Support ▾</a>
 
-Support ▾
+<div class="dropdown-content glass">
 
-</a>
+<a href="support.html">Support Centre</a>
 
-<div class="dropdown-menu">
+<a href="contact.html">Contact</a>
 
-<a href="contact.html">
+<a href="privacy.html">Privacy Policy</a>
 
-Contact
+<a href="refund.html">Refund Policy</a>
 
-</a>
-
-<a href="privacy.html">
-
-Privacy Policy
-
-</a>
-
-<a href="refund.html">
-
-Refund Policy
-
-</a>
-
-<a href="terms.html">
-
-Terms &amp; Conditions
-
-</a>
-
-</div>
+<a href="terms.html">Terms &amp; Conditions</a>
 
 </div>
 
@@ -1365,13 +988,7 @@ Terms &amp; Conditions
 
 <div class="hero-grid">
 
-<div class="hero-content">
-
-<div class="hero-badge glass">
-
-✨ Premium Wallpaper Collection
-
-</div>
+<div class="hero-text">
 
 <h1>
 
@@ -1383,10 +1000,9 @@ Designed to Elevate.
 
 <p>
 
-Discover premium Apple-inspired wallpapers created for iPhone and Samsung.
-Purchase securely through Stripe, download your wallpapers from the
-confirmation page after checkout, and receive them by email for a smooth,
-premium experience.
+ROX creates premium, Apple-inspired wallpapers that combine minimalist
+design with modern architecture and refined colour palettes.
+Every collection is crafted to bring a clean, elegant look to your device.
 
 </p>
 
@@ -1411,69 +1027,13 @@ Browse Collections
 
 </div>
 
-<div class="stats">
-
-<div class="glass stat-card">
-
-<h3>
-
-10
-
-</h3>
-
-<p>
-
-Premium Wallpapers
-
-</p>
-
 </div>
 
-<div class="glass stat-card">
-
-<h3>
-
-iPhone &amp; Samsung
-
-</h3>
-
-<p>
-
-Fully Compatible
-
-</p>
-
-</div>
-
-<div class="glass stat-card">
-
-<h3>
-
-Instant
-
-</h3>
-
-<p>
-
-Access After Purchase
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hero-image">
-
-<div class="hero-glow">
-
-</div>
+<div class="hero-image glass">
 
 <img
-src="images/glass-city/86D37BE9-D966-4042-B608-EF9773121786.PNG"
-alt="Glass City Wallpaper Collection">
+src="86D37BE9-D966-4042-B608-EF9773121786.PNG"
+alt="Glass City Wallpaper">
 
 </div>
 
@@ -1482,27 +1042,22 @@ alt="Glass City Wallpaper Collection">
 </div>
 
 </section>
-<section class="featured">
+
+<section>
 
 <div class="container">
 
 <div class="featured-grid">
 
-<div class="featured-image">
+<div class="featured-image glass">
 
 <img
-src="images/glass-city/86D37BE9-D966-4042-B608-EF9773121786.PNG"
+src="86D37BE9-D966-4042-B608-EF9773121786.PNG"
 alt="Glass City Collection">
 
 </div>
 
 <div class="featured-content">
-
-<div class="hero-badge glass">
-
-⭐ Featured Collection
-
-</div>
 
 <h2>
 
@@ -1512,107 +1067,61 @@ Glass City
 
 <p>
 
-Glass City is ROX's first premium wallpaper collection, inspired by
-modern architecture, reflective glass surfaces and clean minimal
-design. Every wallpaper has been carefully crafted to deliver a
-beautiful home screen experience while maintaining a premium,
-Apple-inspired aesthetic.
+Glass City is the debut collection from ROX, inspired by reflective
+architecture, premium materials and modern minimalism. Every wallpaper
+has been carefully designed to create a clean, luxurious appearance
+without distracting from your device.
 
 </p>
-
-<div class="compatibility">
-
-📱 Compatible with iPhone &amp; Samsung
-
-</div>
 
 <p>
 
-Your purchase includes ten high-quality wallpapers delivered after
-checkout through your confirmation page and by email, making it quick
-and easy to personalise your device.
+This collection includes ten exclusive premium wallpapers created
+specifically for the ROX library. Each image has been designed with the
+same attention to detail, making Glass City the perfect starting point
+for your collection.
 
 </p>
-
 <div class="preview-grid">
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG"
-alt="Glass City Wallpaper 1">
-
+<img src="737E7975-C0A5-4E49-9AB9-CBC9AE146975.PNG" alt="Glass City Wallpaper 1">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG"
-alt="Glass City Wallpaper 2">
-
+<img src="B0B16D22-28D6-4F3C-8FE5-40E082C8E5AB.PNG" alt="Glass City Wallpaper 2">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG"
-alt="Glass City Wallpaper 3">
-
+<img src="B66B96ED-7D95-4075-8A25-DAC370E59BEE.PNG" alt="Glass City Wallpaper 3">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/IMG_4154.PNG"
-alt="Glass City Wallpaper 4">
-
+<img src="IMG_4154.PNG" alt="Glass City Wallpaper 4">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/IMG_4157.PNG"
-alt="Glass City Wallpaper 5">
-
-</div>
-<div class="preview-card">
-
-<img
-src="images/glass-city/IMG_4158.PNG"
-alt="Glass City Wallpaper 6">
-
+<img src="IMG_4157.PNG" alt="Glass City Wallpaper 5">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/IMG_4161.PNG"
-alt="Glass City Wallpaper 7">
-
+<img src="IMG_4158.PNG" alt="Glass City Wallpaper 6">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/IMG_4167.PNG"
-alt="Glass City Wallpaper 8">
-
+<img src="IMG_4161.PNG" alt="Glass City Wallpaper 7">
 </div>
 
 <div class="preview-card">
-
-<img
-src="images/glass-city/IMG_4169.PNG"
-alt="Glass City Wallpaper 9">
-
+<img src="IMG_4167.PNG" alt="Glass City Wallpaper 8">
 </div>
 
 <div class="preview-card">
+<img src="IMG_4169.PNG" alt="Glass City Wallpaper 9">
+</div>
 
-<img
-src="images/glass-city/86D37BE9-D966-4042-B608-EF9773121786.PNG"
-alt="Glass City Wallpaper 10">
-
+<div class="preview-card">
+<img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City Wallpaper 10">
 </div>
 
 </div>
@@ -1651,29 +1160,22 @@ View All Collections
 </div>
 
 </section>
-<section class="coming-soon">
+
+<section>
 
 <div class="container">
 
-<div style="text-align:center;max-width:760px;margin:0 auto 70px;">
+<div class="section-title">
 
-<div class="hero-badge glass">
-
-🚀 More Collections Coming Soon
-
-</div>
-
-<h2 style="font-size:3rem;font-weight:900;margin:25px 0;">
+<h2>
 
 Expand Your Wallpaper Library
 
 </h2>
 
-<p style="color:var(--muted);line-height:1.9;">
+<p>
 
-ROX is continuously growing with new premium wallpaper collections.
-Each collection is carefully designed with the same clean,
-Apple-inspired aesthetic to give your device a fresh new look.
+Glass City is just the beginning. New premium collections are already in development, each designed with the same attention to detail, modern aesthetic and premium quality that defines ROX.
 
 </p>
 
@@ -1683,155 +1185,103 @@ Apple-inspired aesthetic to give your device a fresh new look.
 
 <div class="glass coming-card">
 
-<div class="coming-image">
+<div class="coming-image">✨</div>
 
-Luminar
-
-</div>
-
-<h3>
-
-Luminar
-
-</h3>
+<h3>Luminar</h3>
 
 <p>
 
-Soft lighting, glowing reflections and premium minimalist artwork.
+Elegant lighting, reflections and premium colour palettes designed to create a sophisticated look.
 
 </p>
 
-<span class="badge">
+<div class="badge">
 
 Coming Soon
 
-</span>
+</div>
 
 </div>
 
 <div class="glass coming-card">
 
-<div class="coming-image">
+<div class="coming-image">🏙️</div>
 
-Crystal District
-
-</div>
-
-<h3>
-
-Crystal District
-
-</h3>
+<h3>Crystal District</h3>
 
 <p>
 
-Inspired by modern architecture and elegant crystal reflections.
+Inspired by contemporary architecture, glass structures and luxury city environments.
 
 </p>
 
-<span class="badge">
+<div class="badge">
 
 Coming Soon
 
-</span>
+</div>
 
 </div>
 
 <div class="glass coming-card">
 
-<div class="coming-image">
+<div class="coming-image">⛰️</div>
 
-Elevation
-
-</div>
-
-<h3>
-
-Elevation
-
-</h3>
+<h3>Elevation</h3>
 
 <p>
 
-Minimal landscapes and elevated scenery with premium colour palettes.
+Minimal mountain landscapes, dramatic horizons and beautifully balanced compositions.
 
 </p>
 
-<span class="badge">
+<div class="badge">
 
 Coming Soon
 
-</span>
+</div>
 
 </div>
 
 <div class="glass coming-card">
 
-<div class="coming-image">
+<div class="coming-image">🌿</div>
 
-Mono Leaf
-
-</div>
-
-<h3>
-
-Mono Leaf
-
-</h3>
+<h3>Mono Leaf</h3>
 
 <p>
 
-Elegant monochrome botanical wallpapers with a timeless aesthetic.
+Clean botanical artwork with monochrome styling and timeless minimalist design.
 
 </p>
 
-<span class="badge">
+<div class="badge">
 
 Coming Soon
 
-</span>
+</div>
 
 </div>
 
 <div class="glass coming-card">
 
-<div class="coming-image">
+<div class="coming-image">🌅</div>
 
-Horizon
-
-</div>
-
-<h3>
-
-Horizon
-
-</h3>
+<h3>Horizon</h3>
 
 <p>
 
-Beautiful horizon-inspired wallpapers with calm gradients and depth.
+Soft cinematic skies and peaceful colour gradients crafted for a premium home screen.
 
 </p>
 
-<span class="badge">
+<div class="badge">
 
 Coming Soon
 
-</span>
-
 </div>
 
 </div>
-
-<div style="text-align:center;margin-top:70px;">
-
-<a
-href="collections.html"
-class="button button-secondary">
-
-View All Collections
-
-</a>
 
 </div>
 
@@ -1842,39 +1292,29 @@ View All Collections
 
 <div class="container">
 
-<div style="text-align:center;max-width:760px;margin:0 auto 70px;">
+<div class="section-title">
 
-<div class="hero-badge glass">
+<h2>
 
-✨ Why Choose ROX
-
-</div>
-
-<h2 style="font-size:3rem;font-weight:900;margin:25px 0;">
-
-Premium Wallpapers.<br>
-
-Premium Experience.
+Why Choose ROX
 
 </h2>
 
-<p style="color:var(--muted);line-height:1.9;">
+<p>
 
-Every ROX wallpaper is designed with quality, simplicity and attention
-to detail. From secure checkout to instant access after purchase, the
-entire experience is built to feel smooth, modern and effortless.
+ROX is built around premium design, simplicity and quality. Every wallpaper collection is created to deliver a clean, refined experience from purchase through to download.
 
 </p>
 
 </div>
 
-<div class="coming-grid">
+<div class="why-grid">
 
-<div class="glass coming-card">
+<div class="glass why-card">
 
-<div class="coming-image">
+<div class="why-icon">
 
-🖼️
+✨
 
 </div>
 
@@ -1886,16 +1326,15 @@ Premium Quality
 
 <p>
 
-Every wallpaper is carefully designed with a clean, Apple-inspired
-look to complement your device beautifully.
+Every wallpaper is carefully designed with a minimalist, Apple-inspired aesthetic and crafted to a consistently high standard.
 
 </p>
 
 </div>
 
-<div class="glass coming-card">
+<div class="glass why-card">
 
-<div class="coming-image">
+<div class="why-icon">
 
 ⚡
 
@@ -1909,38 +1348,15 @@ Fast Access
 
 <p>
 
-Complete your purchase securely through Stripe, then access your
-download from the confirmation page and by email.
+Complete your purchase securely through Stripe and access your wallpaper collection immediately from the download page.
 
 </p>
 
 </div>
 
-<div class="glass coming-card">
+<div class="glass why-card">
 
-<div class="coming-image">
-
-📱
-
-</div>
-
-<h3>
-
-Device Compatible
-
-</h3>
-
-<p>
-
-Designed to work seamlessly with both iPhone and Samsung devices.
-
-</p>
-
-</div>
-
-<div class="glass coming-card">
-
-<div class="coming-image">
+<div class="why-icon">
 
 🔒
 
@@ -1954,16 +1370,15 @@ Secure Checkout
 
 <p>
 
-Every payment is processed securely through Stripe, providing a safe
-and trusted purchasing experience.
+Every payment is processed securely through Stripe, providing a trusted and reliable checkout experience.
 
 </p>
 
 </div>
 
-<div class="glass coming-card">
+<div class="glass why-card">
 
-<div class="coming-image">
+<div class="why-icon">
 
 🚀
 
@@ -1977,8 +1392,7 @@ Growing Collection
 
 <p>
 
-Glass City is just the beginning, with more premium wallpaper
-collections arriving soon.
+Glass City is only the beginning. New premium wallpaper collections are already in development and will continue expanding the ROX library.
 
 </p>
 
@@ -1996,57 +1410,33 @@ collections arriving soon.
 
 <div class="glass footer-card">
 
-<h2>
+<h2 style="font-size:2rem;font-weight:900;margin-bottom:18px;">
 
 ROX
 
 </h2>
 
-<p>
+<p style="max-width:650px;margin:0 auto;color:var(--muted);line-height:1.9;">
 
-Premium wallpapers designed to elevate your device with clean,
-minimal, Apple-inspired artwork. Discover Glass City today and stay
-tuned for even more exclusive collections.
+Premium wallpapers designed to elevate your device through modern design, elegant colours and a clean, premium aesthetic.
 
 </p>
 
 <div class="footer-links">
 
-<a href="index.html">
+<a href="index.html">Home</a>
 
-Home
+<a href="collections.html">Collections</a>
 
-</a>
+<a href="support.html">Support</a>
 
-<a href="collections.html">
+<a href="contact.html">Contact</a>
 
-Collections
+<a href="privacy.html">Privacy Policy</a>
 
-</a>
+<a href="refund.html">Refund Policy</a>
 
-<a href="contact.html">
-
-Contact
-
-</a>
-
-<a href="privacy.html">
-
-Privacy Policy
-
-</a>
-
-<a href="refund.html">
-
-Refund Policy
-
-</a>
-
-<a href="terms.html">
-
-Terms &amp; Conditions
-
-</a>
+<a href="terms.html">Terms &amp; Conditions</a>
 
 </div>
 
@@ -2062,7 +1452,7 @@ roxhelpp@gmail.com
 
 <div class="footer-copy">
 
-© 2025 ROX. All Rights Reserved.
+© 2026 ROX. All Rights Reserved.
 
 </div>
 
@@ -2071,15 +1461,22 @@ roxhelpp@gmail.com
 </div>
 
 </footer>
-<button id="backToTop" class="button button-primary"
+<button
+id="backToTop"
+class="button button-primary"
 style="
 position:fixed;
-right:25px;
-bottom:25px;
-display:none;
-z-index:9999;
-padding:15px 18px;
+right:24px;
+bottom:24px;
+width:58px;
+height:58px;
+padding:0;
 border-radius:50%;
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+font-size:1.2rem;
 ">
 
 ↑
@@ -2088,33 +1485,34 @@ border-radius:50%;
 
 <script>
 
-const navbar=document.querySelector(".navbar");
+/* ==========================
+   SHRINKING NAVBAR
+========================== */
 
+const navbar=document.querySelector(".navbar");
 const backToTop=document.getElementById("backToTop");
 
 window.addEventListener("scroll",()=>{
 
 if(window.scrollY>60){
 
+navbar.style.top="10px";
 navbar.style.transform="translateX(-50%) scale(.96)";
-
-navbar.style.top="12px";
-
 backToTop.style.display="flex";
 
-}
-
-else{
-
-navbar.style.transform="translateX(-50%) scale(1)";
+}else{
 
 navbar.style.top="18px";
-
+navbar.style.transform="translateX(-50%) scale(1)";
 backToTop.style.display="none";
 
 }
 
 });
+
+/* ==========================
+   BACK TO TOP
+========================== */
 
 backToTop.addEventListener("click",()=>{
 
@@ -2128,19 +1526,23 @@ behavior:"smooth"
 
 });
 
+/* ==========================
+   SCROLL REVEAL
+========================== */
+
 const observer=new IntersectionObserver((entries)=>{
 
 entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-entry.target.animate([
+entry.animate([
 
 {
 
 opacity:0,
 
-transform:"translateY(40px)"
+transform:"translateY(50px) scale(.96)"
 
 },
 
@@ -2148,7 +1550,7 @@ transform:"translateY(40px)"
 
 opacity:1,
 
-transform:"translateY(0)"
+transform:"translateY(0) scale(1)"
 
 }
 
@@ -2156,9 +1558,9 @@ transform:"translateY(0)"
 
 duration:800,
 
-fill:"forwards",
+easing:"cubic-bezier(.22,1,.36,1)",
 
-easing:"ease-out"
+fill:"forwards"
 
 });
 
@@ -2182,21 +1584,9 @@ observer.observe(section);
 
 });
 
-document.querySelectorAll(".button").forEach(button=>{
-
-button.addEventListener("mouseenter",()=>{
-
-button.style.transform="translateY(-4px) scale(1.03)";
-
-});
-
-button.addEventListener("mouseleave",()=>{
-
-button.style.transform="translateY(0) scale(1)";
-
-});
-
-});
+/* ==========================
+   PREVIEW TILT
+========================== */
 
 document.querySelectorAll(".preview-card").forEach(card=>{
 
@@ -2205,25 +1595,84 @@ card.addEventListener("mousemove",(e)=>{
 const rect=card.getBoundingClientRect();
 
 const x=e.clientX-rect.left;
-
 const y=e.clientY-rect.top;
 
-const rotateY=((x/rect.width)-0.5)*10;
-
-const rotateX=((rect.height/2-y)/rect.height)*10;
+const rotateY=((x/rect.width)-0.5)*18;
+const rotateX=((rect.height/2-y)/rect.height)*18;
 
 card.style.transform=
 
-`perspective(700px)
+`perspective(900px)
 rotateX(${rotateX}deg)
 rotateY(${rotateY}deg)
-translateY(-8px)`;
+translateY(-14px)
+scale(1.03)`;
 
 });
 
 card.addEventListener("mouseleave",()=>{
 
-card.style.transform="perspective(700px) rotateX(0) rotateY(0) translateY(0)";
+card.style.transform="perspective(900px) rotateX(0) rotateY(0) translateY(0) scale(1)";
+
+});
+
+});
+
+/* ==========================
+   BUTTON POP
+========================== */
+
+document.querySelectorAll(".button").forEach(button=>{
+
+button.addEventListener("mouseenter",()=>{
+
+button.animate([
+
+{
+
+transform:"scale(1)"
+
+},
+
+{
+
+transform:"scale(1.08)"
+
+},
+
+{
+
+transform:"scale(1.03)"
+
+}
+
+],{
+
+duration:300,
+
+fill:"forwards"
+
+});
+
+});
+
+});
+
+/* ==========================
+   CARD HOVER
+========================== */
+
+document.querySelectorAll(".coming-card,.why-card").forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform="translateY(-16px) scale(1.03)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="translateY(0) scale(1)";
 
 });
 
