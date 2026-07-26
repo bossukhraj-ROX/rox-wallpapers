@@ -1,489 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Contact | ROX</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-
-background:#f5f5f7;
-
-color:#111;
-
-line-height:1.6;
-
-}
-
-header{
-
-position:sticky;
-
-top:0;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:22px 8%;
-
-background:rgba(255,255,255,.85);
-
-backdrop-filter:blur(18px);
-
-border-bottom:1px solid #ececec;
-
-}
-
-.logo{
-
-font-size:30px;
-
-font-weight:700;
-
-letter-spacing:10px;
-
-}
-
-nav{
-
-display:flex;
-
-gap:28px;
-
-}
-
-nav a{
-
-text-decoration:none;
-
-color:#666;
-
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:#111;
-
-}
-
-.hero{
-
-padding:90px 8%;
-
-text-align:center;
-
-}
-
-.hero h1{
-
-font-size:72px;
-
-margin-bottom:20px;
-
-}
-
-.hero p{
-
-max-width:700px;
-
-margin:auto;
-
-font-size:22px;
-
-color:#666;
-
-}
-
-.section{
-
-padding:0 8% 80px;
-
-}
-
-.card{
-
-background:white;
-
-border-radius:32px;
-
-padding:40px;
-
-max-width:1100px;
-
-margin:auto;
-
-box-shadow:0 18px 60px rgba(0,0,0,.08);
-
-}
-.info-grid{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:24px;
-
-margin-top:35px;
-
-}
-
-.info-card{
-
-background:#fafafa;
-
-padding:28px;
-
-border-radius:24px;
-
-border:1px solid #ececec;
-
-}
-
-.info-card h3{
-
-font-size:22px;
-
-margin-bottom:12px;
-
-}
-
-.info-card p{
-
-color:#666;
-
-}
-
-.button{
-
-display:inline-block;
-
-margin-top:30px;
-
-padding:16px 36px;
-
-background:#111;
-
-color:white;
-
-border-radius:999px;
-
-font-weight:600;
-
-text-decoration:none;
-
-transition:.3s;
-
-}
-
-.button:hover{
-
-transform:translateY(-3px);
-
-box-shadow:0 15px 35px rgba(0,0,0,.15);
-
-}
-
-footer{
-
-padding:70px 8%;
-
-text-align:center;
-
-color:#777;
-
-font-size:15px;
-
-border-top:1px solid #ececec;
-
-margin-top:80px;
-
-}
-
-@media(max-width:900px){
-
-nav{
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:18px;
-
-}
-
-header{
-
-flex-direction:column;
-
-gap:18px;
-
-}
-
-.hero h1{
-
-font-size:52px;
-
-}
-
-.hero p{
-
-font-size:18px;
-
-}
-
-.info-grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact ROX for help with wallpaper purchases, downloads and general enquiries.">
+  <title>Contact ROX — Premium Wallpapers</title>
+  <style>
+    :root {
+      --paper: #f5f8ff;
+      --paper-deep: #e7eef9;
+      --ice: rgba(255, 255, 255, .64);
+      --ice-strong: rgba(255, 255, 255, .8);
+      --ink: #0b1c38;
+      --ink-soft: #344b70;
+      --quiet: #6e809e;
+      --navy: #0a2b63;
+      --midnight: #061b44;
+      --blue: #2f77d3;
+      --sky: #a8d8ff;
+      --lavender: #c9c7ff;
+      --line: rgba(58, 105, 168, .18);
+      --line-bright: rgba(255, 255, 255, .82);
+      --shadow: 0 22px 62px rgba(37, 71, 124, .14);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(780px 460px at 2% 1%, rgba(173, 209, 255, .7), transparent 70%),
+        radial-gradient(700px 500px at 100% 16%, rgba(211, 220, 255, .72), transparent 68%),
+        linear-gradient(145deg, #fbfdff 0%, var(--paper) 48%, #eef4fc 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    :focus-visible {
+      outline: 3px solid rgba(47, 119, 211, .56);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 50;
+      top: 12px;
+      left: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--navy);
+      transform: translateY(-180%);
+      transition: transform .2s ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 15px;
+      width: min(1180px, calc(100% - 40px));
+      margin: 15px auto 0;
+      border: 1px solid var(--line-bright);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .54);
+      box-shadow: 0 12px 38px rgba(41, 81, 139, .1), inset 0 1px 0 rgba(255, 255, 255, .92);
+      backdrop-filter: blur(17px) saturate(145%);
+      -webkit-backdrop-filter: blur(17px) saturate(145%);
+      transition: background .42s ease, box-shadow .42s ease, border-color .42s ease, backdrop-filter .42s ease;
+    }
+
+    .site-header.is-scrolled {
+      border-color: rgba(86, 132, 193, .24);
+      background: rgba(255, 255, 255, .72);
+      box-shadow: 0 15px 42px rgba(24, 58, 110, .15), inset 0 1px 0 rgba(255, 255, 255, .96);
+      backdrop-filter: blur(25px) saturate(160%);
+      -webkit-backdrop-filter: blur(25px) saturate(160%);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 18px;
+      padding: 0 20px 0 23px;
+      transition: min-height .42s ease;
+    }
+
+    .site-header.is-scrolled .nav { min-height: 57px; }
+
+    .brand {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 820;
+      letter-spacing: .24em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 12px;
+      color: var(--ink-soft);
+      font-size: .88rem;
+      font-weight: 690;
+      text-decoration: none;
+      transition: color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .nav-links a::after {
+      position: absolute;
+      right: 12px;
+      bottom: 7px;
+      left: 12px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--navy));
+      content: "";
+      opacity: 0;
+      transform: scaleX(.5);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--navy);
+      background: rgba(255, 255, 255, .56);
+    }
+
+    .nav-links a:hover { transform: translateY(-1px); }
+
+    .nav-links a:hover::after,
+    .nav-links a[aria-current="page"]::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .shell {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    main { padding-bottom: 14px; }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 458px;
+      place-items: center;
+      padding: 112px 0 75px;
+      overflow: hidden;
+      isolation: isolate;
+      text-align: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -2;
+      border-radius: 50%;
+      content: "";
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 290px;
+      height: 290px;
+      background: radial-gradient(circle at 35% 32%, rgba(255,255,255,.98), rgba(174,213,255,.42) 38%, rgba(120,167,230,.08) 70%, transparent 72%);
+      transform: translate(-230px, -12px);
+    }
+
+    .hero::after {
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(201,199,255,.28), rgba(168,216,255,.15) 45%, transparent 71%);
+      transform: translate(250px, 18px);
+    }
+
+    .hero-glass {
+      position: absolute;
+      z-index: -1;
+      width: min(720px, 90vw);
+      height: 218px;
+      border: 1px solid rgba(255, 255, 255, .68);
+      border-radius: 999px;
+      background: linear-gradient(128deg, rgba(255,255,255,.45), rgba(255,255,255,.08));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.88), 0 30px 80px rgba(73, 121, 185, .09);
+      transform: rotate(-5deg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 17px;
+      color: var(--navy);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      box-shadow: 0 0 0 5px rgba(47, 119, 211, .1);
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 800px;
+      margin-bottom: 20px;
+      color: var(--midnight);
+      font-size: clamp(3.05rem, 7.4vw, 6.4rem);
+      font-weight: 810;
+      letter-spacing: -.073em;
+      line-height: .94;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-size: clamp(1rem, 1.65vw, 1.15rem);
+      line-height: 1.7;
+    }
+
+    .section { padding: 54px 0; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 27px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      color: var(--midnight);
+      font-size: clamp(2rem, 4vw, 3.55rem);
+      letter-spacing: -.055em;
+      line-height: 1;
+    }
+
+    .section-note {
+      max-width: 390px;
+      margin-bottom: 2px;
+      color: var(--quiet);
+      font-size: .93rem;
+      line-height: 1.65;
+      text-align: right;
+    }
+
+    .glass-panel,
+    .support-card,
+    .faq-item,
+    .site-footer {
+      border: 1px solid var(--line-bright);
+      background: var(--ice);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.95);
+      backdrop-filter: blur(17px) saturate(140%);
+      -webkit-backdrop-filter: blur(17px) saturate(140%);
+    }
+
+    .contact-panel {
+      position: relative;
+      padding: clamp(28px, 6vw, 60px);
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      text-align: center;
+    }
+
+    .contact-panel::before {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,216,255,.48), transparent 68%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .contact-panel > * { position: relative; }
+
+    .panel-icon,
+    .support-icon {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      color: var(--navy);
+      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(215,233,255,.7));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 12px 28px rgba(52, 99, 164, .12);
+    }
+
+    .panel-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 22px;
+      border: 1px solid rgba(113, 163, 224, .26);
+      border-radius: 18px;
+    }
+
+    .panel-icon svg,
+    .support-icon svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .contact-panel h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
+
+    .panel-copy {
+      max-width: 575px;
+      margin: 16px auto 0;
+      color: var(--ink-soft);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .email-link {
+      display: inline-block;
+      max-width: 100%;
+      margin: 26px auto 0;
+      overflow-wrap: anywhere;
+      color: var(--navy);
+      font-size: clamp(1.2rem, 3vw, 1.74rem);
+      font-weight: 780;
+      letter-spacing: -.03em;
+      text-decoration-color: rgba(47, 119, 211, .4);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 6px;
+      transition: color .25s ease, text-decoration-color .25s ease;
+    }
+
+    .email-link:hover {
+      color: var(--blue);
+      text-decoration-color: currentColor;
+    }
+
+    .response-note {
+      margin: 11px auto 0;
+      color: var(--quiet);
+      font-size: .88rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: .92rem;
+      font-weight: 760;
+      text-decoration: none;
+      transition: transform .28s ease, box-shadow .28s ease, background .28s ease, border-color .28s ease, color .28s ease;
+    }
+
+    .button:hover { transform: translateY(-3px) scale(1.01); }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      box-shadow: 0 12px 22px rgba(15, 66, 142, .22), inset 0 1px 0 rgba(255,255,255,.32);
+    }
+
+    .button-primary:hover {
+      box-shadow: 0 16px 30px rgba(15, 66, 142, .28), inset 0 1px 0 rgba(255,255,255,.36);
+    }
+
+    .button-secondary {
+      border-color: rgba(102, 150, 210, .22);
+      color: var(--navy);
+      background: rgba(255,255,255,.63);
+      box-shadow: 0 10px 22px rgba(40, 83, 146, .09), inset 0 1px 0 rgba(255,255,255,.92);
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(47, 119, 211, .32);
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 15px 28px rgba(40, 83, 146, .13), inset 0 1px 0 rgba(255,255,255,.98);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .support-card {
+      display: flex;
+      min-height: 238px;
+      flex-direction: column;
+      padding: 25px;
+      border-radius: var(--radius-lg);
+      transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease, background .32s ease;
+    }
+
+    .support-card:hover {
+      border-color: rgba(100, 151, 217, .3);
+      background: rgba(255,255,255,.77);
+      box-shadow: 0 26px 48px rgba(34, 79, 144, .15), inset 0 1px 0 rgba(255,255,255,.98);
+      transform: translateY(-5px);
+    }
+
+    .support-icon {
+      width: 46px;
+      height: 46px;
+      margin-bottom: auto;
+      border: 1px solid rgba(113, 163, 224, .25);
+      border-radius: 15px;
+    }
+
+    .support-card h3 {
+      margin: 28px 0 10px;
+      color: var(--midnight);
+      font-size: 1.18rem;
+      letter-spacing: -.025em;
+    }
+
+    .support-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-item {
+      min-height: 168px;
+      padding: 23px 24px;
+      border-radius: var(--radius-md);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(100, 151, 217, .28);
+      box-shadow: 0 18px 34px rgba(38, 78, 136, .1), inset 0 1px 0 rgba(255,255,255,.98);
+      transform: translateY(-3px);
+    }
+
+    .faq-item h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: 1rem;
+      letter-spacing: -.015em;
+    }
+
+    .faq-item p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: .91rem;
+      line-height: 1.65;
+    }
+
+    .home-action {
+      padding-top: 38px;
+      padding-bottom: 68px;
+      text-align: center;
+    }
+
+    .home-action .button { min-width: 156px; }
+
+    .site-footer {
+      width: min(1180px, calc(100% - 40px));
+      margin: 20px auto 32px;
+      padding: 39px 22px 28px;
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.57);
+      box-shadow: 0 16px 38px rgba(38,78,136,.1), inset 0 1px 0 rgba(255,255,255,.95);
+      text-align: center;
+    }
+
+    .footer-brand {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 830;
+      letter-spacing: .25em;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px 12px;
+      margin: 22px auto 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-links a,
+    .footer-email {
+      color: var(--ink-soft);
+      font-size: .88rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color .22s ease, transform .22s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-email:hover { color: var(--blue); }
+
+    .footer-links a {
+      display: inline-block;
+      padding: 5px 2px;
+    }
+
+    .footer-links a:hover { transform: translateY(-1px); }
+
+    .footer-email {
+      display: inline-block;
+      margin-bottom: 18px;
+      overflow-wrap: anywhere;
+      text-decoration: underline;
+      text-decoration-color: rgba(47,119,211,.26);
+      text-underline-offset: 4px;
+    }
+
+    .copyright {
+      margin: 0;
+      color: var(--quiet);
+      font-size: .77rem;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      filter: blur(7px);
+      transform: translateY(20px);
+      transition: opacity .72s cubic-bezier(.2,.8,.2,1), transform .72s cubic-bezier(.2,.8,.2,1), filter .72s ease;
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .section-heading { display: block; }
+      .section-note { margin-top: 13px; text-align: left; }
+      .support-card { min-height: 252px; padding: 21px; }
+    }
+
+    @media (max-width: 640px) {
+      .shell, .site-header, .site-footer { width: min(100% - 24px, 1180px); }
+      .site-header { top: 10px; margin-top: 10px; }
+      .nav { min-height: 58px; padding: 0 13px 0 16px; }
+      .brand { font-size: .9rem; }
+      .nav-links { gap: 0; }
+      .nav-links a { padding: 8px 7px; font-size: .76rem; }
+      .nav-links a::after { right: 7px; left: 7px; }
+      .hero { min-height: 430px; padding: 99px 0 63px; }
+      .hero-glass { height: 175px; }
+      h1 { font-size: clamp(3rem, 16vw, 4.7rem); }
+      .hero-copy { max-width: 33rem; font-size: .98rem; }
+      .section { padding: 47px 0; }
+      .section-heading { margin-bottom: 22px; }
+      .contact-panel { padding: 30px 18px; border-radius: 24px; }
+      .email-link { font-size: 1.16rem; }
+      .actions { margin-top: 24px; }
+      .button { width: 100%; }
+      .support-grid, .faq-grid { grid-template-columns: 1fr; }
+      .support-card { min-height: 205px; }
+      .support-card h3 { margin-top: 23px; }
+      .faq-item { min-height: auto; padding: 20px; }
+      .home-action { padding-top: 23px; padding-bottom: 52px; }
+      .site-footer { margin-top: 8px; padding: 33px 16px 24px; border-radius: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .js .reveal { opacity: 1; filter: none; transform: none; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-
-<div class="logo">ROX</div>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="index.html#collections">Collections</a>
-
-<a href="privacy.html">Privacy</a>
-
-<a href="refund.html">Refund</a>
-
-<a href="terms.html">Terms</a>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<h1>
-
-Contact ROX
-
-</h1>
-
-<p>
-
-Need help with your order or have a question about ROX wallpapers? We're here to help.
-
-</p>
-
-</section>
-
-<section class="section">
-
-<div class="card">
-
-<h2 style="font-size:42px;margin-bottom:20px;">
-
-Support
-
-</h2>
-
-<p style="font-size:19px;color:#666;">
-
-If you have any questions about your purchase, downloading your wallpapers, or using the website, please get in touch and we'll do our best to help.
-
-</p>
-
-<div class="info-grid">
-  <div class="info-card">
-
-<h3>📧 Support</h3>
-
-<p>
-
-For any questions about your order, downloads or technical issues, please contact our support team.
-
-<br><br>
-
-<strong>Email:</strong><br>
-
-roxhelpp@gmail.com
-
-<br><br>
-
-We aim to respond within <strong>48 hours</strong>.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>🕒 Before You Contact Us</h3>
-
-<p>
-
-Most downloads are delivered immediately after a successful payment.
-
-If you cannot find your download:
-
-<br><br>
-
-• Check your confirmation email.
-
-<br>
-
-• Check your spam or junk folder.
-
-<br>
-
-• Make sure your payment completed successfully.
-
-<br><br>
-
-If you're still having trouble, contact us and we'll be happy to help.
-
-</p>
-
-</div>
-
-</div>
-
-<h2 style="font-size:38px;margin-top:60px;margin-bottom:25px;">
-
-Frequently Asked Support Questions
-
-</h2>
-
-<div class="info-grid">
-
-<div class="info-card">
-
-<h3>How quickly will I receive my wallpapers?</h3>
-
-<p>
-
-Your download is normally available immediately after your payment has been successfully processed.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>What phones are supported?</h3>
-
-<p>
-
-ROX wallpapers are designed for modern iPhone and Samsung Galaxy devices with high-resolution displays.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>Can I use ROX wallpapers commercially?</h3>
-
-<p>
-
-No. All wallpapers are licensed for personal use only and may not be redistributed, resold or included in other products.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>I purchased twice by mistake.</h3>
-
-<p>
-
-Please contact support with your order details so we can review the purchase and assist you appropriately.
-
-</p>
-
-</div>
-
-</div>
-
-<a href="index.html" class="button">
-
-← Back to Home
-
-</a>
-</div>
-
-</section>
-
-<footer>
-
-<h2 style="font-size:34px;letter-spacing:8px;margin-bottom:18px;">
-
-ROX
-
-</h2>
-
-<p style="font-size:18px;color:#666;margin-bottom:28px;">
-
-Premium Wallpapers for iPhone & Samsung
-
-</p>
-
-<div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:30px;">
-
-<a href="index.html">Home</a>
-
-<a href="privacy.html">Privacy</a>
-
-<a href="refund.html">Refund</a>
-
-<a href="terms.html">Terms</a>
-
-</div>
-
-<p style="max-width:700px;margin:auto;color:#777;line-height:1.8;">
-
-Thank you for choosing ROX. We are committed to creating premium-quality wallpaper collections designed for modern smartphones. If you ever have a question about your purchase or need assistance, our support team is here to help.
-
-</p>
-
-<br>
-
-<p style="color:#999;">
-
-© 2026 ROX. All Rights Reserved.
-
-</p>
-
-</footer>
-
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="ROX home">ROX</a>
+      <ul class="nav-links">
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero shell" aria-labelledby="contact-title">
+      <div class="hero-glass" aria-hidden="true"></div>
+      <div class="reveal">
+        <p class="eyebrow">Contact ROX</p>
+        <h1 id="contact-title">We’re Here to Help.</h1>
+        <p class="hero-copy">Questions about Glass City, your purchase or the ROX wallpaper collection? Send us a message and we’ll help you as soon as possible.</p>
+      </div>
+    </section>
+
+    <section class="section shell" aria-labelledby="support-title">
+      <article class="glass-panel contact-panel reveal">
+        <div class="panel-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 15a4 4 0 0 1-4 4H8l-4 3v-3a4 4 0 0 1-2-3.46V8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>
+            <path d="M7 11h.01M12 11h.01M17 11h.01"></path>
+          </svg>
+        </div>
+        <p class="section-kicker">Support, without friction</p>
+        <h2 id="support-title">Email ROX Support.</h2>
+        <p class="panel-copy">For questions about purchases, downloads, support or general enquiries.</p>
+        <a class="email-link" href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a>
+        <p class="response-note">We aim to respond as soon as possible.</p>
+        <div class="actions">
+          <a class="button button-primary" href="mailto:roxhelpp@gmail.com">
+            Email ROX Support
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section shell" aria-labelledby="contact-options-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="section-kicker">How we can help</p>
+          <h2 id="contact-options-title">A clear route to support.</h2>
+        </div>
+        <p class="section-note">Choose the topic closest to your question, then email the ROX team with the relevant details.</p>
+      </div>
+
+      <div class="support-grid">
+        <article class="support-card reveal">
+          <div class="support-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="5" width="16" height="15" rx="2"></rect>
+              <path d="M8 5V3M16 5V3M4 10h16M8 14h3"></path>
+            </svg>
+          </div>
+          <h3>Purchase Support</h3>
+          <p>Help with Stripe checkout, completed purchases or access after payment.</p>
+        </article>
+
+        <article class="support-card reveal">
+          <div class="support-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v11"></path>
+              <path d="m8 10 4 4 4-4"></path>
+              <path d="M5 18v2h14v-2"></path>
+            </svg>
+          </div>
+          <h3>Download Support</h3>
+          <p>Help accessing or downloading your ROX wallpaper collection.</p>
+        </article>
+
+        <article class="support-card reveal">
+          <div class="support-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z"></path>
+              <path d="M9.1 9a3 3 0 1 1 5.49 1.69c-.84 1.12-2.59 1.26-2.59 3.31"></path>
+              <path d="M12 17.2h.01"></path>
+            </svg>
+          </div>
+          <h3>General Enquiries</h3>
+          <p>Questions about ROX, Glass City or upcoming wallpaper collections.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" aria-labelledby="faq-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="section-kicker">Helpful details</p>
+          <h2 id="faq-title">Common Questions.</h2>
+        </div>
+        <p class="section-note">A few useful answers before you get in touch.</p>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-item reveal">
+          <h3>How do I contact ROX?</h3>
+          <p>Email <a href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a> using the contact button on this page.</p>
+        </article>
+        <article class="faq-item reveal">
+          <h3>What should I include in my email?</h3>
+          <p>Include the email address used at checkout and a clear description of the issue.</p>
+        </article>
+        <article class="faq-item reveal">
+          <h3>I completed my purchase but need help. What should I do?</h3>
+          <p>Contact ROX and include any relevant purchase details so the issue can be reviewed.</p>
+        </article>
+        <article class="faq-item reveal">
+          <h3>Can I ask about upcoming collections?</h3>
+          <p>Yes. You can contact ROX with general questions about future wallpaper releases.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-action shell reveal" aria-label="Return home">
+      <a class="button button-secondary" href="index.html">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M11 18l-6-6 6-6"></path>
+        </svg>
+        Back to Home
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal">
+    <p class="footer-brand">ROX</p>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="refund.html">Refund</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+    <a class="footer-email" href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a>
+    <p class="copyright">© 2026 ROX All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+
+    const header = document.getElementById("site-header");
+    const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 14);
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    const revealItems = [...document.querySelectorAll(".reveal")];
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -32px" });
+
+      revealItems.forEach((item, index) => {
+        item.style.setProperty("--reveal-delay", String(Math.min(index % 4, 3) * 70) + "ms");
+        observer.observe(item);
+      });
+    } else {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
+  </script>
 </body>
-
 </html>
