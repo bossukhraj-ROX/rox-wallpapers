@@ -1,14 +1,996 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support | ROX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f8ff">
+  <title>Support Centre | ROX</title>
+  <style>
+    :root {
+      --paper: #f5f8ff;
+      --paper-deep: #e7eef9;
+      --ice: rgba(255, 255, 255, 0.64);
+      --ice-strong: rgba(255, 255, 255, 0.80);
+      --ink: #0b1c38;
+      --ink-soft: #344b70;
+      --quiet: #6e809e;
+      --navy: #0a2b63;
+      --midnight: #061b44;
+      --blue: #2f77d3;
+      --sky: #a8d8ff;
+      --aqua: #b9ebe6;
+      --line: rgba(58, 105, 168, 0.18);
+      --line-bright: rgba(255, 255, 255, 0.82);
+      --shadow: 0 22px 62px rgba(37, 71, 124, 0.14);
+      --shadow-hover: 0 30px 72px rgba(24, 63, 120, 0.20);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      overflow-x: clip;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(168, 216, 255, 0.46), transparent 25rem),
+        radial-gradient(circle at 88% 18%, rgba(201, 199, 255, 0.24), transparent 26rem),
+        linear-gradient(135deg, #fbfdff 0%, var(--paper) 52%, #edf4fc 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      z-index: -1;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 50%;
+      pointer-events: none;
+      content: "";
+      filter: blur(12px);
+      opacity: 0.54;
+    }
+
+    body::before {
+      top: 28rem;
+      left: -21rem;
+      background: rgba(173, 213, 255, 0.42);
+    }
+
+    body::after {
+      right: -20rem;
+      bottom: 10rem;
+      background: rgba(191, 221, 255, 0.36);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    summary {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(47, 119, 211, 0.5);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 0.8rem;
+      left: 0.8rem;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      transform: translateY(-160%);
+      transition: transform 180ms var(--ease);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 30;
+      top: 0;
+      padding: 1rem clamp(1rem, 3vw, 2.5rem);
+      transition: padding 300ms var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      padding-top: 0.55rem;
+      padding-bottom: 0.55rem;
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(1120px, 100%);
+      min-height: 64px;
+      margin: 0 auto;
+      padding: 0.55rem 0.7rem 0.55rem 1.2rem;
+      border: 1px solid var(--line-bright);
+      border-color: rgba(57, 105, 167, 0.17);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.64);
+      box-shadow: 0 12px 34px rgba(28, 61, 111, 0.10);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      transition: min-height 300ms var(--ease), border-color 300ms var(--ease), box-shadow 300ms var(--ease), background 300ms var(--ease);
+    }
+
+    .site-header.is-scrolled .nav-shell {
+      min-height: 56px;
+      border-color: rgba(10, 43, 99, 0.24);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 15px 36px rgba(25, 58, 108, 0.14);
+      backdrop-filter: blur(28px) saturate(165%);
+      -webkit-backdrop-filter: blur(28px) saturate(165%);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--navy);
+      font-size: 1.1rem;
+      font-weight: 850;
+      letter-spacing: 0.2em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.55rem 0.88rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: color 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), transform 220ms var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+      border-color: rgba(68, 122, 194, 0.15);
+      background: rgba(255, 255, 255, 0.68);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a[aria-current="page"] {
+      color: #fff;
+      border-color: rgba(10, 43, 99, 0.2);
+      background: linear-gradient(135deg, var(--navy), #174b98);
+      box-shadow: 0 8px 18px rgba(17, 60, 124, 0.22);
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(57, 105, 167, 0.18);
+      border-radius: 50%;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.72);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg { width: 20px; height: 20px; }
+
+    main {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    section {
+      scroll-margin-top: 7.5rem;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: min(65vh, 620px);
+      padding: clamp(6.5rem, 13vw, 10rem) 0 clamp(4.5rem, 8vw, 7rem);
+      text-align: center;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      width: min(46rem, 90vw);
+      aspect-ratio: 1.45;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.96), rgba(223, 238, 255, 0.46) 46%, transparent 72%);
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.9), 0 18px 60px rgba(99, 152, 218, 0.11);
+      content: "";
+      filter: blur(0.2px);
+    }
+
+    .hero-content {
+      width: min(800px, 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0 0 1rem;
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 1.8rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue));
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      letter-spacing: -0.045em;
+      line-height: 1.08;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin: 0 auto 1.35rem;
+      font-size: clamp(2.85rem, 7.2vw, 5.85rem);
+      font-weight: 800;
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto clamp(2rem, 5vw, 3.6rem);
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0.9rem;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+    }
+
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-top-color: rgba(255, 255, 255, 0.92);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.80), rgba(246, 250, 255, 0.58));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+    }
+
+    .glass-card::before {
+      position: absolute;
+      top: 0;
+      left: 7%;
+      width: 48%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.96), transparent);
+      content: "";
+      pointer-events: none;
+    }
+
+    .support-section {
+      padding: clamp(3.8rem, 8vw, 7rem) 0;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .support-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 245px;
+      padding: 1.45rem;
+      transition: transform 320ms var(--ease), box-shadow 320ms var(--ease), border-color 320ms var(--ease);
+    }
+
+    .support-card:hover {
+      border-color: rgba(47, 119, 211, 0.32);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-7px);
+    }
+
+    .icon-wrap {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.4rem;
+      border: 1px solid rgba(47, 119, 211, 0.18);
+      border-radius: 15px;
+      color: var(--navy);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(198, 226, 255, 0.64));
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.95), 0 8px 18px rgba(47, 119, 211, 0.10);
+    }
+
+    .icon-wrap svg {
+      width: 23px;
+      height: 23px;
+      stroke: currentColor;
+    }
+
+    .support-card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+    }
+
+    .support-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 0.96rem;
+    }
+
+    .faq-section {
+      padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 7rem);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 0.8rem;
+      width: min(850px, 100%);
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
+    }
+
+    .faq-item[open] {
+      border-color: rgba(47, 119, 211, 0.32);
+      box-shadow: 0 20px 48px rgba(37, 71, 124, 0.13);
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      min-height: 68px;
+      padding: 1.1rem 1.4rem;
+      color: var(--ink);
+      font-weight: 760;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 1.7rem;
+      height: 1.7rem;
+      border: 1px solid rgba(47, 119, 211, 0.17);
+      border-radius: 50%;
+      color: var(--navy);
+      background: rgba(224, 239, 255, 0.62);
+      content: "+";
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1;
+      transition: transform 260ms var(--ease), background 260ms var(--ease);
+    }
+
+    .faq-item[open] summary::after {
+      background: rgba(192, 221, 255, 0.86);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.4rem 1.4rem;
+      color: var(--ink-soft);
+    }
+
+    .faq-item[open] .faq-answer {
+      animation: answer-in 300ms var(--ease) both;
+    }
+
+    .faq-answer p {
+      max-width: 71ch;
+      margin-bottom: 0;
+    }
+
+    @keyframes answer-in {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-section {
+      padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(4rem, 8vw, 7rem);
+    }
+
+    .support-contact {
+      padding: clamp(2rem, 6vw, 4.3rem);
+      text-align: center;
+      background:
+        radial-gradient(circle at 84% 18%, rgba(174, 217, 255, 0.46), transparent 30%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.87), rgba(234, 244, 255, 0.66));
+    }
+
+    .support-contact h2 {
+      margin-bottom: 1rem;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+    }
+
+    .support-contact > p {
+      max-width: 600px;
+      margin-right: auto;
+      margin-bottom: 1.5rem;
+      margin-left: auto;
+      color: var(--ink-soft);
+    }
+
+    .support-email {
+      display: inline-block;
+      margin-bottom: 1.8rem;
+      color: var(--navy);
+      font-size: clamp(1.06rem, 2.5vw, 1.35rem);
+      font-weight: 800;
+      overflow-wrap: anywhere;
+      text-decoration: underline;
+      text-decoration-color: rgba(47, 119, 211, 0.32);
+      text-underline-offset: 0.24em;
+      transition: color 200ms var(--ease), text-decoration-color 200ms var(--ease);
+    }
+
+    .support-email:hover {
+      color: var(--blue);
+      text-decoration-color: var(--blue);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0.86rem 1.24rem;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease), color 260ms var(--ease);
+    }
+
+    .button::before {
+      position: absolute;
+      inset: 0 auto 0 -125%;
+      width: 66%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+      content: "";
+      transform: skewX(-22deg);
+      transition: left 600ms var(--ease);
+    }
+
+    .button:hover::before { left: 155%; }
+
+    .button:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .button:active {
+      box-shadow: none;
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), #1753a5);
+      box-shadow: 0 13px 25px rgba(17, 60, 124, 0.25);
+    }
+
+    .button-primary:hover {
+      box-shadow: 0 19px 34px rgba(17, 60, 124, 0.31), 0 0 0 5px rgba(168, 216, 255, 0.24);
+    }
+
+    .button-secondary {
+      border-color: rgba(57, 105, 167, 0.22);
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.68);
+      box-shadow: 0 10px 22px rgba(31, 67, 118, 0.09);
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(47, 119, 211, 0.42);
+      box-shadow: 0 16px 30px rgba(31, 67, 118, 0.15);
+    }
+
+    .guidance-section {
+      padding: clamp(3rem, 7vw, 6rem) 0 clamp(4.5rem, 9vw, 7.5rem);
+    }
+
+    .guidance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .guidance-card {
+      min-height: 214px;
+      padding: 1.6rem;
+      transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), border-color 300ms var(--ease);
+    }
+
+    .guidance-card:hover {
+      border-color: rgba(47, 119, 211, 0.30);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-5px);
+    }
+
+    .guidance-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.1rem;
+      height: 2.1rem;
+      margin-bottom: 1.1rem;
+      border: 1px solid rgba(47, 119, 211, 0.18);
+      border-radius: 999px;
+      color: var(--navy);
+      background: rgba(218, 237, 255, 0.68);
+      font-size: 0.83rem;
+      font-weight: 850;
+    }
+
+    .guidance-card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.16rem;
+    }
+
+    .guidance-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+    }
+
+    .site-footer {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto 1.5rem;
+      padding: 1.4rem;
+      border: 1px solid var(--line);
+      border-top-color: rgba(255, 255, 255, 0.92);
+      border-radius: var(--radius-xl);
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: 0 16px 48px rgba(38, 73, 124, 0.10);
+      text-align: center;
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+    }
+
+    .footer-brand {
+      margin: 0 0 0.8rem;
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 850;
+      letter-spacing: 0.22em;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.3rem 0.55rem;
+      margin: 0 0 1rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      padding: 0.36rem 0.55rem;
+      border-radius: 10px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: color 200ms var(--ease), background 200ms var(--ease);
+    }
+
+    .footer-links a:hover,
+    .footer-links a[aria-current="page"] {
+      color: var(--navy);
+      background: rgba(213, 233, 255, 0.64);
+    }
+
+    .footer-email {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      color: var(--navy);
+      font-size: 0.92rem;
+      font-weight: 750;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-copy {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--quiet);
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .motion-ready .reveal {
+      opacity: 0;
+      filter: blur(6px);
+      transform: translateY(18px);
+      transition: opacity 700ms var(--ease), transform 700ms var(--ease), filter 700ms var(--ease);
+    }
+
+    .motion-ready .reveal.is-visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    .motion-ready .reveal[data-delay="1"] { transition-delay: 100ms; }
+    .motion-ready .reveal[data-delay="2"] { transition-delay: 190ms; }
+    .motion-ready .reveal[data-delay="3"] { transition-delay: 280ms; }
+    .motion-ready .reveal[data-delay="4"] { transition-delay: 360ms; }
+
+    @media (max-width: 900px) {
+      .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .support-card { min-height: 220px; }
+    }
+
+    @media (max-width: 720px) {
+      .site-header { padding-right: 1rem; padding-left: 1rem; }
+      .nav-shell { position: relative; min-height: 58px; padding-left: 1rem; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        right: 0;
+        left: 0;
+        display: grid;
+        gap: 0.28rem;
+        padding: 0.6rem;
+        border: 1px solid rgba(57, 105, 167, 0.19);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 18px 42px rgba(25, 58, 108, 0.16);
+        backdrop-filter: blur(24px) saturate(160%);
+        -webkit-backdrop-filter: blur(24px) saturate(160%);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px) scale(0.98);
+        transform-origin: top;
+        transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+      }
+      .nav-links[data-open="true"] {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+      .nav-links a { justify-content: flex-start; padding-left: 1rem; }
+      .hero { min-height: 540px; }
+      .guidance-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      main { width: min(100% - 1.25rem, 1120px); }
+      .site-header { padding-top: 0.6rem; }
+      .hero { min-height: 500px; padding-top: 5rem; }
+      h1 { font-size: clamp(2.55rem, 13vw, 3.7rem); }
+      .support-grid { grid-template-columns: 1fr; }
+      .support-card { min-height: auto; }
+      .faq-item summary { min-height: 62px; padding: 1rem 1.05rem; font-size: 0.96rem; }
+      .faq-answer { padding-right: 1.05rem; padding-bottom: 1.1rem; padding-left: 1.05rem; }
+      .support-contact { padding: 2rem 1.15rem; }
+      .action-row { display: grid; grid-template-columns: 1fr; width: 100%; }
+      .button { width: 100%; }
+      .site-footer { width: min(100% - 1.25rem, 1120px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="ROX home">ROX</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-links" id="primary-links" data-open="false">
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="support-title">
+      <div class="hero-content reveal is-visible">
+        <p class="eyebrow">Support Centre</p>
+        <h1 id="support-title">We're Here to Help.</h1>
+        <p class="hero-copy">Need help with your purchase, download or a question about ROX? You'll find answers below, and if you still need assistance, simply get in touch.</p>
+      </div>
+    </section>
+
+    <section class="support-section" aria-labelledby="support-categories-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">How we can help</p>
+        <h2 id="support-categories-title">Support for Every Step.</h2>
+        <p>Whether you are checking a purchase, accessing your files or planning your next collection, ROX is here to make the experience feel simple.</p>
+      </div>
+      <div class="support-grid">
+        <article class="support-card glass-card reveal" data-delay="1">
+          <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l3 3V20.5H6z"/><path d="M15 3.5v3h3M9 11h6M9 15h4"/></svg>
+          </div>
+          <h3>Purchase Support</h3>
+          <p>Help with completed purchases and details needed to identify an order.</p>
+        </article>
+        <article class="support-card glass-card reveal" data-delay="2">
+          <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M8 10l4 4 4-4"/><path d="M5 15.5v3A2.5 2.5 0 0 0 7.5 21h9a2.5 2.5 0 0 0 2.5-2.5v-3"/></svg>
+          </div>
+          <h3>Download Help</h3>
+          <p>Assistance accessing your ROX wallpaper collection when you need it.</p>
+        </article>
+        <article class="support-card glass-card reveal" data-delay="3">
+          <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h10v15H7z"/><path d="M10 8.5h4M10 12h4M12 17h.01"/></svg>
+          </div>
+          <h3>Technical Help</h3>
+          <p>Guidance for problems opening, extracting or using downloaded files.</p>
+        </article>
+        <article class="support-card glass-card reveal" data-delay="4">
+          <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.5a2.45 2.45 0 1 1 3.98 1.93c-.98.78-1.78 1.3-1.78 2.57M12 17.05h.01"/></svg>
+          </div>
+          <h3>General Questions</h3>
+          <p>Questions about ROX, Glass City or future wallpaper collections.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Frequently asked questions</p>
+        <h2 id="faq-title">Helpful Answers.</h2>
+        <p>Start here for clear guidance on digital purchases, downloads and contacting ROX.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item glass-card reveal">
+          <summary>How do I download my wallpapers?</summary>
+          <div class="faq-answer"><p>After completing checkout, use the download page provided for your collection. Select the download button and save the file to your device before opening or extracting it.</p></div>
+        </details>
+        <details class="faq-item glass-card reveal" data-delay="1">
+          <summary>What if my download doesn't work?</summary>
+          <div class="faq-answer"><p>Contact ROX with the email address used at checkout, the collection purchased and a short description of what happened. This helps us review the issue and guide you clearly.</p></div>
+        </details>
+        <details class="faq-item glass-card reveal" data-delay="2">
+          <summary>Can I download again later?</summary>
+          <div class="faq-answer"><p>If you need help accessing a previously purchased collection, email ROX with your purchase details and we will review the best way to help.</p></div>
+        </details>
+        <details class="faq-item glass-card reveal" data-delay="3">
+          <summary>I accidentally purchased twice.</summary>
+          <div class="faq-answer"><p>Please contact ROX with the email used at checkout and any relevant purchase information. Duplicate-purchase requests are reviewed individually.</p></div>
+        </details>
+        <details class="faq-item glass-card reveal">
+          <summary>How do I contact ROX?</summary>
+          <div class="faq-answer"><p>Email <a href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a> and include enough detail for us to identify the purchase or question you need help with.</p></div>
+        </details>
+        <details class="faq-item glass-card reveal" data-delay="1">
+          <summary>Do upcoming collections become free?</summary>
+          <div class="faq-answer"><p>Upcoming ROX collections are announced separately. Their availability and pricing will be shared when each collection is ready to release.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="contact-support-title">
+      <article class="support-contact glass-card reveal">
+        <p class="eyebrow">Direct support</p>
+        <h2 id="contact-support-title">Still Need Help?</h2>
+        <p>If you couldn't find the answer above, contact ROX directly and we'll be happy to help.</p>
+        <a class="support-email" href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a>
+        <div class="action-row">
+          <a class="button button-primary" href="mailto:roxhelpp@gmail.com">Email ROX Support</a>
+          <a class="button button-secondary" href="index.html">Back to Home</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="guidance-section" aria-labelledby="guidance-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Helpful purchase guidance</p>
+        <h2 id="guidance-title">A Faster Route to Support.</h2>
+        <p>A few useful details can help ROX understand your request from the start.</p>
+      </div>
+      <div class="guidance-grid">
+        <article class="guidance-card glass-card reveal" data-delay="1">
+          <span class="guidance-number" aria-hidden="true">01</span>
+          <h3>Before contacting us</h3>
+          <p>Include the email address you used during checkout so your purchase can be identified accurately.</p>
+        </article>
+        <article class="guidance-card glass-card reveal" data-delay="2">
+          <span class="guidance-number" aria-hidden="true">02</span>
+          <h3>Download issues</h3>
+          <p>Mention the collection purchased and describe the issue, including any message or step where the download stopped working.</p>
+        </article>
+        <article class="guidance-card glass-card reveal" data-delay="3">
+          <span class="guidance-number" aria-hidden="true">03</span>
+          <h3>Response guidance</h3>
+          <p>ROX reviews every support request individually and aims to respond as soon as possible.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal" aria-label="ROX footer">
+    <p class="footer-brand">ROX</p>
+    <ul class="footer-links">
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="support.html" aria-current="page">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="refund.html">Refund</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <a class="footer-email" href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a>
+    <p class="footer-copy">© 2026 ROX All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("motion-ready");
+
+    var header = document.querySelector(".site-header");
+    var menuToggle = document.querySelector(".menu-toggle");
+    var primaryLinks = document.querySelector(".nav-links");
+    var menuIconPath = menuToggle ? menuToggle.querySelector("path") : null;
+
+    function updateHeader() {
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
+    }
+
+    function closeMenu() {
+      if (!menuToggle || !primaryLinks) return;
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      primaryLinks.dataset.open = "false";
+      if (menuIconPath) menuIconPath.setAttribute("d", "M4 7h16M4 12h16M4 17h16");
+    }
+
+    function toggleMenu() {
+      var isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+      primaryLinks.dataset.open = String(!isOpen);
+      if (menuIconPath) menuIconPath.setAttribute("d", isOpen ? "M4 7h16M4 12h16M4 17h16" : "M6 6l12 12M18 6 6 18");
+    }
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    if (menuToggle && primaryLinks) {
+      menuToggle.addEventListener("click", toggleMenu);
+      primaryLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 720) closeMenu();
+      });
+    }
+
+    var revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      var revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -36px" });
+      revealItems.forEach(function (item) {
+        if (!item.classList.contains("is-visible")) revealObserver.observe(item);
+      });
+    } else {
+      revealItems.forEach(function (item) {
+        item.classList.add("is-visible");
+      });
+    }
+  </script>
 </body>
-
 </html>
