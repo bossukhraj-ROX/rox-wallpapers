@@ -1,0 +1,10 @@
+# Private Luminar source artwork must never be published.
+assets/images/luminar/originals/
+
+# Customer-delivery archives are not public repository assets.
+*.zip
+
+# Keep local credentials and environment-specific settings private.
+.env
+.env.*
+!.env.example

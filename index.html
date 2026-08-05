@@ -711,6 +711,41 @@
 
     .future-card:hover::before { transform: scale(1.2) translate(-10px, 10px); }
 
+    .future-card--available {
+      display: block;
+      isolation: isolate;
+    }
+
+    .luminar-card-image {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .48;
+      object-fit: cover;
+      filter: saturate(.9);
+      transform: scale(1.05);
+      transition: opacity .33s ease, transform .45s ease;
+    }
+
+    .future-card--available::before,
+    .future-card--available::after { z-index: 1; }
+
+    .future-card--available .coming,
+    .future-card--available h3 { z-index: 2; }
+
+    .collection-available {
+      color: #1c7161;
+      border-color: rgba(40, 139, 118, .24);
+      background: rgba(239, 255, 250, .62);
+    }
+
+    .future-card--available:hover .luminar-card-image {
+      opacity: .62;
+      transform: scale(1.11);
+    }
+
     .coming {
       position: relative;
       z-index: 1;
@@ -1129,14 +1164,18 @@
     <section class="section shell" aria-labelledby="library-title">
       <div class="section-heading reveal">
         <div>
-          <p class="section-kicker">In development</p>
+          <p class="section-kicker">Growing library</p>
           <h2 id="library-title">Expand your wallpaper library.</h2>
         </div>
-        <p class="section-note">New visual worlds are being designed with the same attention to stillness, colour and depth.</p>
+        <p class="section-note">Explore Luminar now, alongside new visual worlds planned for future releases.</p>
       </div>
 
       <div class="library-grid">
-        <article class="future-card reveal" style="--delay: 0ms; --orb: rgba(173, 198, 255, .64)"><span class="coming">Coming soon</span><h3>Luminar</h3></article>
+        <a class="future-card future-card--available reveal" href="collections.html#luminar" style="--delay: 0ms; --orb: rgba(173, 198, 255, .64)" aria-label="Explore the Luminar wallpaper collection">
+          <img class="luminar-card-image" src="assets/images/luminar/previews/rox-luminar-preview-01.webp" alt="" loading="lazy" decoding="async">
+          <span class="coming collection-available">Available Now</span>
+          <h3>Luminar</h3>
+        </a>
         <article class="future-card reveal" style="--delay: 60ms; --orb: rgba(143, 211, 255, .58)"><span class="coming">Coming soon</span><h3>Crystal District</h3></article>
         <article class="future-card reveal" style="--delay: 120ms; --orb: rgba(178, 231, 229, .58)"><span class="coming">Coming soon</span><h3>Elevation</h3></article>
         <article class="future-card reveal" style="--delay: 180ms; --orb: rgba(226, 204, 255, .6)"><span class="coming">Coming soon</span><h3>Mono Leaf</h3></article>
