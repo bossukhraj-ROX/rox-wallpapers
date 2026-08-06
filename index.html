@@ -361,6 +361,40 @@
 
     .product-heading { text-align: center; }
 
+    .product-status {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin: 0 0 13px;
+    }
+
+    .product-status .available { margin: 0; }
+
+    .new-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 5px 9px;
+      border: 1px solid rgba(57, 120, 199, .25);
+      border-radius: 999px;
+      color: var(--navy);
+      background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(193,222,255,.4));
+      box-shadow: 0 5px 13px rgba(39,83,146,.1), inset 0 1px 0 rgba(255,255,255,.86);
+      font-size: .61rem;
+      font-weight: 840;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .product-card:hover .new-badge {
+      border-color: rgba(45, 113, 197, .42);
+      box-shadow: 0 8px 17px rgba(38,82,146,.15), inset 0 1px 0 rgba(255,255,255,.92);
+      transform: translateY(-2px);
+    }
+
     .available {
       display: inline-flex;
       align-items: center;
@@ -413,6 +447,17 @@
       border-radius: 18px;
       object-fit: cover;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+    }
+
+    .luminar-feature-frame {
+      width: min(100%, 480px);
+    }
+
+    .luminar-feature-frame img {
+      min-height: 0;
+      aspect-ratio: 480 / 1038;
+      height: auto;
+      object-fit: contain;
     }
 
     .frame-caption {
@@ -711,41 +756,6 @@
 
     .future-card:hover::before { transform: scale(1.2) translate(-10px, 10px); }
 
-    .future-card--available {
-      display: block;
-      isolation: isolate;
-    }
-
-    .luminar-card-image {
-      position: absolute;
-      z-index: 0;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: .48;
-      object-fit: cover;
-      filter: saturate(.9);
-      transform: scale(1.05);
-      transition: opacity .33s ease, transform .45s ease;
-    }
-
-    .future-card--available::before,
-    .future-card--available::after { z-index: 1; }
-
-    .future-card--available .coming,
-    .future-card--available h3 { z-index: 2; }
-
-    .collection-available {
-      color: #1c7161;
-      border-color: rgba(40, 139, 118, .24);
-      background: rgba(239, 255, 250, .62);
-    }
-
-    .future-card--available:hover .luminar-card-image {
-      opacity: .62;
-      transform: scale(1.11);
-    }
-
     .coming {
       position: relative;
       z-index: 1;
@@ -966,6 +976,8 @@
       .product-flow { gap: 20px; }
       .feature-frame { width: min(100%, 470px); padding: 7px; border-radius: 22px; }
       .feature-frame img { min-height: 290px; border-radius: 15px; }
+      .luminar-feature-frame { width: min(100%, 400px); }
+      .luminar-feature-frame img { min-height: 0; }
       .frame-caption { right: 16px; bottom: 16px; }
 
       .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -973,7 +985,6 @@
       .purchase-area { margin-top: 22px; }
 
       .library-grid { grid-template-columns: repeat(2, 1fr); }
-      .future-card:last-child { grid-column: span 2; }
       .future-card { min-height: 183px; padding: 16px; }
 
       .benefit-grid { grid-template-columns: 1fr; }
@@ -1116,7 +1127,10 @@
       <article class="product-card glass-panel reveal">
         <div class="product-flow">
           <div class="product-heading">
-            <p class="available">Available now</p>
+            <div class="product-status">
+              <p class="available">Available Now</p>
+              <span class="new-badge">NEW</span>
+            </div>
             <h2>Glass City</h2>
           </div>
 
@@ -1161,25 +1175,81 @@
       </article>
     </section>
 
+    <section class="section shell" aria-labelledby="luminar-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="section-kicker">New collection</p>
+          <h2 id="luminar-title">Luminar Collection.</h2>
+        </div>
+        <p class="section-note">Cinematic colour and celestial depth, prepared for the screen in your hand.</p>
+      </div>
+
+      <article class="product-card glass-panel reveal">
+        <div class="product-flow">
+          <div class="product-heading">
+            <div class="product-status">
+              <p class="available">Available Now</p>
+              <span class="new-badge">NEW</span>
+            </div>
+          </div>
+
+          <div class="feature-frame luminar-feature-frame">
+            <img src="assets/images/luminar/featured/rox-luminar-featured.webp" alt="Luminar collection cover artwork showing a luminous blue and amber cosmic vortex" loading="lazy" decoding="async">
+            <span class="frame-caption">ROX / Luminar</span>
+          </div>
+
+          <div class="product-details">
+            <p class="product-description">Luminar is a premium collection of 10 cinematic 4K phone wallpapers inspired by distant planets, glowing nebulae, stellar storms and futuristic worlds.</p>
+            <p class="made-for">Made for Everyday Screens</p>
+
+            <div class="gallery protected-preview-gallery" aria-label="Luminar protected wallpaper previews">
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-01.webp" draggable="false" alt="Protected Luminar wallpaper preview one" loading="lazy" decoding="async"><span class="preview-name">Preview 01</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-02.webp" draggable="false" alt="Protected Luminar wallpaper preview two" loading="lazy" decoding="async"><span class="preview-name">Preview 02</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-03.webp" draggable="false" alt="Protected Luminar wallpaper preview three" loading="lazy" decoding="async"><span class="preview-name">Preview 03</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-04.webp" draggable="false" alt="Protected Luminar wallpaper preview four" loading="lazy" decoding="async"><span class="preview-name">Preview 04</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-05.webp" draggable="false" alt="Protected Luminar wallpaper preview five" loading="lazy" decoding="async"><span class="preview-name">Preview 05</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-06.webp" draggable="false" alt="Protected Luminar wallpaper preview six" loading="lazy" decoding="async"><span class="preview-name">Preview 06</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-07.webp" draggable="false" alt="Protected Luminar wallpaper preview seven" loading="lazy" decoding="async"><span class="preview-name">Preview 07</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-08.webp" draggable="false" alt="Protected Luminar wallpaper preview eight" loading="lazy" decoding="async"><span class="preview-name">Preview 08</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-09.webp" draggable="false" alt="Protected Luminar wallpaper preview nine" loading="lazy" decoding="async"><span class="preview-name">Preview 09</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-10.webp" draggable="false" alt="Protected Luminar wallpaper preview ten" loading="lazy" decoding="async"><span class="preview-name">Preview 10</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+            </div>
+
+            <div class="badge-row" aria-label="Luminar product details">
+              <span class="product-badge">10 Premium Wallpapers</span>
+              <span class="product-badge">4K Phone Wallpapers</span>
+              <span class="product-badge">Portrait Format</span>
+              <span class="product-badge">iPhone &amp; Android</span>
+              <span class="product-badge">One-Time Purchase</span>
+              <span class="product-badge">Instant Digital Access</span>
+            </div>
+
+            <div class="purchase-area">
+              <p class="price">£2.99</p>
+              <div class="button-row">
+                <a class="button button-primary" href="https://buy.stripe.com/00wcMZe4ycbtaI12K1bMQ01">Buy Luminar</a>
+                <a class="button button-secondary" href="collections.html#luminar">View All Collections</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
     <section class="section shell" aria-labelledby="library-title">
       <div class="section-heading reveal">
         <div>
-          <p class="section-kicker">Growing library</p>
+          <p class="section-kicker">Upcoming collections</p>
           <h2 id="library-title">Expand your wallpaper library.</h2>
         </div>
-        <p class="section-note">Explore Luminar now, alongside new visual worlds planned for future releases.</p>
+        <p class="section-note">New visual worlds are being designed with the same attention to stillness, colour and depth.</p>
       </div>
 
       <div class="library-grid">
-        <a class="future-card future-card--available reveal" href="collections.html#luminar" style="--delay: 0ms; --orb: rgba(173, 198, 255, .64)" aria-label="Explore the Luminar wallpaper collection">
-          <img class="luminar-card-image" src="assets/images/luminar/featured/rox-luminar-featured.webp" alt="" loading="lazy" decoding="async">
-          <span class="coming collection-available">Available Now</span>
-          <h3>Luminar</h3>
-        </a>
-        <article class="future-card reveal" style="--delay: 60ms; --orb: rgba(143, 211, 255, .58)"><span class="coming">Coming soon</span><h3>Crystal District</h3></article>
-        <article class="future-card reveal" style="--delay: 120ms; --orb: rgba(178, 231, 229, .58)"><span class="coming">Coming soon</span><h3>Elevation</h3></article>
-        <article class="future-card reveal" style="--delay: 180ms; --orb: rgba(226, 204, 255, .6)"><span class="coming">Coming soon</span><h3>Mono Leaf</h3></article>
-        <article class="future-card reveal" style="--delay: 240ms; --orb: rgba(190, 214, 255, .62)"><span class="coming">Coming soon</span><h3>Horizon</h3></article>
+        <article class="future-card reveal" style="--delay: 0ms; --orb: rgba(143, 211, 255, .58)"><span class="coming">Coming soon</span><h3>Crystal District</h3></article>
+        <article class="future-card reveal" style="--delay: 60ms; --orb: rgba(178, 231, 229, .58)"><span class="coming">Coming soon</span><h3>Elevation</h3></article>
+        <article class="future-card reveal" style="--delay: 120ms; --orb: rgba(226, 204, 255, .6)"><span class="coming">Coming soon</span><h3>Mono Leaf</h3></article>
+        <article class="future-card reveal" style="--delay: 180ms; --orb: rgba(190, 214, 255, .62)"><span class="coming">Coming soon</span><h3>Horizon</h3></article>
       </div>
     </section>
 
