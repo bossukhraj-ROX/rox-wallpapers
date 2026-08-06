@@ -73,6 +73,8 @@
     .download-section { padding-top:0; padding-bottom:clamp(4rem,7vw,6.4rem); }
     .download-panel { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(280px,.72fr); gap:clamp(2rem,5vw,5rem); align-items:center; padding:clamp(1.75rem,5vw,3.5rem); border-radius:var(--radius); }
     .download-panel > * { position:relative; z-index:1; }
+    .luminar-download-cover { width:clamp(96px,12vw,138px); margin:0 0 1.15rem; overflow:hidden; border:1px solid rgba(255,255,255,.82); border-radius:18px; box-shadow:0 14px 28px rgba(17,48,95,.16),inset 0 1px 0 rgba(255,255,255,.82); }
+    .luminar-download-cover img { display:block; width:100%; height:auto; aspect-ratio:480 / 1038; object-fit:cover; }
     .download-copy h2 { margin:.8rem 0 .9rem; font-size:clamp(2rem,4.4vw,3.45rem); line-height:1.05; letter-spacing:-.055em; }
     .download-copy p { max-width:540px; margin:0; color:var(--ink-soft); }
     .collection-detail { margin-top:1rem !important; color:var(--navy) !important; font-size:.9rem; font-weight:780; }
@@ -274,6 +276,9 @@
     <section class="section download-section" aria-labelledby="download-title">
       <article class="download-panel success-download-panel glass reveal">
         <div class="download-copy">
+          <figure class="luminar-download-cover">
+            <img src="assets/images/luminar/featured/rox-luminar-featured.webp" alt="Luminar collection cover artwork showing a luminous blue and amber cosmic vortex" decoding="async">
+          </figure>
           <span class="eyebrow">Your Collection</span>
           <h2 id="download-title">Download Luminar</h2>
           <p>Your premium Luminar wallpapers are ready to download.</p>
