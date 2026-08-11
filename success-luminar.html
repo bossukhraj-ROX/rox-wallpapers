@@ -87,8 +87,6 @@
     .success-download-link svg { transition:transform .26s var(--ease); }
     .success-download-link:hover svg { transform:translateY(2px); }
     .success-download-link:active { box-shadow:0 7px 15px rgba(8,42,99,.24),inset 0 1px 0 rgba(255,255,255,.25); transform:translateY(-1px) scale(.987); }
-    .success-download-link[aria-disabled="true"] { cursor:not-allowed; opacity:.65; pointer-events:none; }
-    .download-placeholder-note { max-width:300px; margin:0; color:var(--quiet); font-size:.78rem; text-align:center; }
     .trouble-link { width:max-content; color:var(--navy); font-size:.86rem; font-weight:800; border-bottom:1px solid rgba(10,43,99,.22); transition:color .2s,border-color .2s; }
     .trouble-link:hover { color:var(--blue); border-color:var(--blue); }
 
@@ -282,13 +280,11 @@
           <span class="eyebrow">Your Collection</span>
           <h2 id="download-title">Download Luminar</h2>
           <p>Your premium Luminar wallpapers are ready to download.</p>
-          <p class="collection-detail">Your personal-use digital collection is ready when the private link is added.</p>
+          <p class="collection-detail">Your Luminar collection is ready to download.</p>
           <p class="notice" role="note"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><path d="M12 10v5M12 7.2h.01"/></svg>This page does not independently verify payment status.</p>
         </div>
         <div class="download-area">
-          <!-- Replace with the private Luminar ZIP download URL -->
-          <a id="collection-download-link" class="button button-primary success-download-link" href="LUMINAR_PRIVATE_DOWNLOAD_URL" aria-disabled="true">Download Luminar <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg></a>
-          <p class="download-placeholder-note" role="note">Luminar’s private download link will be added before checkout is enabled.</p>
+          <a id="collection-download-link" class="button button-primary success-download-link" href="https://drive.google.com/uc?export=download&id=1QDons_sVRuIumObcC7itAeq8ns0DmZTs" target="_blank" rel="noopener noreferrer">Download Luminar <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg></a>
           <a class="trouble-link" href="mailto:roxhelpp@gmail.com">Having trouble downloading?</a>
         </div>
       </article>
@@ -364,12 +360,6 @@
       document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
     }
 
-    const privateDownloadLink = document.getElementById("collection-download-link");
-    privateDownloadLink.addEventListener("click", (event) => {
-      if (privateDownloadLink.getAttribute("href") === "LUMINAR_PRIVATE_DOWNLOAD_URL") {
-        event.preventDefault();
-      }
-    });
   </script>
 </body>
 </html>

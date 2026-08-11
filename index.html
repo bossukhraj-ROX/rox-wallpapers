@@ -546,8 +546,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: blur(1.5px) saturate(.82) brightness(.8);
-      transform: scale(1.045);
+      filter: blur(1.5px) saturate(.94) brightness(.98);
+      transform: scale(1.035);
       transition: filter .42s ease, transform .62s cubic-bezier(.2,.8,.2,1);
     }
 
@@ -556,8 +556,8 @@
       z-index: 1;
       inset: 0;
       content: "";
-      background: linear-gradient(135deg, rgba(7,28,65,.07), rgba(7,28,65,.34));
-      backdrop-filter: blur(1px);
+      background: linear-gradient(135deg, rgba(7,28,65,.03), rgba(7,28,65,.14));
+      backdrop-filter: blur(.5px);
       transition: background .34s ease;
     }
 
@@ -569,16 +569,16 @@
     }
 
     .preview:hover img {
-      filter: blur(.5px) saturate(1) brightness(.92);
-      transform: scale(1.09);
+      filter: blur(.5px) saturate(1) brightness(1.02);
+      transform: scale(1.07);
     }
 
-    .preview:hover::before { background: linear-gradient(135deg, rgba(8,35,78,.02), rgba(8,35,78,.18)); }
+    .preview:hover::before { background: linear-gradient(135deg, rgba(8,35,78,.01), rgba(8,35,78,.08)); }
 
     .preview-name {
       position: absolute;
       z-index: 2;
-      top: 10px;
+      top: 29px;
       left: 10px;
       color: rgba(255,255,255,.86);
       font-size: .61rem;
@@ -595,7 +595,7 @@
       left: 50%;
       width: 42px;
       height: 42px;
-      opacity: .78;
+      opacity: .38;
       transform: translate(-50%, -50%);
       transition: opacity .35s ease, transform .35s ease;
     }
@@ -616,21 +616,24 @@
     .protect-x::after { transform: rotate(-45deg); }
 
     .preview:hover .protect-x {
-      opacity: .98;
+      opacity: .42;
       transform: translate(-50%, -50%) rotate(90deg);
     }
 
     .preview-watermark {
       position: absolute;
       z-index: 2;
-      right: 10px;
-      bottom: 9px;
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.7);
       font-size: .65rem;
       font-weight: 820;
       letter-spacing: .18em;
-      text-shadow: 0 1px 8px rgba(0,0,0,.42);
+      text-shadow: 0 1px 8px rgba(0,0,0,.58);
     }
+
+    .preview-watermark.wm-tl { top: 9px; left: 10px; }
+    .preview-watermark.wm-tr { top: 9px; right: 10px; }
+    .preview-watermark.wm-bl { bottom: 9px; left: 10px; }
+    .preview-watermark.wm-br { right: 10px; bottom: 9px; }
 
     .purchase-area { margin-top: 27px; }
 
@@ -1151,16 +1154,16 @@
             </div>
 
             <div class="gallery protected-preview-gallery" aria-label="Glass City protected wallpaper previews">
-              <figure class="preview"><img src="protected-previews/glass-city-preview-01.jpg" draggable="false" alt="Protected Glass City wallpaper preview one" loading="lazy" decoding="async"><span class="preview-name">Preview 01</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-02.jpg" draggable="false" alt="Protected Glass City wallpaper preview two" loading="lazy" decoding="async"><span class="preview-name">Preview 02</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-03.jpg" draggable="false" alt="Protected Glass City wallpaper preview three" loading="lazy" decoding="async"><span class="preview-name">Preview 03</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-04.jpg" draggable="false" alt="Protected Glass City wallpaper preview four" loading="lazy" decoding="async"><span class="preview-name">Preview 04</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-05.jpg" draggable="false" alt="Protected Glass City wallpaper preview five" loading="lazy" decoding="async"><span class="preview-name">Preview 05</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-06.jpg" draggable="false" alt="Protected Glass City wallpaper preview six" loading="lazy" decoding="async"><span class="preview-name">Preview 06</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-07.jpg" draggable="false" alt="Protected Glass City wallpaper preview seven" loading="lazy" decoding="async"><span class="preview-name">Preview 07</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-08.jpg" draggable="false" alt="Protected Glass City wallpaper preview eight" loading="lazy" decoding="async"><span class="preview-name">Preview 08</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-09.jpg" draggable="false" alt="Protected Glass City wallpaper preview nine" loading="lazy" decoding="async"><span class="preview-name">Preview 09</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="protected-previews/glass-city-preview-10.jpg" draggable="false" alt="Protected Glass City wallpaper preview ten" loading="lazy" decoding="async"><span class="preview-name">Preview 10</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-01.jpg" draggable="false" alt="Protected Glass City wallpaper preview one" loading="lazy" decoding="async"><span class="preview-name">Preview 01</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-02.jpg" draggable="false" alt="Protected Glass City wallpaper preview two" loading="lazy" decoding="async"><span class="preview-name">Preview 02</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-03.jpg" draggable="false" alt="Protected Glass City wallpaper preview three" loading="lazy" decoding="async"><span class="preview-name">Preview 03</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-04.jpg" draggable="false" alt="Protected Glass City wallpaper preview four" loading="lazy" decoding="async"><span class="preview-name">Preview 04</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-05.jpg" draggable="false" alt="Protected Glass City wallpaper preview five" loading="lazy" decoding="async"><span class="preview-name">Preview 05</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-06.jpg" draggable="false" alt="Protected Glass City wallpaper preview six" loading="lazy" decoding="async"><span class="preview-name">Preview 06</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-07.jpg" draggable="false" alt="Protected Glass City wallpaper preview seven" loading="lazy" decoding="async"><span class="preview-name">Preview 07</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-08.jpg" draggable="false" alt="Protected Glass City wallpaper preview eight" loading="lazy" decoding="async"><span class="preview-name">Preview 08</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-09.jpg" draggable="false" alt="Protected Glass City wallpaper preview nine" loading="lazy" decoding="async"><span class="preview-name">Preview 09</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="protected-previews/glass-city-preview-10.jpg" draggable="false" alt="Protected Glass City wallpaper preview ten" loading="lazy" decoding="async"><span class="preview-name">Preview 10</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
             </div>
 
             <div class="purchase-area">
@@ -1203,16 +1206,16 @@
             <p class="made-for">Made for Everyday Screens</p>
 
             <div class="gallery protected-preview-gallery" aria-label="Luminar protected wallpaper previews">
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-01.webp" draggable="false" alt="Protected Luminar wallpaper preview one" loading="lazy" decoding="async"><span class="preview-name">Preview 01</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-02.webp" draggable="false" alt="Protected Luminar wallpaper preview two" loading="lazy" decoding="async"><span class="preview-name">Preview 02</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-03.webp" draggable="false" alt="Protected Luminar wallpaper preview three" loading="lazy" decoding="async"><span class="preview-name">Preview 03</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-04.webp" draggable="false" alt="Protected Luminar wallpaper preview four" loading="lazy" decoding="async"><span class="preview-name">Preview 04</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-05.webp" draggable="false" alt="Protected Luminar wallpaper preview five" loading="lazy" decoding="async"><span class="preview-name">Preview 05</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-06.webp" draggable="false" alt="Protected Luminar wallpaper preview six" loading="lazy" decoding="async"><span class="preview-name">Preview 06</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-07.webp" draggable="false" alt="Protected Luminar wallpaper preview seven" loading="lazy" decoding="async"><span class="preview-name">Preview 07</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-08.webp" draggable="false" alt="Protected Luminar wallpaper preview eight" loading="lazy" decoding="async"><span class="preview-name">Preview 08</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-09.webp" draggable="false" alt="Protected Luminar wallpaper preview nine" loading="lazy" decoding="async"><span class="preview-name">Preview 09</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
-              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-10.webp" draggable="false" alt="Protected Luminar wallpaper preview ten" loading="lazy" decoding="async"><span class="preview-name">Preview 10</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-01.webp" draggable="false" alt="Protected Luminar wallpaper preview one" loading="lazy" decoding="async"><span class="preview-name">Preview 01</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-02.webp" draggable="false" alt="Protected Luminar wallpaper preview two" loading="lazy" decoding="async"><span class="preview-name">Preview 02</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-03.webp" draggable="false" alt="Protected Luminar wallpaper preview three" loading="lazy" decoding="async"><span class="preview-name">Preview 03</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-04.webp" draggable="false" alt="Protected Luminar wallpaper preview four" loading="lazy" decoding="async"><span class="preview-name">Preview 04</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-05.webp" draggable="false" alt="Protected Luminar wallpaper preview five" loading="lazy" decoding="async"><span class="preview-name">Preview 05</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-06.webp" draggable="false" alt="Protected Luminar wallpaper preview six" loading="lazy" decoding="async"><span class="preview-name">Preview 06</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-07.webp" draggable="false" alt="Protected Luminar wallpaper preview seven" loading="lazy" decoding="async"><span class="preview-name">Preview 07</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-08.webp" draggable="false" alt="Protected Luminar wallpaper preview eight" loading="lazy" decoding="async"><span class="preview-name">Preview 08</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-09.webp" draggable="false" alt="Protected Luminar wallpaper preview nine" loading="lazy" decoding="async"><span class="preview-name">Preview 09</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
+              <figure class="preview"><img src="assets/images/luminar/previews/rox-luminar-preview-10.webp" draggable="false" alt="Protected Luminar wallpaper preview ten" loading="lazy" decoding="async"><span class="preview-name">Preview 10</span><span class="protect-x" aria-hidden="true"></span><span class="preview-watermark wm-tl" aria-hidden="true">ROX</span><span class="preview-watermark wm-tr" aria-hidden="true">ROX</span><span class="preview-watermark wm-bl" aria-hidden="true">ROX</span><span class="preview-watermark wm-br" aria-hidden="true">ROX</span></figure>
             </div>
 
             <div class="badge-row" aria-label="Luminar product details">

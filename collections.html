@@ -81,11 +81,11 @@
     .preview-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(.65rem,1.5vw,1rem); list-style:none; padding:0; margin:0; }
     .preview { position:relative; aspect-ratio:4 / 5; overflow:hidden; border:1px solid rgba(49,101,177,.2); border-radius:18px; background:#dce8f8; box-shadow:0 10px 20px rgba(19,53,104,.1), inset 0 1px 0 #fff; transition:transform .3s var(--ease),box-shadow .3s; }
     .preview:hover { transform:translateY(-4px); box-shadow:0 17px 28px rgba(19,53,104,.16),inset 0 1px 0 #fff; }
-    .preview img { width:100%; height:100%; object-fit:cover; filter:blur(8px) saturate(.93); transform:scale(1.08); transition:none; }
-    .preview::after { content:""; position:absolute; inset:0; background:linear-gradient(145deg,rgba(255,255,255,.19),transparent 42%,rgba(4,27,68,.12)); pointer-events:none; }
-    .preview-x::before,.preview-x::after { content:""; position:absolute; z-index:2; top:50%; left:50%; width:62%; height:3px; border-radius:4px; background:rgba(255,255,255,.94); box-shadow:0 1px 6px rgba(4,24,64,.34); transform:translate(-50%,-50%) rotate(45deg); }
+    .preview img { width:100%; height:100%; object-fit:cover; filter:blur(2.25px) saturate(.96) brightness(1.02); transform:scale(1.04); transition:none; }
+    .preview::after { content:""; position:absolute; inset:0; background:linear-gradient(145deg,rgba(255,255,255,.06),transparent 45%,rgba(4,27,68,.06)); pointer-events:none; }
+    .preview-x::before,.preview-x::after { content:""; position:absolute; z-index:2; top:50%; left:50%; width:62%; height:3px; border-radius:4px; background:rgba(255,255,255,.38); box-shadow:0 1px 6px rgba(4,24,64,.45); transform:translate(-50%,-50%) rotate(45deg); }
     .preview-x::after { transform:translate(-50%,-50%) rotate(-45deg); }
-    .watermark { position:absolute; z-index:3; color:rgba(255,255,255,.97); font-size:clamp(.55rem,1vw,.7rem); line-height:1; font-weight:900; letter-spacing:.13em; text-shadow:0 1px 5px rgba(3,23,57,.48); }
+    .watermark { position:absolute; z-index:3; color:rgba(255,255,255,.7); font-size:clamp(.55rem,1vw,.7rem); line-height:1; font-weight:900; letter-spacing:.13em; text-shadow:0 1px 5px rgba(3,23,57,.62); }
     .wm-tl{top:8px;left:8px}.wm-tr{top:8px;right:7px}.wm-bl{bottom:8px;left:8px}.wm-br{bottom:8px;right:7px}
     .upcoming-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1rem; }
     .future-card { min-height:286px; padding:1.15rem; border-radius:22px; display:flex; flex-direction:column; transition:transform .3s var(--ease),box-shadow .3s; }
