@@ -1,6 +1,7 @@
 # Private Luminar source artwork must never be published.
 assets/images/luminar/originals/
 assets/images/crystal-district/originals/
+assets/images/elevation/originals/
 
 # Customer-delivery archives are not public repository assets.
 *.zip
