@@ -82,6 +82,7 @@
     .preview { position:relative; aspect-ratio:4 / 5; overflow:hidden; border:1px solid rgba(49,101,177,.2); border-radius:18px; background:#dce8f8; box-shadow:0 10px 20px rgba(19,53,104,.1), inset 0 1px 0 #fff; transition:transform .3s var(--ease),box-shadow .3s; }
     .preview:hover { transform:translateY(-4px); box-shadow:0 17px 28px rgba(19,53,104,.16),inset 0 1px 0 #fff; }
     .preview img { width:100%; height:100%; object-fit:cover; filter:blur(8px) saturate(.93); transform:scale(1.08); transition:none; }
+    #crystal-district .preview img { filter:blur(1.5px) saturate(.93); transform:scale(1.045); }
     .preview::after { content:""; position:absolute; inset:0; background:linear-gradient(145deg,rgba(255,255,255,.19),transparent 42%,rgba(4,27,68,.12)); pointer-events:none; }
     .preview-x::before,.preview-x::after { content:""; position:absolute; z-index:2; top:50%; left:50%; width:62%; height:3px; border-radius:4px; background:rgba(255,255,255,.94); box-shadow:0 1px 6px rgba(4,24,64,.34); transform:translate(-50%,-50%) rotate(45deg); }
     .preview-x::after { transform:translate(-50%,-50%) rotate(-45deg); }
@@ -307,12 +308,45 @@
         <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-10.webp" draggable="false" alt="Protected Luminar wallpaper preview ten" loading="lazy" decoding="async"><span class="watermark wm-tl">ROX</span><span class="watermark wm-tr">ROX</span><span class="watermark wm-bl">ROX</span><span class="watermark wm-br">ROX</span><span class="preview-x" aria-hidden="true"></span></li>
       </ul>
     </section>
+    <section id="crystal-district" class="section" aria-labelledby="crystal-district-title">
+      <article class="featured glass reveal" aria-labelledby="crystal-district-title">
+        <div class="artwork"><img src="assets/images/crystal-district/featured/rox-crystal-district-featured.webp" alt="Crystal District Collection featured wallpaper artwork showing reflective glass architecture at sunset" fetchpriority="high" decoding="async"></div>
+        <div class="featured-copy">
+          <span class="status">New</span>
+          <span class="status">Available Now</span>
+          <h2 id="crystal-district-title">Crystal District Collection</h2>
+          <p class="featured-description">Crystal District is a premium collection of 10 phone wallpapers inspired by sculptural glass architecture, crystalline structures, reflective surfaces and atmospheric modern city spaces.</p>
+          <ul class="badges" aria-label="Crystal District Collection details">
+            <li>10 Premium Wallpapers</li><li>High-Quality Phone Wallpapers</li><li>Portrait Format</li><li>iPhone &amp; Android</li><li>One-Time Purchase</li><li>Instant Digital Access</li>
+          </ul>
+          <div class="price-row"><span class="price">£3.99</span><span class="price-note">One-time purchase for all 10 wallpapers.</span></div>
+          <div class="actions">
+            <a class="button button-primary" href="https://buy.stripe.com/fZu9ANd0u0sLg2l4S9bMQ02">Buy Crystal District <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="button button-secondary" href="index.html#crystal-district">View Crystal District on Homepage</a>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="section preview-section" aria-labelledby="crystal-district-previews-title">
+      <div class="preview-intro reveal"><h2 id="crystal-district-previews-title">Crystal District protected previews.</h2><p>Every image is previewed with ROX protection. Your purchased collection includes the complete premium wallpapers.</p></div>
+      <ul class="preview-grid protected-preview-gallery" aria-label="Protected Crystal District wallpaper previews">
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-01.webp" draggable="false" alt="Protected Crystal District wallpaper preview one" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-02.webp" draggable="false" alt="Protected Crystal District wallpaper preview two" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-03.webp" draggable="false" alt="Protected Crystal District wallpaper preview three" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-04.webp" draggable="false" alt="Protected Crystal District wallpaper preview four" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-05.webp" draggable="false" alt="Protected Crystal District wallpaper preview five" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-06.webp" draggable="false" alt="Protected Crystal District wallpaper preview six" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-07.webp" draggable="false" alt="Protected Crystal District wallpaper preview seven" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-08.webp" draggable="false" alt="Protected Crystal District wallpaper preview eight" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-09.webp" draggable="false" alt="Protected Crystal District wallpaper preview nine" loading="lazy" decoding="async"></li>
+        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-10.webp" draggable="false" alt="Protected Crystal District wallpaper preview ten" loading="lazy" decoding="async"></li>
+      </ul>
+    </section>
     <section class="section" aria-labelledby="upcoming-title">
       <div class="section-heading reveal"><span class="eyebrow">In development</span><h2 id="upcoming-title">Upcoming Collections</h2><p>More considered wallpaper sets are taking shape for the next ROX releases.</p></div>
       <div class="upcoming-grid">
-        <article class="future-card glass future-crystal reveal"><div class="future-art" aria-hidden="true"></div><h3>Crystal District</h3><p>Structured glass-inspired forms with a cool architectural atmosphere.</p><span class="coming-soon">Coming Soon</span></article>
         <article class="future-card glass future-elevation reveal"><div class="future-art" aria-hidden="true"></div><h3>Elevation</h3><p>Clean vertical compositions with a sense of height and clarity.</p><span class="coming-soon">Coming Soon</span></article>
-        <article class="future-card glass future-leaf reveal"><div class="future-art" aria-hidden="true"></div><h3>Mono Leaf</h3><p>Minimal organic forms shaped for calm, modern screens.</p><span class="coming-soon">Coming Soon</span></article>
+        <article class="future-card glass future-leaf reveal"><div class="future-art" aria-hidden="true"></div><h3>Monolith</h3><p>Minimal sculptural forms shaped for calm, modern screens.</p><span class="coming-soon">Coming Soon</span></article>
         <article class="future-card glass future-horizon reveal"><div class="future-art" aria-hidden="true"></div><h3>Horizon</h3><p>Soft atmospheric depth inspired by distance, light and open space.</p><span class="coming-soon">Coming Soon</span></article>
       </div>
     </section>
