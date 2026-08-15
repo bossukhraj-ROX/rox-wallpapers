@@ -2,6 +2,7 @@
 assets/images/luminar/originals/
 assets/images/crystal-district/originals/
 assets/images/elevation/originals/
+assets/images/obsidian/originals/
 
 # Customer-delivery archives are not public repository assets.
 *.zip
