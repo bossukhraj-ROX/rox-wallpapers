@@ -5,23 +5,24 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const touchMedia = window.matchMedia("(hover: none), (pointer: coarse)");
   const pageName = window.location.pathname.split("/").pop() || "index.html";
-  const utilityLinks = [
-    { label: "Support", href: "support.html" },
+  const supportLinks = [
+    { label: "Contact", href: "contact.html" },
     { label: "Privacy", href: "privacy.html" },
-    { label: "Refund", href: "refund.html" },
+    { label: "Refunds", href: "refund.html" },
     { label: "Terms", href: "terms.html" }
   ];
   const dockLinks = [
-    { label: "Home", href: "index.html" },
-    { label: "Collections", href: "collections.html" },
-    { label: "Contact", href: "contact.html" }
+    { label: "ROX", href: "index.html" },
+    { label: "Collections", href: "collections.html" }
   ];
   const releaseTimers = new WeakMap();
   let activeTarget = null;
-  let mobileMoreButton = null;
-  let mobileSheet = null;
-  let desktopMoreButton = null;
-  let desktopMoreMenu = null;
+  let mobileSupportButton = null;
+  let mobileSupportSheet = null;
+  let desktopSupportButton = null;
+  let desktopSupportMenu = null;
+  let supportCloseTimer = null;
+  let mobileSupportCloseTimer = null;
   let viewer = null;
   let viewerImage = null;
   let viewerCaption = null;
@@ -48,30 +49,49 @@
     activeTarget = null;
   };
 
-  const closeDesktopMore = () => {
-    if (!desktopMoreButton || !desktopMoreMenu) return;
-    desktopMoreButton.setAttribute("aria-expanded", "false");
-    desktopMoreMenu.hidden = true;
+  const closeDesktopSupport = () => {
+    if (!desktopSupportButton || !desktopSupportMenu) return;
+    desktopSupportButton.setAttribute("aria-expanded", "false");
+    if (desktopSupportMenu.hidden) return;
+    desktopSupportMenu.classList.remove("is-open");
+    desktopSupportMenu.classList.add("is-closing");
+    window.clearTimeout(supportCloseTimer);
+    supportCloseTimer = window.setTimeout(() => {
+      desktopSupportMenu.hidden = true;
+      desktopSupportMenu.classList.remove("is-closing");
+    }, reducedMotion.matches ? 0 : 220);
   };
 
-  const closeMobileMore = (restoreFocus = false) => {
-    if (!mobileMoreButton || !mobileSheet || mobileSheet.hidden) return;
-    mobileSheet.classList.remove("is-open");
-    mobileMoreButton.setAttribute("aria-expanded", "false");
+  const openDesktopSupport = () => {
+    if (!desktopSupportButton || !desktopSupportMenu) return;
+    closeMobileSupport();
+    window.clearTimeout(supportCloseTimer);
+    desktopSupportMenu.hidden = false;
+    desktopSupportMenu.classList.remove("is-closing");
+    desktopSupportButton.setAttribute("aria-expanded", "true");
+    window.requestAnimationFrame(() => desktopSupportMenu.classList.add("is-open"));
+  };
+
+  const closeMobileSupport = (restoreFocus = false) => {
+    if (!mobileSupportButton || !mobileSupportSheet || mobileSupportSheet.hidden) return;
+    mobileSupportSheet.classList.remove("is-open");
+    mobileSupportButton.setAttribute("aria-expanded", "false");
     body.classList.remove("rox-menu-open");
-    window.setTimeout(() => { mobileSheet.hidden = true; }, reducedMotion.matches ? 0 : 180);
-    if (restoreFocus) mobileMoreButton.focus();
+    window.clearTimeout(mobileSupportCloseTimer);
+    mobileSupportCloseTimer = window.setTimeout(() => { mobileSupportSheet.hidden = true; }, reducedMotion.matches ? 0 : 440);
+    if (restoreFocus) mobileSupportButton.focus();
   };
 
-  const openMobileMore = () => {
-    if (!mobileMoreButton || !mobileSheet) return;
-    closeDesktopMore();
-    mobileSheet.hidden = false;
-    mobileMoreButton.setAttribute("aria-expanded", "true");
+  const openMobileSupport = () => {
+    if (!mobileSupportButton || !mobileSupportSheet) return;
+    closeDesktopSupport();
+    window.clearTimeout(mobileSupportCloseTimer);
+    mobileSupportSheet.hidden = false;
+    mobileSupportButton.setAttribute("aria-expanded", "true");
     body.classList.add("rox-menu-open");
     window.requestAnimationFrame(() => {
-      mobileSheet.classList.add("is-open");
-      mobileSheet.querySelector("a")?.focus();
+      mobileSupportSheet.classList.add("is-open");
+      mobileSupportSheet.querySelector("a")?.focus();
     });
   };
 
@@ -97,68 +117,75 @@
       if (isCurrentPage("index.html")) existingHome.setAttribute("aria-current", "page");
     }
 
-    const moreWrap = document.createElement("div");
-    moreWrap.className = "rox-more-wrap";
-    desktopMoreButton = document.createElement("button");
-    desktopMoreButton.type = "button";
-    desktopMoreButton.className = "rox-more-control";
-    desktopMoreButton.textContent = "More";
-    desktopMoreButton.setAttribute("aria-expanded", "false");
-    desktopMoreButton.setAttribute("aria-controls", "rox-desktop-more-menu");
-    desktopMoreMenu = document.createElement("div");
-    desktopMoreMenu.id = "rox-desktop-more-menu";
-    desktopMoreMenu.className = "rox-more-menu";
-    desktopMoreMenu.hidden = true;
-    desktopMoreMenu.setAttribute("role", "menu");
-    utilityLinks.forEach((item) => {
+    const existingContact = nav.querySelector('a[href="contact.html"]');
+    const existingContactItem = existingContact?.closest("li");
+    if (existingContactItem) existingContactItem.remove(); else existingContact?.remove();
+
+    const supportWrap = document.createElement("div");
+    supportWrap.className = "rox-support-wrap";
+    desktopSupportButton = document.createElement("button");
+    desktopSupportButton.type = "button";
+    desktopSupportButton.className = "rox-support-control";
+    desktopSupportButton.textContent = "Support";
+    desktopSupportButton.setAttribute("aria-expanded", "false");
+    desktopSupportButton.setAttribute("aria-controls", "rox-desktop-support-menu");
+    desktopSupportMenu = document.createElement("div");
+    desktopSupportMenu.id = "rox-desktop-support-menu";
+    desktopSupportMenu.className = "rox-support-menu";
+    desktopSupportMenu.hidden = true;
+    desktopSupportMenu.setAttribute("role", "menu");
+    supportLinks.forEach((item) => {
       const link = makeLink(item);
       link.setAttribute("role", "menuitem");
-      desktopMoreMenu.append(link);
+      link.addEventListener("click", closeDesktopSupport);
+      desktopSupportMenu.append(link);
     });
-    desktopMoreButton.addEventListener("click", (event) => {
+    desktopSupportButton.addEventListener("click", (event) => {
       event.stopPropagation();
-      const shouldOpen = desktopMoreMenu.hidden;
-      closeMobileMore();
-      desktopMoreMenu.hidden = !shouldOpen;
-      desktopMoreButton.setAttribute("aria-expanded", String(shouldOpen));
+      if (desktopSupportMenu.hidden || desktopSupportMenu.classList.contains("is-closing")) openDesktopSupport();
+      else closeDesktopSupport();
     });
-    moreWrap.append(desktopMoreButton, desktopMoreMenu);
-    nav.append(moreWrap);
+    supportWrap.append(desktopSupportButton, desktopSupportMenu);
+    nav.append(supportWrap);
 
     const dock = document.createElement("nav");
     dock.className = "rox-mobile-dock";
     dock.setAttribute("aria-label", "Mobile navigation");
     dockLinks.forEach((item) => dock.append(makeLink(item)));
-    mobileMoreButton = document.createElement("button");
-    mobileMoreButton.type = "button";
-    mobileMoreButton.textContent = "More";
-    mobileMoreButton.setAttribute("aria-expanded", "false");
-    mobileMoreButton.setAttribute("aria-controls", "rox-mobile-more-sheet");
-    mobileMoreButton.addEventListener("click", () => {
-      if (mobileSheet?.hidden) openMobileMore(); else closeMobileMore();
+    mobileSupportButton = document.createElement("button");
+    mobileSupportButton.type = "button";
+    mobileSupportButton.textContent = "Support";
+    mobileSupportButton.setAttribute("aria-expanded", "false");
+    mobileSupportButton.setAttribute("aria-controls", "rox-mobile-support-sheet");
+    mobileSupportButton.addEventListener("click", () => {
+      if (mobileSupportSheet?.hidden) openMobileSupport(); else closeMobileSupport();
     });
-    dock.append(mobileMoreButton);
+    dock.append(mobileSupportButton);
     body.append(dock);
 
-    mobileSheet = document.createElement("div");
-    mobileSheet.id = "rox-mobile-more-sheet";
-    mobileSheet.className = "rox-mobile-sheet";
-    mobileSheet.hidden = true;
-    mobileSheet.setAttribute("role", "dialog");
-    mobileSheet.setAttribute("aria-modal", "true");
-    mobileSheet.setAttribute("aria-label", "More ROX pages");
+    mobileSupportSheet = document.createElement("div");
+    mobileSupportSheet.id = "rox-mobile-support-sheet";
+    mobileSupportSheet.className = "rox-mobile-sheet";
+    mobileSupportSheet.hidden = true;
+    mobileSupportSheet.setAttribute("role", "dialog");
+    mobileSupportSheet.setAttribute("aria-modal", "true");
+    mobileSupportSheet.setAttribute("aria-label", "ROX support navigation");
     const sheetPanel = document.createElement("div");
     sheetPanel.className = "rox-mobile-sheet-panel";
     const sheetTitle = document.createElement("p");
     sheetTitle.className = "rox-mobile-sheet-title";
-    sheetTitle.textContent = "More from ROX";
+    sheetTitle.textContent = "Support";
     sheetPanel.append(sheetTitle);
-    utilityLinks.forEach((item) => sheetPanel.append(makeLink(item)));
-    mobileSheet.append(sheetPanel);
-    mobileSheet.addEventListener("click", (event) => {
-      if (event.target === mobileSheet) closeMobileMore(true);
+    supportLinks.forEach((item) => {
+      const link = makeLink(item);
+      link.addEventListener("click", closeMobileSupport);
+      sheetPanel.append(link);
     });
-    body.append(mobileSheet);
+    mobileSupportSheet.append(sheetPanel);
+    mobileSupportSheet.addEventListener("click", (event) => {
+      if (event.target === mobileSupportSheet) closeMobileSupport(true);
+    });
+    body.append(mobileSupportSheet);
   };
 
   const updateViewer = () => {
@@ -261,7 +288,7 @@
   };
 
   const setupTouchResponse = () => {
-    const interactiveSelector = ".button, .menu-toggle, .site-header .nav-links a, .rox-more-control, .rox-mobile-dock a, .rox-mobile-dock button, .rox-more-menu a, .rox-mobile-sheet a, .rox-viewer-control, .rox-preview-close, .feature-frame, .artwork, .preview, .future-card, .benefit, .info-card, .policy-card, .refund-card, .support-card, .faq-item, .guidance-card, .term-card, .download-panel, .support-panel, .step-card";
+    const interactiveSelector = ".button, .menu-toggle, .site-header .nav-links a, .rox-support-control, .rox-mobile-dock a, .rox-mobile-dock button, .rox-support-menu a, .rox-mobile-sheet a, .rox-viewer-control, .rox-preview-close, .feature-frame, .artwork, .preview, .future-card, .benefit, .info-card, .policy-card, .refund-card, .support-card, .faq-item, .guidance-card, .term-card, .download-panel, .support-panel, .step-card";
     const getInteractiveTarget = (event) => event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
 
     document.addEventListener("pointerdown", (event) => {
@@ -319,7 +346,7 @@
   };
 
   document.addEventListener("click", (event) => {
-    if (desktopMoreMenu && !desktopMoreMenu.hidden && !event.target.closest(".rox-more-wrap")) closeDesktopMore();
+    if (desktopSupportMenu && !desktopSupportMenu.hidden && !event.target.closest(".rox-support-wrap")) closeDesktopSupport();
   });
 
   document.addEventListener("keydown", (event) => {
@@ -330,8 +357,8 @@
       return;
     }
     if (event.key === "Escape") {
-      closeDesktopMore();
-      closeMobileMore(true);
+      closeDesktopSupport();
+      closeMobileSupport(true);
     }
   });
 
