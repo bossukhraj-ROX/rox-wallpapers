@@ -368,3 +368,162 @@
   setupEntrances();
   setupDockScrollState();
 })();
+
+/* Final ROX mobile UX refinement: a native collection rail, compact dock and shared brand asset. */
+(() => {
+  "use strict";
+
+  const body = document.body;
+  const pageName = window.location.pathname.split("/").pop() || "index.html";
+  const mobileLayout = window.matchMedia("(max-width: 720px)");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const logoSource = "assets/images/brand/rox-logo.png";
+  const routeIndex = ["contact.html", "support.html", "privacy.html", "refund.html", "terms.html"].includes(pageName) ? 2 : pageName === "collections.html" ? 1 : 0;
+
+  const makeLogo = (className) => {
+    const logo = document.createElement("img");
+    logo.className = className;
+    logo.src = logoSource;
+    logo.alt = "";
+    logo.width = 459;
+    logo.height = 520;
+    logo.decoding = "async";
+    logo.setAttribute("aria-hidden", "true");
+    return logo;
+  };
+
+  const installBrandMarks = () => {
+    document.querySelectorAll('.brand[href="index.html"]').forEach((brand) => {
+      if (brand.dataset.roxLogoInstalled) return;
+      brand.replaceChildren(makeLogo("rox-logo rox-logo-nav"));
+      brand.dataset.roxLogoInstalled = "true";
+    });
+
+    document.querySelectorAll(".site-footer .footer-brand").forEach((footerBrand) => {
+      if (footerBrand.dataset.roxLogoInstalled || footerBrand.textContent.trim() !== "ROX") return;
+      footerBrand.replaceChildren(makeLogo("rox-logo rox-logo-footer"), document.createTextNode("ROX"));
+      footerBrand.dataset.roxLogoInstalled = "true";
+    });
+
+    const dockHome = document.querySelector('.rox-mobile-dock a[href="index.html"]');
+    if (dockHome && !dockHome.dataset.roxLogoInstalled) {
+      dockHome.replaceChildren(makeLogo("rox-logo rox-logo-dock"), document.createTextNode("ROX"));
+      dockHome.dataset.roxLogoInstalled = "true";
+    }
+  };
+
+  const setupDock = () => {
+    const dock = document.querySelector(".rox-mobile-dock");
+    const supportButton = dock?.querySelector("button");
+    if (!dock || !supportButton) return;
+
+    const dockItems = Array.from(dock.querySelectorAll("a, button"));
+    let contextualIndex = routeIndex;
+    const setActive = (index, shouldUpdateContext = false) => {
+      if (shouldUpdateContext) contextualIndex = index;
+      dock.dataset.roxActiveIndex = String(Math.max(0, Math.min(2, index)));
+    };
+    const syncSupportState = () => {
+      window.requestAnimationFrame(() => {
+        setActive(supportButton.getAttribute("aria-expanded") === "true" ? 2 : contextualIndex);
+      });
+    };
+
+    setActive(routeIndex);
+    dockItems.forEach((item, index) => {
+      if (item.tagName === "A") item.addEventListener("click", () => setActive(index, true));
+    });
+    supportButton.addEventListener("click", () => {
+      body.classList.remove("rox-dock-is-compact");
+      syncSupportState();
+    });
+    dock.addEventListener("pointerdown", () => body.classList.remove("rox-dock-is-compact"), { passive: true });
+    document.addEventListener("click", syncSupportState);
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape") syncSupportState(); });
+
+    if (pageName === "index.html" && "IntersectionObserver" in window) {
+      const home = document.querySelector(".hero");
+      const firstCollection = document.querySelector("#glass-city");
+      if (home && firstCollection) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target === firstCollection ? 1 : 0, true);
+          });
+        }, { rootMargin: "-32% 0px -48% 0px", threshold: .01 });
+        observer.observe(home);
+        observer.observe(firstCollection);
+      }
+    }
+
+    let lastScrollY = window.scrollY;
+    let downwardDistance = 0;
+    let upwardDistance = 0;
+    let scheduled = false;
+    window.addEventListener("scroll", () => {
+      if (!mobileLayout.matches || body.classList.contains("rox-menu-open") || scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const delta = currentY - lastScrollY;
+        if (delta > 2) { downwardDistance += delta; upwardDistance = 0; }
+        if (delta < -2) { upwardDistance += Math.abs(delta); downwardDistance = 0; }
+        if (currentY > 132 && downwardDistance >= 28) {
+          body.classList.add("rox-dock-is-compact");
+          downwardDistance = 0;
+        }
+        if (currentY < 82 || upwardDistance >= 16) {
+          body.classList.remove("rox-dock-is-compact");
+          upwardDistance = 0;
+        }
+        lastScrollY = currentY;
+        scheduled = false;
+      });
+    }, { passive: true });
+  };
+
+  const setupCollectionRail = () => {
+    const wrapper = document.querySelector("[data-collection-rail]");
+    const track = wrapper?.querySelector(".collection-discovery-track");
+    const previous = wrapper?.querySelector("[data-collection-previous]");
+    const next = wrapper?.querySelector("[data-collection-next]");
+    if (!wrapper || !track || !previous || !next) return;
+
+    let scheduled = false;
+    const updateControls = () => {
+      scheduled = false;
+      const canScroll = mobileLayout.matches && track.scrollWidth - track.clientWidth > 4;
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      const atStart = track.scrollLeft <= 2;
+      const atEnd = track.scrollLeft >= maxScroll - 2;
+      wrapper.classList.toggle("has-scrollable-collections", canScroll);
+      wrapper.classList.toggle("is-at-collection-end", atEnd);
+      previous.hidden = !canScroll || atStart;
+      previous.disabled = !canScroll || atStart;
+      next.hidden = !canScroll || atEnd;
+      next.disabled = !canScroll || atEnd;
+    };
+    const queueUpdate = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(updateControls);
+    };
+    const move = (direction) => {
+      const item = track.querySelector(".collection-discovery-item");
+      if (!item) return;
+      const styles = window.getComputedStyle(track);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+      track.scrollBy({ left: direction * (item.getBoundingClientRect().width + gap), behavior: reduceMotion.matches ? "auto" : "smooth" });
+    };
+
+    previous.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+    track.addEventListener("scroll", queueUpdate, { passive: true });
+    window.addEventListener("resize", queueUpdate, { passive: true });
+    mobileLayout.addEventListener?.("change", queueUpdate);
+    updateControls();
+  };
+
+  installBrandMarks();
+  setupDock();
+  setupCollectionRail();
+})();

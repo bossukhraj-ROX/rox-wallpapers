@@ -727,3 +727,195 @@ body.rox-viewer-open { overflow: hidden; }
   .collection-discovery-item { opacity: 1 !important; transform: none !important; animation: none !important; }
   .rox-support-menu.is-open,.rox-support-menu.is-closing { animation: none !important; }
 }
+
+/* Final ROX mobile UX refinement: restrained native controls, safe-area spacing and a single moving glass indicator. */
+.site-header {
+  isolation: isolate;
+  z-index: 2500 !important;
+}
+
+.rox-floating-nav,
+.rox-support-wrap { isolation: isolate; }
+
+.rox-support-menu {
+  z-index: 2600;
+  min-width: 188px;
+  color: #17385f;
+  background: linear-gradient(135deg, rgba(253, 254, 255, .7), rgba(225, 241, 255, .46) 58%, rgba(201, 227, 252, .5));
+  border-color: rgba(255, 255, 255, .88);
+  box-shadow: 0 26px 56px rgba(14, 45, 90, .24), inset 0 1px 0 rgba(255, 255, 255, .96);
+  backdrop-filter: blur(28px) saturate(130%);
+  -webkit-backdrop-filter: blur(28px) saturate(130%);
+}
+
+.rox-support-menu a {
+  min-height: 44px;
+  color: #17385f;
+  background: rgba(255, 255, 255, .18);
+}
+
+.rox-logo { display: block; width: auto; object-fit: contain; }
+.site-header .brand { display: inline-flex; align-items: center; justify-content: center; }
+.site-header .brand .rox-logo-nav { width: 27px; height: 31px; }
+.site-footer .footer-brand { display: inline-flex; align-items: center; gap: .42rem; }
+.site-footer .rox-logo-footer { width: 26px; height: 30px; }
+
+.collection-discovery-rail { position: relative; }
+.collection-rail-control { display: none; }
+
+@media (max-width: 720px) {
+  body.rox-next-generation { padding-bottom: calc(102px + env(safe-area-inset-bottom, 0px)); }
+
+  .collection-discovery {
+    padding-top: .7rem !important;
+    padding-bottom: .45rem !important;
+  }
+
+  .collection-discovery-rail { isolation: isolate; }
+  .collection-discovery-rail.has-scrollable-collections::after {
+    position: absolute;
+    z-index: 2;
+    top: .25rem;
+    right: 0;
+    bottom: 1.95rem;
+    width: 3.35rem;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(245, 250, 255, 0), rgba(245, 250, 255, .82));
+  }
+  .collection-discovery-rail.is-at-collection-end::after { display: none; }
+  .collection-discovery-track {
+    gap: .8rem;
+    padding: .2rem 20px .55rem;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    scroll-behavior: smooth;
+  }
+  .collection-discovery-item {
+    flex-basis: clamp(108px, 31vw, 124px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .collection-discovery-item > span:last-child { min-height: 2.3em; line-height: 1.15; }
+
+  .collection-rail-control {
+    position: absolute;
+    z-index: 3;
+    top: 42%;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    padding: 0;
+    color: #17385f;
+    font: 700 1.05rem/1 system-ui, sans-serif;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .58), rgba(219, 239, 255, .34));
+    border: 1px solid rgba(255, 255, 255, .86);
+    border-bottom-color: rgba(52, 108, 183, .24);
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(18, 53, 104, .18), inset 0 1px 0 rgba(255, 255, 255, .9);
+    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    transition: transform 220ms var(--rox-motion-ease), opacity 180ms ease, box-shadow 220ms var(--rox-motion-ease);
+  }
+  .collection-rail-control[hidden] { display: none; }
+  .collection-rail-control-previous { left: .4rem; }
+  .collection-rail-control-next { right: .4rem; }
+  .collection-rail-control:active { transform: scale(.94); box-shadow: 0 5px 12px rgba(18, 53, 104, .14); }
+
+  body.rox-next-generation main > .collection-discovery + .hero {
+    min-height: 454px;
+    padding-top: clamp(3.35rem, 13vw, 4.25rem);
+    padding-bottom: 3.8rem;
+  }
+
+  .rox-mobile-dock {
+    --rox-dock-padding: .42rem;
+    --rox-dock-gap: .25rem;
+    position: fixed;
+    isolation: isolate;
+    overflow: hidden;
+    z-index: 3000;
+    width: min(calc(100% - 28px), 430px);
+    min-height: 62px;
+    gap: var(--rox-dock-gap);
+    padding: var(--rox-dock-padding);
+    border-radius: 999px;
+    transition: width 310ms var(--rox-motion-ease), min-height 260ms var(--rox-motion-ease), padding 260ms var(--rox-motion-ease), transform 260ms var(--rox-motion-ease), opacity 220ms ease, box-shadow 260ms var(--rox-motion-ease);
+  }
+  .rox-mobile-dock::before {
+    position: absolute;
+    z-index: 0;
+    top: var(--rox-dock-padding);
+    bottom: var(--rox-dock-padding);
+    left: var(--rox-dock-padding);
+    width: calc((100% - 1.34rem) / 3);
+    content: "";
+    background: linear-gradient(135deg, rgba(255, 255, 255, .58), rgba(220, 240, 255, .31));
+    border: 1px solid rgba(255, 255, 255, .76);
+    border-radius: 999px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .92), 0 7px 17px rgba(24, 58, 111, .12);
+    transform: translateX(0);
+    transition: transform 310ms var(--rox-motion-ease), opacity 220ms ease;
+  }
+  .rox-mobile-dock[data-rox-active-index="1"]::before { transform: translateX(calc(100% + var(--rox-dock-gap))); }
+  .rox-mobile-dock[data-rox-active-index="2"]::before { transform: translateX(calc(200% + .5rem)); }
+  .rox-mobile-dock a,
+  .rox-mobile-dock button {
+    position: relative;
+    z-index: 1;
+    min-height: 46px;
+    color: #274a76;
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  .rox-mobile-dock a[aria-current="page"],
+  .rox-mobile-dock button[aria-expanded="true"] { color: #12396f; }
+  .rox-mobile-dock .rox-logo-dock { width: 20px; height: 23px; }
+  .rox-dock-is-quiet .rox-mobile-dock { opacity: .94; transform: translateX(50%); }
+  .rox-dock-is-compact .rox-mobile-dock {
+    width: min(calc(100% - 64px), 310px);
+    min-height: 54px;
+    opacity: .9;
+    transform: translateX(50%) translateY(8px);
+    box-shadow: 0 12px 30px rgba(17, 49, 97, .18), inset 0 1px 0 rgba(255, 255, 255, .82);
+  }
+  .rox-dock-is-compact .rox-mobile-dock a,
+  .rox-dock-is-compact .rox-mobile-dock button { min-height: 44px; font-size: .71rem; }
+
+  .rox-mobile-sheet {
+    z-index: 3100;
+    padding-bottom: calc(106px + env(safe-area-inset-bottom, 0px));
+    background: rgba(11, 27, 57, .14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .rox-mobile-sheet-panel {
+    background: linear-gradient(135deg, rgba(253, 254, 255, .74), rgba(222, 240, 255, .5));
+    border-color: rgba(255, 255, 255, .9);
+    box-shadow: 0 28px 64px rgba(13, 43, 88, .28), inset 0 1px 0 rgba(255, 255, 255, .96);
+    backdrop-filter: blur(28px) saturate(130%);
+    -webkit-backdrop-filter: blur(28px) saturate(130%);
+  }
+  .rox-mobile-sheet-title,
+  .rox-mobile-sheet a { color: #17385f; }
+  .rox-mobile-sheet a { min-height: 44px; background: rgba(255, 255, 255, .2); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .collection-rail-control:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 16px 30px rgba(18, 53, 104, .24), inset 0 1px 0 rgba(255, 255, 255, .96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collection-discovery-track { scroll-behavior: auto; }
+  .rox-mobile-dock,
+  .rox-mobile-dock::before,
+  .collection-rail-control { transition-duration: 1ms !important; }
+}
+/* Preview protection remains above the refined navigation layers. */
+.rox-preview-viewer { z-index: 3400; }
