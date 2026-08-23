@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /success-glasscity.html
-Disallow: /success-luminar.html
-Disallow: /success-crystal-district.html
-Disallow: /success-elevation.html
-Disallow: /success-obsidian.html
