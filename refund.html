@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ROX Refund Policy for digital wallpaper collections">
+  <link rel="icon" type="image/png" href="assets/images/brand/rox-logo.png">
+  <link rel="manifest" href="site.webmanifest">
   <title>Refund Policy | ROX</title>
   <style>
     :root {
@@ -257,6 +259,10 @@
         <h2 id="policy-title">Refund information, organised clearly.</h2>
         <p>These sections explain the position for digital purchases and how ROX reviews genuine purchase-support requests.</p>
       </div>
+      <details class="rox-legal-jump" data-legal-toc>
+        <summary>Jump to section</summary>
+        <nav class="rox-legal-toc" aria-label="Refund policy sections"></nav>
+      </details>
       <div class="policy-list">
         <article class="policy-card glass reveal"><div class="policy-top"><span class="section-number" aria-hidden="true">01</span><h2>Digital Product Purchases</h2></div><p>ROX sells digital wallpaper collections, including Glass City. Digital products may be delivered or made accessible immediately after successful payment.</p><p>Once a digital product has been accessed, downloaded or supplied, a change-of-mind refund may not normally be available, subject to applicable consumer law.</p></article>
         <article class="policy-card glass reveal"><div class="policy-top"><span class="section-number" aria-hidden="true">02</span><h2>Change-of-Mind Requests</h2></div><p>Requests based only on preference, device appearance or a change of mind may not normally qualify after digital access has been provided. ROX encourages customers to review collection details and previews before purchase.</p></article>
@@ -319,6 +325,7 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            window.roxLegalToc?.setActive(entry.target);
             instance.unobserve(entry.target);
           }
         });

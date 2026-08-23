@@ -481,6 +481,77 @@
     }, { passive: true });
   };
 
+  const setupDesktopCollectionShowcase = () => {
+    const section = document.querySelector("[data-collection-showcase]");
+    const stage = section?.querySelector(".collection-showcase-stage");
+    const slides = stage ? [...stage.querySelectorAll(".collection-showcase-slide")] : [];
+    const items = section ? [...section.querySelectorAll(".collection-discovery-item")] : [];
+    const title = stage?.querySelector("[data-showcase-title]");
+    const meta = stage?.querySelector("[data-showcase-meta]");
+    const cta = stage?.querySelector("[data-showcase-cta]");
+    const progress = stage?.querySelector("[data-showcase-progress]");
+    const desktopLayout = window.matchMedia("(min-width: 900px)");
+    const showcaseReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!section || !stage || !title || !meta || !cta || !progress || slides.length !== items.length || !slides.length) return;
+
+    let activeIndex = 0;
+    let scrollScheduled = false;
+    let copyFrame = 0;
+    let exitTimer = 0;
+
+    const setActive = (index) => {
+      const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
+      if (nextIndex === activeIndex && slides[nextIndex].classList.contains("is-showcase-active")) return;
+
+      const previousIndex = activeIndex;
+      activeIndex = nextIndex;
+      window.clearTimeout(exitTimer);
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-showcase-active", slideIndex === nextIndex);
+        slide.classList.toggle("is-showcase-exiting", slideIndex === previousIndex && previousIndex !== nextIndex);
+      });
+      items.forEach((item, itemIndex) => item.classList.toggle("is-showcase-active", itemIndex === nextIndex));
+
+      stage.querySelector(".collection-showcase-copy")?.classList.add("is-showcase-copy-changing");
+      window.cancelAnimationFrame(copyFrame);
+      copyFrame = window.requestAnimationFrame(() => {
+        const item = items[nextIndex];
+        title.textContent = item.dataset.showcaseTitle || item.textContent.trim();
+        meta.textContent = `Live collection · ${String(nextIndex + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+        cta.textContent = item.dataset.showcaseCta || `View ${item.textContent.trim()}`;
+        cta.href = item.getAttribute("href") || "#";
+        progress.style.width = `${((nextIndex + 1) / slides.length) * 100}%`;
+        stage.querySelector(".collection-showcase-copy")?.classList.remove("is-showcase-copy-changing");
+      });
+
+      exitTimer = window.setTimeout(() => {
+        slides.forEach((slide, slideIndex) => {
+          if (slideIndex !== activeIndex) slide.classList.remove("is-showcase-exiting");
+        });
+      }, 820);
+    };
+
+    const updateFromScroll = () => {
+      scrollScheduled = false;
+      if (!desktopLayout.matches || showcaseReducedMotion.matches) return;
+      const sectionTop = section.getBoundingClientRect().top;
+      const scrollRange = Math.max(1, section.offsetHeight - stage.offsetHeight);
+      const progressValue = Math.max(0, Math.min(1, -sectionTop / scrollRange));
+      setActive(Math.round(progressValue * (slides.length - 1)));
+    };
+
+    const queueScrollUpdate = () => {
+      if (scrollScheduled) return;
+      scrollScheduled = true;
+      window.requestAnimationFrame(updateFromScroll);
+    };
+
+    window.addEventListener("scroll", queueScrollUpdate, { passive: true });
+    window.addEventListener("resize", queueScrollUpdate, { passive: true });
+    desktopLayout.addEventListener?.("change", queueScrollUpdate);
+    showcaseReducedMotion.addEventListener?.("change", queueScrollUpdate);
+    updateFromScroll();
+  };
   const setupCollectionRail = () => {
     const wrapper = document.querySelector("[data-collection-rail]");
     const track = wrapper?.querySelector(".collection-discovery-track");
@@ -523,7 +594,173 @@
     updateControls();
   };
 
+  const setupPreviewPresentation = () => {
+    const previews = [...document.querySelectorAll(".protected-preview-gallery .preview")];
+    if (!previews.length) return;
+
+    const previewDesktop = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const resetTilt = (preview) => {
+      preview.style.setProperty("--rox-preview-tilt-x", "0deg");
+      preview.style.setProperty("--rox-preview-tilt-y", "0deg");
+    };
+
+    previews.forEach((preview) => {
+      resetTilt(preview);
+      preview.addEventListener("pointermove", (event) => {
+        if (!previewDesktop.matches || reduceMotion.matches || event.pointerType !== "mouse") return;
+        const bounds = preview.getBoundingClientRect();
+        const normalizedX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+        const normalizedY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
+        preview.style.setProperty("--rox-preview-tilt-y", `${(normalizedX * 6).toFixed(2)}deg`);
+        preview.style.setProperty("--rox-preview-tilt-x", `${(-normalizedY * 4).toFixed(2)}deg`);
+      });
+      preview.addEventListener("pointerleave", () => resetTilt(preview));
+      preview.addEventListener("pointercancel", () => resetTilt(preview));
+    });
+
+    if ("MutationObserver" in window) {
+      const observer = new MutationObserver((records) => {
+        if (reduceMotion.matches || !mobileLayout.matches) return;
+        records.forEach((record) => {
+          const preview = record.target;
+          if (!(preview instanceof Element) || !preview.classList.contains("is-visible")) return;
+          preview.classList.remove("rox-preview-settle");
+          window.requestAnimationFrame(() => preview.classList.add("rox-preview-settle"));
+        });
+      });
+      previews.forEach((preview) => observer.observe(preview, { attributes: true, attributeFilter: ["class"] }));
+    }
+  };
+
+  const setupFaqAccordions = () => {
+    const items = [...document.querySelectorAll("details.rox-faq, .faq-list details.faq-item")];
+    if (!items.length) return;
+
+    items.forEach((details) => {
+      details.classList.add("rox-faq");
+      const summary = details.querySelector("summary");
+      if (!summary) return;
+
+      const finish = () => {
+        details.style.removeProperty("height");
+        details.style.removeProperty("overflow");
+        details.dataset.roxFaqAnimating = "";
+      };
+
+      summary.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (details.dataset.roxFaqAnimating) return;
+
+        const opening = !details.open;
+        if (reduceMotion.matches || typeof details.animate !== "function") {
+          details.open = opening;
+          return;
+        }
+
+        details.dataset.roxFaqAnimating = "true";
+        const startHeight = details.getBoundingClientRect().height;
+        details.style.overflow = "hidden";
+
+        if (opening) {
+          details.open = true;
+          const endHeight = details.scrollHeight;
+          details.style.height = `${startHeight}px`;
+          const animation = details.animate(
+            [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+            { duration: 340, easing: "cubic-bezier(.22, 1, .36, 1)" }
+          );
+          animation.onfinish = finish;
+          animation.oncancel = finish;
+          return;
+        }
+
+        const endHeight = summary.getBoundingClientRect().height;
+        details.style.height = `${startHeight}px`;
+        const animation = details.animate(
+          [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+          { duration: 280, easing: "cubic-bezier(.22, 1, .36, 1)" }
+        );
+        animation.onfinish = () => {
+          details.open = false;
+          finish();
+        };
+        animation.oncancel = finish;
+      });
+    });
+  };
+
+  const setupLegalTableOfContents = () => {
+    const tocDetails = document.querySelector("[data-legal-toc]");
+    const toc = tocDetails?.querySelector(".rox-legal-toc");
+    const list = document.querySelector(".policy-list, .legal-grid");
+    if (!tocDetails || !toc || !list) return;
+
+    const cards = [...list.querySelectorAll(".policy-card, .term-card")];
+    if (!cards.length) return;
+
+    const links = new Map();
+    const pageKey = (window.location.pathname.split("/").pop() || "legal").replace(/\.html$/i, "").replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+    cards.forEach((card, index) => {
+      const number = card.querySelector(".section-number, .term-number")?.textContent.trim() || String(index + 1).padStart(2, "0");
+      const heading = card.querySelector("h2");
+      if (!heading) return;
+      if (!card.id) card.id = `${pageKey}-${number}`;
+
+      const link = document.createElement("a");
+      link.href = `#${card.id}`;
+      link.textContent = `${number} ${heading.textContent.trim()}`;
+      link.dataset.roxTocTarget = card.id;
+      toc.append(link);
+      links.set(card, link);
+    });
+
+    const setActive = (card) => {
+      if (!links.has(card)) return;
+      links.forEach((link, target) => {
+        const active = target === card;
+        link.classList.toggle("is-current", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const setNearestActive = () => {
+      const anchorLine = 132;
+      const candidates = cards.filter((card) => card.getBoundingClientRect().bottom > anchorLine);
+      const nearest = (candidates.length ? candidates : cards).reduce((closest, card) => {
+        if (!closest) return card;
+        return Math.abs(card.getBoundingClientRect().top - anchorLine) < Math.abs(closest.getBoundingClientRect().top - anchorLine) ? card : closest;
+      }, null);
+      setActive(nearest || cards[0]);
+    };
+
+    window.roxLegalToc = { setActive: setNearestActive };
+    setNearestActive();
+
+    let scrollFrame = 0;
+    const queueNearestActive = () => {
+      if (scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = 0;
+        setNearestActive();
+      });
+    };
+    window.addEventListener("scroll", queueNearestActive, { passive: true });
+    window.addEventListener("hashchange", queueNearestActive);
+
+    toc.addEventListener("click", (event) => {
+      const link = event.target.closest("a[data-rox-toc-target]");
+      if (!link) return;
+      if (mobileLayout.matches) tocDetails.open = false;
+      queueNearestActive();
+    });
+  };
+
   installBrandMarks();
   setupDock();
+  setupDesktopCollectionShowcase();
   setupCollectionRail();
+  setupPreviewPresentation();
+  setupFaqAccordions();
+  setupLegalTableOfContents();
 })();
