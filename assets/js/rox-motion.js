@@ -423,6 +423,11 @@
         label: "TikTok",
         href: "https://www.tiktok.com/@rox_premium_wallpapers",
         icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.6 3c.33 2.3 1.6 3.75 3.9 4.1v3.22c-1.47.14-2.77-.33-3.87-1.09v6.21c0 4.09-4.44 6.64-7.96 4.3-2.21-1.47-2.79-4.55-1.35-6.87 1.38-2.23 4.1-2.83 6.06-1.63v3.4c-.87-.38-1.83-.24-2.42.39-.81.85-.54 2.48.54 2.97 1.13.52 2.53-.3 2.53-1.69V3h2.51Z"></path></svg>'
+      },
+      {
+        label: "YouTube",
+        href: "https://youtube.com/@rox_premium_wallpapers",
+        icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg>'
       }
     ];
 
