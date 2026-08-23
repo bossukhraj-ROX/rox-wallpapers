@@ -919,3 +919,93 @@ body.rox-viewer-open { overflow: hidden; }
 }
 /* Preview protection remains above the refined navigation layers. */
 .rox-preview-viewer { z-index: 3400; }
+
+/* Liquid-glass polish: shared, lightweight surface layers for existing ROX controls. */
+:root {
+  --rox-glass-sheen: linear-gradient(118deg, rgba(255, 255, 255, .6), rgba(255, 255, 255, .12) 28%, rgba(220, 240, 255, .05) 58%, rgba(166, 207, 255, .2));
+  --rox-glass-depth: 0 18px 38px rgba(16, 48, 96, .16), inset 0 1px 0 rgba(255, 255, 255, .92), inset 0 -1px 0 rgba(43, 100, 170, .14);
+  --rox-glass-control-surface: linear-gradient(135deg, rgba(255, 255, 255, .3), rgba(229, 244, 255, .12) 48%, rgba(179, 216, 255, .16));
+}
+
+.site-header :is(.nav, .nav-shell).rox-floating-nav,
+.rox-mobile-dock,
+.rox-support-control,
+.rox-support-menu,
+.collection-rail-control,
+.rox-mobile-sheet-panel {
+  background-image: var(--rox-glass-sheen), var(--rox-glass-control-surface) !important;
+  border-color: rgba(255, 255, 255, .78) !important;
+  border-bottom-color: rgba(53, 108, 181, .23) !important;
+  box-shadow: var(--rox-glass-depth) !important;
+}
+
+.site-header :is(.nav, .nav-shell).rox-floating-nav {
+  isolation: isolate;
+}
+
+.site-header :is(.nav, .nav-shell).rox-floating-nav::after {
+  position: absolute;
+  z-index: 0;
+  inset: 1px;
+  content: "";
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(72% 140% at 0% 0%, rgba(255, 255, 255, .46), transparent 52%);
+  opacity: .72;
+  transform: translateX(-3%);
+  transition: transform 520ms var(--rox-motion-ease), opacity 380ms ease;
+}
+
+.site-header :is(.nav, .nav-shell).rox-floating-nav > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rox-mobile-dock::before {
+  background-image: linear-gradient(132deg, rgba(255, 255, 255, .68), rgba(224, 243, 255, .32) 54%, rgba(172, 210, 255, .27)) !important;
+  border-color: rgba(255, 255, 255, .86) !important;
+  box-shadow: 0 9px 20px rgba(24, 58, 111, .12), inset 0 1px 0 rgba(255, 255, 255, .98), inset 0 -1px 0 rgba(53, 108, 181, .1) !important;
+}
+
+.rox-support-menu {
+  color: var(--ink, #10233f);
+  box-shadow: 0 24px 52px rgba(16, 48, 96, .19), inset 0 1px 0 rgba(255, 255, 255, .94), inset 0 -1px 0 rgba(43, 100, 170, .14) !important;
+  backdrop-filter: blur(24px) saturate(132%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(132%) !important;
+}
+
+.rox-support-menu a {
+  border: 1px solid transparent;
+}
+
+.collection-rail-control {
+  box-shadow: 0 12px 26px rgba(16, 48, 96, .17), inset 0 1px 0 rgba(255, 255, 255, .94), inset 0 -1px 0 rgba(53, 108, 181, .12) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .site-header :is(.nav, .nav-shell).rox-floating-nav:hover::after {
+    opacity: .94;
+    transform: translateX(5%);
+  }
+
+  .rox-support-control:hover,
+  .collection-rail-control:hover {
+    border-color: rgba(255, 255, 255, .94) !important;
+    box-shadow: 0 21px 38px rgba(16, 48, 96, .22), inset 0 1px 0 rgba(255, 255, 255, .98), inset 0 -1px 0 rgba(53, 108, 181, .16) !important;
+  }
+
+  .rox-support-menu a:hover,
+  .rox-support-menu a:focus-visible {
+    border-color: rgba(255, 255, 255, .72);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .72);
+  }
+
+  .button-primary:hover,
+  .button-secondary:hover {
+    box-shadow: 0 27px 46px rgba(8, 42, 99, .28), inset 0 1px 0 rgba(255, 255, 255, .62), inset 0 -1px 0 rgba(23, 76, 144, .14) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header :is(.nav, .nav-shell).rox-floating-nav::after { transition: none; }
+}
