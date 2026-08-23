@@ -412,6 +412,42 @@
     }
   };
 
+  const installFooterSocials = () => {
+    const socialProfiles = [
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/rox_premium_wallpapers",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg>'
+      },
+      {
+        label: "TikTok",
+        href: "https://www.tiktok.com/@rox_premium_wallpapers",
+        icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.6 3c.33 2.3 1.6 3.75 3.9 4.1v3.22c-1.47.14-2.77-.33-3.87-1.09v6.21c0 4.09-4.44 6.64-7.96 4.3-2.21-1.47-2.79-4.55-1.35-6.87 1.38-2.23 4.1-2.83 6.06-1.63v3.4c-.87-.38-1.83-.24-2.42.39-.81.85-.54 2.48.54 2.97 1.13.52 2.53-.3 2.53-1.69V3h2.51Z"></path></svg>'
+      }
+    ];
+
+    document.querySelectorAll(".site-footer .footer-brand").forEach((footerBrand) => {
+      const footer = footerBrand.closest(".site-footer");
+      if (!footer || footer.querySelector(".rox-footer-socials")) return;
+
+      const socials = document.createElement("nav");
+      socials.className = "rox-footer-socials";
+      socials.setAttribute("aria-label", "ROX social media");
+
+      socialProfiles.forEach(({ label, href, icon }) => {
+        const link = document.createElement("a");
+        link.href = href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", `Follow ROX on ${label}`);
+        link.innerHTML = icon;
+        socials.append(link);
+      });
+
+      footerBrand.insertAdjacentElement("afterend", socials);
+    });
+  };
+
   const setupDock = () => {
     const dock = document.querySelector(".rox-mobile-dock");
     const supportButton = dock?.querySelector("button");
@@ -524,6 +560,7 @@
   };
 
   installBrandMarks();
+  installFooterSocials();
   setupDock();
   setupCollectionRail();
 })();

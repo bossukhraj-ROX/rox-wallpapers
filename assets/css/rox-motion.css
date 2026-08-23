@@ -1015,3 +1015,68 @@ body.rox-viewer-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .site-header :is(.nav, .nav-shell).rox-floating-nav::after { transition: none; }
 }
+
+/* Compact social links share the footer's existing pale ROX glass treatment. */
+.site-footer .rox-footer-socials {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .56rem;
+  margin: -.32rem 0 .95rem;
+}
+
+.site-footer .rox-footer-socials a {
+  display: inline-grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  color: var(--ink, #10233f);
+  border: 1px solid rgba(255, 255, 255, .78);
+  border-bottom-color: rgba(53, 108, 181, .24);
+  border-radius: 999px;
+  background-image: var(--rox-glass-sheen), var(--rox-glass-control-surface);
+  box-shadow: 0 10px 22px rgba(16, 48, 96, .14), inset 0 1px 0 rgba(255, 255, 255, .94), inset 0 -1px 0 rgba(53, 108, 181, .11);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 280ms var(--rox-motion-ease), color 220ms ease, border-color 220ms ease, box-shadow 280ms var(--rox-motion-ease), filter 220ms ease;
+}
+
+.site-footer .rox-footer-socials svg {
+  display: block;
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.site-footer .rox-footer-socials a:focus-visible {
+  outline: 2px solid rgba(32, 104, 188, .8);
+  outline-offset: 3px;
+}
+
+.site-footer .rox-footer-socials a:active {
+  transform: translateY(0) scale(.96);
+  box-shadow: 0 5px 12px rgba(16, 48, 96, .13), inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .site-footer .rox-footer-socials a:hover {
+    color: #0a3471;
+    border-color: rgba(255, 255, 255, .96);
+    box-shadow: 0 16px 29px rgba(16, 48, 96, .23), inset 0 1px 0 rgba(255, 255, 255, .98), inset 0 -1px 0 rgba(53, 108, 181, .16);
+    filter: brightness(1.05);
+    transform: translateY(-3px) scale(1.045);
+  }
+}
+
+@media (max-width: 720px) {
+  .site-footer .rox-footer-socials a {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer .rox-footer-socials a { transition-duration: 1ms; }
+  .site-footer .rox-footer-socials a:active { transform: none; }
+}
