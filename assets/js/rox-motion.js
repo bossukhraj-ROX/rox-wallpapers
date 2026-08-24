@@ -639,30 +639,63 @@
   window.addEventListener("hashchange", alignAnchor);
 })();
 
-/* A light, scroll-led collection journey for the ROX home page.  It deliberately
-   uses the existing five collection links rather than creating a separate carousel. */
+/* ROX collection atlas: a light, scroll-led story using the existing five
+   collections, their anchors, prices, and exact payment links. */
 (() => {
   "use strict";
 
   const showcase = document.querySelector("[data-rox-places-showcase]");
-  const stage = showcase?.querySelector(".rox-places-stage");
+  const stage = showcase?.querySelector(".rox-atlas-stage");
   const items = showcase ? Array.from(showcase.querySelectorAll(".collection-discovery-item")) : [];
+  const images = showcase ? Array.from(showcase.querySelectorAll(".rox-atlas-art img")) : [];
   const controls = showcase ? Array.from(showcase.querySelectorAll("[data-rox-place]")) : [];
+  const title = showcase?.querySelector("[data-rox-atlas-title]");
+  const description = showcase?.querySelector("[data-rox-atlas-description]");
+  const indexLabel = showcase?.querySelector("[data-rox-atlas-index]");
+  const explore = showcase?.querySelector("[data-rox-atlas-explore]");
+  const buy = showcase?.querySelector("[data-rox-atlas-buy]");
   const desktop = window.matchMedia("(min-width: 901px)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const collections = [
+    { name: "Glass City", description: "A luminous collection of thoughtful, modern scenes for the device you use every day.", anchor: "#glass-city", buy: "https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00", price: "£2.99", ambient: "amber" },
+    { name: "Luminar", description: "Cinematic colour and celestial depth, prepared for the screen in your hand.", anchor: "#luminar", buy: "https://buy.stripe.com/00wcMZe4ycbtaI12K1bMQ01", price: "£2.99", ambient: "cosmic" },
+    { name: "Crystal District", description: "Structured glass-inspired forms with cool architectural atmospheres.", anchor: "#crystal-district", buy: "https://buy.stripe.com/fZu9ANd0u0sLg2l4S9bMQ02", price: "£3.99", ambient: "silver" },
+    { name: "Elevation", description: "Clean vertical compositions with a powerful sense of height, scale and clarity.", anchor: "#elevation", buy: "https://buy.stripe.com/5kQ14h1hM4J1aI13O5bMQ03", price: "£3.99", ambient: "alpine" },
+    { name: "Obsidian", description: "Sharper architectural compositions with a modern, slightly futuristic edge.", anchor: "#obsidian", buy: "https://buy.stripe.com/4gMbIV4tY2ATdUdckBbMQ04", price: "£3.99", ambient: "graphite" }
+  ];
 
-  if (!showcase || !stage || items.length !== 5 || controls.length !== 5) return;
+  if (!showcase || !stage || items.length !== 5 || images.length !== 5 || controls.length !== 5 || !title || !description || !indexLabel || !explore || !buy) return;
 
   let frame = 0;
+  let activeIndex = -1;
+  const setCollection = (index) => {
+    const collection = collections[index];
+    if (!collection || activeIndex === index) return;
+    activeIndex = index;
+    showcase.dataset.roxActivePlace = String(index);
+    showcase.dataset.roxAtlasAmbient = collection.ambient;
+    title.textContent = collection.name;
+    description.textContent = collection.description;
+    indexLabel.innerHTML = `${String(index + 1).padStart(2, "0")} <span>/ 05</span>`;
+    explore.href = collection.anchor;
+    explore.textContent = `View ${collection.name}`;
+    buy.href = collection.buy;
+    buy.textContent = `Buy ${collection.name} · ${collection.price}`;
+    images.forEach((image, imageIndex) => image.classList.toggle("is-active", imageIndex === index));
+    controls.forEach((control, controlIndex) => {
+      if (controlIndex === index) control.setAttribute("aria-current", "step");
+      else control.removeAttribute("aria-current");
+    });
+  };
+
   const clearPresentation = () => {
     showcase.removeAttribute("data-rox-active-place");
-    showcase.classList.remove("is-rox-place-pinned", "is-rox-place-complete");
-    showcase.style.removeProperty("--rox-place-progress");
-    items.forEach((item) => {
-      item.classList.remove("is-rox-place-active");
-      ["--rox-place-opacity", "--rox-place-y", "--rox-place-z", "--rox-place-rotate", "--rox-place-scale"].forEach((property) => item.style.removeProperty(property));
-    });
+    showcase.removeAttribute("data-rox-atlas-ambient");
+    showcase.classList.remove("is-rox-atlas-pinned", "is-rox-atlas-complete");
+    showcase.style.removeProperty("--rox-atlas-progress");
+    images.forEach((image, index) => image.classList.toggle("is-active", index === 0));
     controls.forEach((control) => control.removeAttribute("aria-current"));
+    activeIndex = -1;
   };
 
   const applyPresentation = () => {
@@ -676,28 +709,12 @@
     const start = showcase.offsetTop;
     const end = start + range;
     const progress = Math.max(0, Math.min(1, (window.scrollY - start) / range));
-    showcase.classList.toggle("is-rox-place-pinned", window.scrollY > start && window.scrollY < end);
-    showcase.classList.toggle("is-rox-place-complete", window.scrollY >= end);
-    const position = progress * (items.length - 1);
+    const position = progress * (collections.length - 1);
     const active = Math.round(position);
-    showcase.dataset.roxActivePlace = String(active);
-    showcase.style.setProperty("--rox-place-progress", progress.toFixed(3));
-
-    items.forEach((item, index) => {
-      const offset = index - position;
-      const proximity = Math.max(0, 1 - Math.abs(offset));
-      const depth = Math.min(1, Math.abs(offset));
-      item.classList.toggle("is-rox-place-active", index === active);
-      item.style.setProperty("--rox-place-opacity", (0.28 + proximity * 0.72).toFixed(3));
-      item.style.setProperty("--rox-place-y", `${Math.round(-proximity * 28 + depth * 20)}px`);
-      item.style.setProperty("--rox-place-z", `${Math.round(proximity * 60 - depth * 45)}px`);
-      item.style.setProperty("--rox-place-rotate", `${(offset * -5.5).toFixed(2)}deg`);
-      item.style.setProperty("--rox-place-scale", (0.9 + proximity * 0.15).toFixed(3));
-    });
-    controls.forEach((control, index) => {
-      if (index === active) control.setAttribute("aria-current", "step");
-      else control.removeAttribute("aria-current");
-    });
+    showcase.classList.toggle("is-rox-atlas-pinned", window.scrollY > start && window.scrollY < end);
+    showcase.classList.toggle("is-rox-atlas-complete", window.scrollY >= end);
+    showcase.style.setProperty("--rox-atlas-progress", progress.toFixed(3));
+    setCollection(active);
   };
 
   const queuePresentation = () => {
@@ -709,8 +726,7 @@
     control.addEventListener("click", () => {
       const index = Number.parseInt(control.dataset.roxPlace || "0", 10);
       const range = Math.max(1, showcase.offsetHeight - stage.clientHeight);
-      const target = showcase.offsetTop + range * (index / (items.length - 1));
-      window.scrollTo({ top: target, behavior: reducedMotion.matches ? "auto" : "smooth" });
+      window.scrollTo({ top: showcase.offsetTop + range * (index / (collections.length - 1)), behavior: reducedMotion.matches ? "auto" : "smooth" });
     });
   });
 
@@ -718,6 +734,7 @@
   window.addEventListener("resize", queuePresentation, { passive: true });
   desktop.addEventListener?.("change", queuePresentation);
   reducedMotion.addEventListener?.("change", queuePresentation);
+  setCollection(0);
   queuePresentation();
 })();
 
