@@ -1178,6 +1178,9 @@ body.rox-next-generation .collection-discovery-item > span:last-child {
 
 /* Connect the elevated rail to the first ROX statement without adding a layout break. */
 body.rox-next-generation main > .collection-discovery + .hero {
+  min-height: 585px;
+  padding-top: clamp(5.25rem, 8vw, 5.75rem);
+  padding-bottom: 5rem;
   background: linear-gradient(180deg, rgba(238, 248, 255, .48), rgba(218, 239, 252, .16) 62%, rgba(255, 255, 255, 0));
   border-top: 1px solid rgba(255, 255, 255, .42);
   border-bottom: 1px solid rgba(48, 119, 191, .08);
