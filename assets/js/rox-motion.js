@@ -328,44 +328,6 @@
     window.requestAnimationFrame(() => firstSection.classList.add("is-ready"));
   };
 
-  const setupCollectionEnvironment = () => {
-    const discovery = document.querySelector(".collection-discovery");
-    if (!discovery) return;
-
-    body.classList.add("rox-collection-environment");
-    let scheduled = false;
-    const update = () => {
-      scheduled = false;
-      if (reducedMotion.matches) {
-        discovery.style.removeProperty("--rox-collection-settle");
-        discovery.style.removeProperty("--rox-collection-settle-y");
-        discovery.style.removeProperty("--rox-collection-settle-scale");
-        discovery.style.removeProperty("--rox-collection-settle-opacity");
-        discovery.style.removeProperty("--rox-collection-parallax-y");
-        discovery.style.removeProperty("--rox-collection-parallax-rotate");
-        return;
-      }
-
-      const progress = Math.min(Math.max(window.scrollY / 360, 0), 1);
-      discovery.style.setProperty("--rox-collection-settle", progress.toFixed(3));
-      discovery.style.setProperty("--rox-collection-settle-y", `${(progress * 10).toFixed(2)}px`);
-      discovery.style.setProperty("--rox-collection-settle-scale", (1 - (progress * .035)).toFixed(3));
-      discovery.style.setProperty("--rox-collection-settle-opacity", (1 - (progress * .12)).toFixed(3));
-      discovery.style.setProperty("--rox-collection-parallax-y", `${(progress * -4).toFixed(2)}px`);
-      discovery.style.setProperty("--rox-collection-parallax-rotate", `${(progress * .68).toFixed(3)}deg`);
-    };
-    const queueUpdate = () => {
-      if (scheduled) return;
-      scheduled = true;
-      window.requestAnimationFrame(update);
-    };
-
-    window.addEventListener("scroll", queueUpdate, { passive: true });
-    window.addEventListener("resize", queueUpdate, { passive: true });
-    reducedMotion.addEventListener?.("change", queueUpdate);
-    update();
-  };
-
   const setupDockScrollState = () => {
     let lastScrollY = window.scrollY;
     let scheduled = false;
@@ -404,7 +366,6 @@
   setupPreviewViewer();
   setupTouchResponse();
   setupEntrances();
-  setupCollectionEnvironment();
   setupDockScrollState();
 })();
 
@@ -424,8 +385,8 @@
     logo.className = className;
     logo.src = logoSource;
     logo.alt = "";
-    logo.width = 459;
-    logo.height = 520;
+    logo.width = 1233;
+    logo.height = 1275;
     logo.decoding = "async";
     logo.setAttribute("aria-hidden", "true");
     return logo;
@@ -607,4 +568,49 @@
   installFooterSocials();
   setupDock();
   setupCollectionRail();
+})();
+
+/* ROX editorial pacing: lightweight scene state and a small scroll-settle for the home showcase. */
+(() => {
+  "use strict";
+
+  const body = document.body;
+  const isHome = body.classList.contains("rox-editorial-home");
+  const isCatalogue = body.classList.contains("rox-editorial-catalogue");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (!isHome && !isCatalogue) return;
+
+  const scenes = Array.from(document.querySelectorAll("main section[id^='glass-city'], main section[id^='luminar'], main section[id^='crystal-district'], main section[id^='elevation'], main section[id^='obsidian']"));
+  if ("IntersectionObserver" in window && scenes.length) {
+    const sceneObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle("rox-scene-inview", entry.isIntersecting));
+    }, { rootMargin: "-26% 0px -38% 0px", threshold: .01 });
+    scenes.forEach((scene) => sceneObserver.observe(scene));
+  }
+
+  if (!isHome || reduceMotion.matches) return;
+
+  const rail = document.querySelector(".collection-discovery");
+  if (!rail) return;
+
+  let framePending = false;
+  const updateRailSettle = () => {
+    framePending = false;
+    const progress = Math.max(0, Math.min(1, window.scrollY / Math.max(window.innerHeight * .82, 1)));
+    rail.style.setProperty("--rox-editorial-rail-settle", progress.toFixed(3));
+  };
+  const queueRailSettle = () => {
+    if (framePending) return;
+    framePending = true;
+    window.requestAnimationFrame(updateRailSettle);
+  };
+
+  window.addEventListener("scroll", queueRailSettle, { passive: true });
+  window.addEventListener("resize", queueRailSettle, { passive: true });
+  reduceMotion.addEventListener?.("change", () => {
+    if (reduceMotion.matches) rail.style.removeProperty("--rox-editorial-rail-settle");
+    else queueRailSettle();
+  });
+  updateRailSettle();
 })();
