@@ -328,6 +328,44 @@
     window.requestAnimationFrame(() => firstSection.classList.add("is-ready"));
   };
 
+  const setupCollectionEnvironment = () => {
+    const discovery = document.querySelector(".collection-discovery");
+    if (!discovery) return;
+
+    body.classList.add("rox-collection-environment");
+    let scheduled = false;
+    const update = () => {
+      scheduled = false;
+      if (reducedMotion.matches) {
+        discovery.style.removeProperty("--rox-collection-settle");
+        discovery.style.removeProperty("--rox-collection-settle-y");
+        discovery.style.removeProperty("--rox-collection-settle-scale");
+        discovery.style.removeProperty("--rox-collection-settle-opacity");
+        discovery.style.removeProperty("--rox-collection-parallax-y");
+        discovery.style.removeProperty("--rox-collection-parallax-rotate");
+        return;
+      }
+
+      const progress = Math.min(Math.max(window.scrollY / 360, 0), 1);
+      discovery.style.setProperty("--rox-collection-settle", progress.toFixed(3));
+      discovery.style.setProperty("--rox-collection-settle-y", `${(progress * 10).toFixed(2)}px`);
+      discovery.style.setProperty("--rox-collection-settle-scale", (1 - (progress * .035)).toFixed(3));
+      discovery.style.setProperty("--rox-collection-settle-opacity", (1 - (progress * .12)).toFixed(3));
+      discovery.style.setProperty("--rox-collection-parallax-y", `${(progress * -4).toFixed(2)}px`);
+      discovery.style.setProperty("--rox-collection-parallax-rotate", `${(progress * .68).toFixed(3)}deg`);
+    };
+    const queueUpdate = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", queueUpdate, { passive: true });
+    window.addEventListener("resize", queueUpdate, { passive: true });
+    reducedMotion.addEventListener?.("change", queueUpdate);
+    update();
+  };
+
   const setupDockScrollState = () => {
     let lastScrollY = window.scrollY;
     let scheduled = false;
@@ -366,6 +404,7 @@
   setupPreviewViewer();
   setupTouchResponse();
   setupEntrances();
+  setupCollectionEnvironment();
   setupDockScrollState();
 })();
 
@@ -427,7 +466,7 @@
       {
         label: "YouTube",
         href: "https://youtube.com/@rox_premium_wallpapers",
-        icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg>'
+        icon: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="4" fill="#ff0033"></rect><path d="m10 8.8 5.5 3.2-5.5 3.2V8.8Z" fill="#fff"></path></svg>'
       }
     ];
 
