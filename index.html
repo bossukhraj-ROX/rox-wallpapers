@@ -1057,14 +1057,15 @@
     <nav class="nav">
       <a class="brand" href="index.html" aria-label="ROX home">ROX</a>
       <ul class="nav-links">
-        <li><a href="collections.html">Collections</a></li>
+        <li><a href="#collection-world">Collections</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="rox-cinematic-showcase" aria-label="ROX live collections showcase">
+    <section id="collection-world" class="rox-cinematic-showcase" aria-label="ROX live collections showcase" data-rox-places-showcase>
+      <div class="rox-places-stage">
       <div class="rox-showcase-minerals" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <section class="collection-discovery shell" aria-labelledby="collection-discovery-title">
       <div class="collection-discovery-heading">
@@ -1091,8 +1092,20 @@
         <h1 id="hero-title" class="reveal">Premium Wallpapers.<span>Designed to Elevate.</span></h1>
         <p class="hero-copy reveal">ROX creates luxury wallpaper collections for modern devices, bringing instant access to beautiful everyday screens with a considered digital finish.</p>
         <div class="hero-note reveal"><i aria-hidden="true"></i> A refined view, every day</div>
+        <p class="rox-places-prompt" aria-hidden="true">Scroll to explore the collections <span>↓</span></p>
       </div>
     </section>
+      <nav class="rox-place-progress" aria-label="Collection journey">
+        <span class="rox-place-progress-label">Explore</span>
+        <ol>
+          <li><button type="button" data-rox-place="0" aria-label="Show Glass City">01 <span>Glass City</span></button></li>
+          <li><button type="button" data-rox-place="1" aria-label="Show Luminar">02 <span>Luminar</span></button></li>
+          <li><button type="button" data-rox-place="2" aria-label="Show Crystal District">03 <span>Crystal District</span></button></li>
+          <li><button type="button" data-rox-place="3" aria-label="Show Elevation">04 <span>Elevation</span></button></li>
+          <li><button type="button" data-rox-place="4" aria-label="Show Obsidian">05 <span>Obsidian</span></button></li>
+        </ol>
+      </nav>
+      </div>
     </section>
 
     <section id="glass-city" class="section shell" aria-labelledby="glass-city-title">

@@ -13,7 +13,7 @@
   ];
   const dockLinks = [
     { label: "ROX", href: "index.html" },
-    { label: "Collections", href: "collections.html" }
+    { label: "Collections", href: "index.html#collection-world" }
   ];
   const releaseTimers = new WeakMap();
   let activeTarget = null;
@@ -120,6 +120,9 @@
     const existingContact = nav.querySelector('a[href="contact.html"]');
     const existingContactItem = existingContact?.closest("li");
     if (existingContactItem) existingContactItem.remove(); else existingContact?.remove();
+
+    const existingCollections = nav.querySelector('a[href="collections.html"]');
+    if (existingCollections) existingCollections.href = "index.html#collection-world";
 
     const supportWrap = document.createElement("div");
     supportWrap.className = "rox-support-wrap";
@@ -345,6 +348,13 @@
     }, { passive: true });
   };
 
+  const updateCollectionRoutes = () => {
+    document.querySelectorAll('a[href^="collections.html"]').forEach((link) => {
+      const hash = link.getAttribute("href")?.split("#")[1];
+      link.setAttribute("href", hash ? `index.html#${hash}` : "index.html#collection-world");
+    });
+  };
+
   document.addEventListener("click", (event) => {
     if (desktopSupportMenu && !desktopSupportMenu.hidden && !event.target.closest(".rox-support-wrap")) closeDesktopSupport();
   });
@@ -362,6 +372,7 @@
     }
   });
 
+  updateCollectionRoutes();
   setupNavigation();
   setupPreviewViewer();
   setupTouchResponse();
@@ -401,7 +412,10 @@
 
     document.querySelectorAll(".site-footer .footer-brand").forEach((footerBrand) => {
       if (footerBrand.dataset.roxLogoInstalled || footerBrand.textContent.trim() !== "ROX") return;
-      footerBrand.replaceChildren(makeLogo("rox-logo rox-logo-footer"), document.createTextNode("ROX"));
+      const wordmark = document.createElement("span");
+      wordmark.className = "rox-footer-name";
+      wordmark.textContent = "ROX";
+      footerBrand.replaceChildren(makeLogo("rox-logo rox-logo-footer"), wordmark);
       footerBrand.dataset.roxLogoInstalled = "true";
     });
 
@@ -450,6 +464,37 @@
       });
 
       footerBrand.insertAdjacentElement("afterend", socials);
+    });
+  };
+
+  const installFooterPresentation = () => {
+    document.querySelectorAll(".site-footer").forEach((footer) => {
+      footer.classList.add("rox-atmospheric-footer");
+
+      let panel = footer.querySelector(":scope > .rox-footer-panel");
+      if (!panel) {
+        panel = document.createElement("div");
+        panel.className = "rox-footer-panel";
+        Array.from(footer.childNodes).forEach((node) => panel.append(node));
+        footer.append(panel);
+      }
+
+      const footerBrand = panel.querySelector(".footer-brand");
+      if (footerBrand && !panel.querySelector(".rox-footer-signature")) {
+        const signature = document.createElement("div");
+        signature.className = "rox-footer-signature";
+
+        const premium = document.createElement("p");
+        premium.className = "rox-footer-premium";
+        premium.textContent = "Premium Wallpapers";
+
+        const tagline = document.createElement("p");
+        tagline.className = "rox-footer-tagline";
+        tagline.textContent = "Designed for the screen in front of you.";
+
+        signature.append(premium, tagline);
+        footerBrand.insertAdjacentElement("afterend", signature);
+      }
     });
   };
 
@@ -566,8 +611,114 @@
 
   installBrandMarks();
   installFooterSocials();
+  installFooterPresentation();
   setupDock();
   setupCollectionRail();
+})();
+
+/* Long-form collection staging changes document height after first paint.  Re-align
+   direct collection URLs once images and layout have settled, preserving old links. */
+(() => {
+  "use strict";
+
+  const knownAnchors = new Set(["#glass-city", "#luminar", "#crystal-district", "#elevation", "#obsidian"]);
+  const alignAnchor = () => {
+    if (!knownAnchors.has(window.location.hash)) return;
+    const target = document.querySelector(window.location.hash);
+    if (!target) return;
+    window.requestAnimationFrame(() => target.scrollIntoView({ block: "start", behavior: "auto" }));
+  };
+
+  const alignInitialAnchor = () => {
+    alignAnchor();
+    window.setTimeout(alignAnchor, 120);
+    window.setTimeout(alignAnchor, 620);
+  };
+  if (document.readyState === "complete") alignInitialAnchor();
+  else window.addEventListener("load", alignInitialAnchor, { once: true });
+  window.addEventListener("hashchange", alignAnchor);
+})();
+
+/* A light, scroll-led collection journey for the ROX home page.  It deliberately
+   uses the existing five collection links rather than creating a separate carousel. */
+(() => {
+  "use strict";
+
+  const showcase = document.querySelector("[data-rox-places-showcase]");
+  const stage = showcase?.querySelector(".rox-places-stage");
+  const items = showcase ? Array.from(showcase.querySelectorAll(".collection-discovery-item")) : [];
+  const controls = showcase ? Array.from(showcase.querySelectorAll("[data-rox-place]")) : [];
+  const desktop = window.matchMedia("(min-width: 901px)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (!showcase || !stage || items.length !== 5 || controls.length !== 5) return;
+
+  let frame = 0;
+  const clearPresentation = () => {
+    showcase.removeAttribute("data-rox-active-place");
+    showcase.classList.remove("is-rox-place-pinned", "is-rox-place-complete");
+    showcase.style.removeProperty("--rox-place-progress");
+    items.forEach((item) => {
+      item.classList.remove("is-rox-place-active");
+      ["--rox-place-opacity", "--rox-place-y", "--rox-place-z", "--rox-place-rotate", "--rox-place-scale"].forEach((property) => item.style.removeProperty(property));
+    });
+    controls.forEach((control) => control.removeAttribute("aria-current"));
+  };
+
+  const applyPresentation = () => {
+    frame = 0;
+    if (!desktop.matches || reducedMotion.matches) {
+      clearPresentation();
+      return;
+    }
+
+    const range = Math.max(1, showcase.offsetHeight - stage.clientHeight);
+    const start = showcase.offsetTop;
+    const end = start + range;
+    const progress = Math.max(0, Math.min(1, (window.scrollY - start) / range));
+    showcase.classList.toggle("is-rox-place-pinned", window.scrollY > start && window.scrollY < end);
+    showcase.classList.toggle("is-rox-place-complete", window.scrollY >= end);
+    const position = progress * (items.length - 1);
+    const active = Math.round(position);
+    showcase.dataset.roxActivePlace = String(active);
+    showcase.style.setProperty("--rox-place-progress", progress.toFixed(3));
+
+    items.forEach((item, index) => {
+      const offset = index - position;
+      const proximity = Math.max(0, 1 - Math.abs(offset));
+      const depth = Math.min(1, Math.abs(offset));
+      item.classList.toggle("is-rox-place-active", index === active);
+      item.style.setProperty("--rox-place-opacity", (0.28 + proximity * 0.72).toFixed(3));
+      item.style.setProperty("--rox-place-y", `${Math.round(-proximity * 28 + depth * 20)}px`);
+      item.style.setProperty("--rox-place-z", `${Math.round(proximity * 60 - depth * 45)}px`);
+      item.style.setProperty("--rox-place-rotate", `${(offset * -5.5).toFixed(2)}deg`);
+      item.style.setProperty("--rox-place-scale", (0.9 + proximity * 0.15).toFixed(3));
+    });
+    controls.forEach((control, index) => {
+      if (index === active) control.setAttribute("aria-current", "step");
+      else control.removeAttribute("aria-current");
+    });
+  };
+
+  const queuePresentation = () => {
+    if (frame) return;
+    frame = window.requestAnimationFrame(applyPresentation);
+  };
+
+  controls.forEach((control) => {
+    control.addEventListener("click", () => {
+      const index = Number.parseInt(control.dataset.roxPlace || "0", 10);
+      const range = Math.max(1, showcase.offsetHeight - stage.clientHeight);
+      const target = showcase.offsetTop + range * (index / (items.length - 1));
+      window.scrollTo({ top: target, behavior: reducedMotion.matches ? "auto" : "smooth" });
+    });
+  });
+
+  window.addEventListener("scroll", queuePresentation, { passive: true });
+  window.addEventListener("resize", queuePresentation, { passive: true });
+  desktop.addEventListener?.("change", queuePresentation);
+  reducedMotion.addEventListener?.("change", queuePresentation);
+  queuePresentation();
 })();
 
 /* ROX editorial pacing: lightweight scene state and a small scroll-settle for the home showcase. */

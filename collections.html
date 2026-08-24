@@ -3,456 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore ROX wallpaper collections, including Glass City, Luminar and upcoming releases.">
-  <title>ROX | Collections</title>
+  <meta name="description" content="Explore the five live ROX premium wallpaper collections.">
+  <title>ROX | Explore Collections</title>
   <style>
-    :root {
-      --paper: #f5f8ff; --paper-deep: #e7eef9; --ice: rgba(255,255,255,.64); --ice-strong: rgba(255,255,255,.82);
-      --ink: #0b1c38; --ink-soft: #344b70; --quiet: #6e809e; --navy: #0a2b63; --midnight: #061b44;
-      --blue: #2f77d3; --sky: #a8d8ff; --lavender: #c9c7ff; --line: rgba(58,105,168,.18); --line-bright: rgba(255,255,255,.84);
-      --shadow: 0 24px 60px rgba(17, 48, 95, .12); --shadow-hover: 0 30px 74px rgba(17, 48, 95, .18);
-      --radius: 28px; --radius-small: 18px; --ease: cubic-bezier(.2,.7,.2,1);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; min-width: 320px; overflow-x: hidden; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; background: radial-gradient(circle at 8% 6%, rgba(168,216,255,.52), transparent 24rem), radial-gradient(circle at 93% 14%, rgba(201,199,255,.30), transparent 25rem), linear-gradient(150deg, #fff 0%, var(--paper) 50%, #eff6ff 100%); }
-    body::before, body::after { content:""; position: fixed; z-index:-1; border-radius:50%; pointer-events:none; filter: blur(2px); }
-    body::before { width:30rem; height:30rem; top:32%; left:-18rem; background:radial-gradient(circle,rgba(155,206,255,.23),transparent 68%); }
-    body::after { width:31rem; height:31rem; right:-18rem; bottom:0; background:radial-gradient(circle,rgba(179,197,255,.22),transparent 67%); }
-    a { color: inherit; text-decoration: none; }
-    img { display:block; max-width:100%; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    :focus-visible { outline: 3px solid rgba(47,119,211,.54); outline-offset: 4px; border-radius: 12px; }
-    .skip-link { position:fixed; z-index:100; top:10px; left:10px; transform:translateY(-160%); padding:.7rem 1rem; background:var(--navy); color:#fff; border-radius:12px; transition:transform .2s; }
-    .skip-link:focus { transform:translateY(0); }
-    .site-header { position:sticky; z-index:20; top:0; padding:18px 20px 0; pointer-events:none; }
-    .nav-shell { width:min(1180px,100%); min-height:64px; margin:auto; padding:8px 10px 8px 19px; display:flex; align-items:center; justify-content:space-between; gap:18px; border:1px solid var(--line-bright); border-bottom-color:var(--line); border-radius:999px; background:rgba(255,255,255,.61); box-shadow:0 10px 34px rgba(24,58,111,.09), inset 0 1px 0 rgba(255,255,255,.96); backdrop-filter:blur(17px) saturate(132%); -webkit-backdrop-filter:blur(17px) saturate(132%); pointer-events:auto; transition:min-height .3s var(--ease), background .3s, box-shadow .3s, backdrop-filter .3s; }
-    .site-header.is-scrolled .nav-shell { min-height:57px; background:rgba(251,253,255,.8); border-color:rgba(50,96,159,.24); box-shadow:0 14px 38px rgba(22,53,103,.13), inset 0 1px 0 #fff; backdrop-filter:blur(25px) saturate(145%); }
-    .brand { font-size:1.02rem; font-weight:800; letter-spacing:.18em; color:var(--navy); padding:.45rem .35rem; }
-    .nav-links { display:flex; align-items:center; gap:3px; list-style:none; margin:0; padding:0; }
-    .nav-links a { display:block; min-height:40px; padding:.61rem .9rem; color:var(--ink-soft); font-size:.88rem; font-weight:700; border-radius:999px; transition:color .25s, background .25s, transform .25s; }
-    .nav-links a:hover, .nav-links a[aria-current="page"] { color:var(--navy); background:rgba(255,255,255,.62); transform:translateY(-1px); }
-    .nav-links a[aria-current="page"] { box-shadow:inset 0 0 0 1px rgba(51,103,176,.14), 0 4px 12px rgba(45,85,145,.08); }
-    main { padding:0 20px; }
-    .section { width:min(1120px,100%); margin:0 auto; padding:clamp(4.5rem,9vw,8rem) 0; }
-    .eyebrow, .status, .coming-soon { display:inline-flex; align-items:center; width:max-content; gap:.45rem; padding:.4rem .68rem; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); background:rgba(255,255,255,.64); border:1px solid rgba(52,104,176,.2); border-radius:999px; box-shadow:inset 0 1px 0 #fff; }
-    .eyebrow::before, .status::before { content:""; width:.42rem; height:.42rem; border-radius:50%; background:var(--blue); box-shadow:0 0 0 4px rgba(47,119,211,.1); }
-    .hero { min-height:clamp(410px,56vw,590px); padding-top:clamp(6rem,13vw,10rem); text-align:center; display:grid; place-content:center; position:relative; }
-    .hero::before { content:""; position:absolute; width:min(60vw,640px); height:160px; border-radius:50%; background:radial-gradient(ellipse,rgba(181,219,255,.45),rgba(255,255,255,0) 70%); filter:blur(10px); top:22%; left:50%; transform:translateX(-50%); z-index:-1; }
-    .hero h1 { max-width:850px; margin:.9rem auto 1rem; font-size:clamp(2.55rem,6.5vw,5.25rem); line-height:1.02; letter-spacing:-.065em; }
-    .hero p { max-width:630px; margin:0 auto; color:var(--ink-soft); font-size:clamp(1rem,1.9vw,1.18rem); }
-    .glass { position:relative; overflow:hidden; background:var(--ice); border:1px solid var(--line-bright); border-bottom-color:var(--line); box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.93); backdrop-filter:blur(20px) saturate(135%); -webkit-backdrop-filter:blur(20px) saturate(135%); }
-    .glass::after { content:""; position:absolute; pointer-events:none; inset:0; border-radius:inherit; background:linear-gradient(122deg,rgba(255,255,255,.52),transparent 31%,rgba(174,211,255,.11) 66%,transparent 82%); }
-    .section-heading { display:grid; gap:.8rem; max-width:650px; margin-bottom:2.1rem; }
-    .section-heading h2 { margin:0; font-size:clamp(1.85rem,4.2vw,3.25rem); letter-spacing:-.05em; line-height:1.08; }
-    .section-heading p { margin:0; color:var(--ink-soft); }
-    .featured { border-radius:var(--radius); padding:clamp(1rem,3.6vw,2rem); display:grid; grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr); gap:clamp(1.8rem,5vw,4rem); align-items:center; }
-    .artwork { position:relative; isolation:isolate; min-height:0; padding:clamp(.45rem,1.3vw,.8rem); border-radius:calc(var(--radius) - 8px); background:rgba(255,255,255,.5); border:1px solid rgba(73,122,192,.17); box-shadow:0 16px 34px rgba(22,54,104,.13); }
-    .artwork::before { content:""; position:absolute; inset:6% -4% -5% 11%; z-index:-1; border-radius:28px; background:linear-gradient(145deg,rgba(101,180,255,.35),rgba(197,196,255,.12)); filter:blur(18px); }
-    .artwork img { width:100%; aspect-ratio:4 / 5; object-fit:cover; border-radius:calc(var(--radius) - 14px); }
-    .featured-copy { position:relative; z-index:1; padding:clamp(.3rem,.7vw,.8rem) 0; }
-    .featured-copy h2 { margin:.8rem 0 1rem; font-size:clamp(2.1rem,4.8vw,3.65rem); letter-spacing:-.06em; line-height:1; }
-    .featured-description { margin:0; color:var(--ink-soft); font-size:1.02rem; }
-    .badges { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; list-style:none; padding:0; margin:1.5rem 0; }
-    .badges li { min-height:58px; display:flex; align-items:center; padding:.7rem .85rem; color:var(--ink-soft); font-size:.83rem; font-weight:720; background:rgba(255,255,255,.5); border:1px solid rgba(59,107,178,.15); border-radius:14px; box-shadow:inset 0 1px 0 #fff; }
-    .price-row { display:flex; align-items:baseline; flex-wrap:wrap; gap:.65rem 1rem; margin:1.25rem 0; }
-    .price { color:var(--navy); font-size:2rem; line-height:1; font-weight:850; letter-spacing:-.055em; }
-    .price-note { color:var(--quiet); font-size:.87rem; }
-    .actions { display:flex; flex-wrap:wrap; gap:.8rem; }
-    .luminar-purchase { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:1.25rem 0; }
-    .luminar-purchase .price-row { margin:0; }
-    .luminar-purchase .actions { flex:none; }
-    .luminar-cover { display:grid; padding:clamp(1rem,3.6vw,2rem); border-radius:var(--radius); place-items:center; }
-    .luminar-cover .artwork { width:min(100%,480px); }
-    .luminar-cover .artwork img { display:block; height:auto; aspect-ratio:auto; object-fit:contain; }
-    .luminar-details { margin-top:clamp(1.5rem,4vw,3rem); padding:clamp(1.25rem,3.6vw,2rem); border-radius:var(--radius); }
-    .luminar-details .featured-copy { max-width:820px; margin:0 auto; }
-    .button { position:relative; isolation:isolate; min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.78rem 1.05rem; border:1px solid transparent; border-radius:999px; font-size:.9rem; font-weight:800; transition:transform .26s var(--ease), box-shadow .26s var(--ease), background .26s, color .26s; overflow:hidden; }
-    .button::before { content:""; position:absolute; z-index:-1; width:52%; height:180%; left:-77%; top:-44%; border-radius:50%; background:rgba(255,255,255,.33); transition:left .5s var(--ease); }
-    .button:hover { transform:translateY(-3px) scale(1.01); } .button:hover::before { left:119%; }
-    .button-primary { color:#fff; background:linear-gradient(135deg,var(--navy),#174d9e); box-shadow:0 11px 21px rgba(8,42,99,.23), inset 0 1px 0 rgba(255,255,255,.3); }
-    .button-primary:hover { box-shadow:0 16px 28px rgba(8,42,99,.29); }
-    .button-secondary { color:var(--navy); background:rgba(255,255,255,.6); border-color:rgba(54,102,174,.2); box-shadow:inset 0 1px 0 #fff,0 8px 18px rgba(25,58,110,.07); }
-    .button-secondary:hover { box-shadow:inset 0 1px 0 #fff,0 13px 24px rgba(25,58,110,.13); }
-    .preview-section { padding-top:clamp(1rem,3vw,2.5rem); }
-    .preview-intro { display:flex; justify-content:space-between; align-items:end; gap:1rem; margin-bottom:1.25rem; }
-    .preview-intro h2 { margin:0; font-size:clamp(1.55rem,3.6vw,2.45rem); letter-spacing:-.045em; }
-    .preview-intro p { max-width:430px; margin:0; color:var(--quiet); font-size:.9rem; text-align:right; }
-    .preview-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(.65rem,1.5vw,1rem); list-style:none; padding:0; margin:0; }
-    .preview { position:relative; aspect-ratio:4 / 5; overflow:hidden; border:1px solid rgba(49,101,177,.2); border-radius:18px; background:#dce8f8; box-shadow:0 10px 20px rgba(19,53,104,.1), inset 0 1px 0 #fff; transition:transform .3s var(--ease),box-shadow .3s; }
-    .preview:hover { transform:translateY(-4px); box-shadow:0 17px 28px rgba(19,53,104,.16),inset 0 1px 0 #fff; }
-    .preview img { width:100%; height:100%; object-fit:cover; filter:blur(8px) saturate(.93); transform:scale(1.08); transition:none; }
-    .preview::after { content:""; position:absolute; inset:0; background:linear-gradient(145deg,rgba(255,255,255,.19),transparent 42%,rgba(4,27,68,.12)); pointer-events:none; }
-    .upcoming-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1rem; }
-    .future-card { min-height:286px; padding:1.15rem; border-radius:22px; display:flex; flex-direction:column; transition:transform .3s var(--ease),box-shadow .3s; }
-    .future-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-hover),inset 0 1px 0 #fff; }
-    .future-art { position:relative; height:104px; overflow:hidden; margin-bottom:1.1rem; border-radius:15px; background:linear-gradient(135deg,#d8ecff,#f7fbff); border:1px solid rgba(255,255,255,.7); }
-    .future-art::before,.future-art::after { content:""; position:absolute; border-radius:50%; filter:blur(1px); }
-    .future-art::before { width:120px;height:120px;right:-28px;top:-49px;background:rgba(68,146,227,.46); } .future-art::after{width:105px;height:105px;left:-28px;bottom:-48px;background:rgba(255,255,255,.73);}
-    .future-crystal .future-art{background:linear-gradient(135deg,#e9e7ff,#edf7ff)}.future-crystal .future-art::before{background:rgba(123,119,230,.32)}
-    .future-elevation .future-art{background:linear-gradient(135deg,#e5eef8,#c9dcf2)}.future-elevation .future-art::before{border-radius:14px;background:rgba(43,89,152,.33)}
-    .future-horizon .future-art{background:linear-gradient(170deg,#d9edff 0%,#eef6ff 52%,#d6d7ff 100%)}.future-horizon .future-art::before{top:42px;right:-10px;width:130px;height:24px;background:rgba(31,87,167,.24)}
-    .coming-soon { margin-top:auto; font-size:.62rem; color:var(--ink-soft); }
-    .future-card h3 { margin:0 0 .5rem; font-size:1.08rem; letter-spacing:-.025em; } .future-card p { margin:0 0 1rem; color:var(--quiet); font-size:.86rem; }
-    .info-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
-    .info-card { min-height:210px; padding:1.35rem; border-radius:22px; }
-    .icon { width:42px; height:42px; display:grid; place-items:center; margin-bottom:1rem; color:var(--navy); border-radius:14px; background:rgba(232,243,255,.84); border:1px solid rgba(48,105,184,.18); }
-    .info-card h3 { margin:0 0 .55rem; font-size:1.1rem; letter-spacing:-.025em; } .info-card p{margin:0;color:var(--ink-soft);font-size:.92rem}
-    .back-home { padding-top:0; text-align:center; }.back-home .button{margin:auto}
-    .site-footer { width:min(1120px,calc(100% - 40px)); margin:0 auto 24px; padding:2.1rem 1.2rem; text-align:center; border-radius:28px; }
-    .footer-brand { color:var(--navy); font-size:1.05rem; font-weight:850; letter-spacing:.2em; }.footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.45rem .95rem;list-style:none;padding:0;margin:1.15rem 0}.footer-links a,.footer-email{color:var(--ink-soft);font-size:.86rem;font-weight:700;transition:color .2s}.footer-links a:hover,.footer-email:hover{color:var(--blue)}.copyright{margin:.9rem 0 0;color:var(--quiet);font-size:.8rem}
-    .js .reveal { opacity:0; transform:translateY(20px); filter:blur(7px); transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease); }.js .reveal.is-visible{opacity:1;transform:none;filter:none}.js .reveal:nth-child(2){transition-delay:.07s}.js .reveal:nth-child(3){transition-delay:.14s}.js .reveal:nth-child(4){transition-delay:.21s}.js .reveal:nth-child(5){transition-delay:.28s}
-    @media (max-width:1050px){.upcoming-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.future-card{min-height:266px}}
-    @media (max-width:760px){.site-header{padding:12px 12px 0}.nav-shell{padding:7px 8px 7px 14px;gap:6px}.nav-links a{padding:.56rem .55rem;font-size:.76rem}.brand{font-size:.9rem}.featured{grid-template-columns:1fr}.artwork{max-width:470px;margin:0 auto;width:100%}.luminar-cover .artwork{max-width:480px}.preview-intro{display:block}.preview-intro p{text-align:left;margin-top:.45rem}.info-grid{grid-template-columns:1fr}.section{padding:4.4rem 0}.upcoming-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:480px){main{padding:0 14px}.badges{grid-template-columns:1fr}.actions{flex-direction:column}.luminar-purchase{align-items:stretch;flex-direction:column;gap:.9rem}.luminar-purchase .actions{width:100%}.button{width:100%}.preview-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}.upcoming-grid{grid-template-columns:1fr}.future-card{min-height:245px}.site-footer{width:calc(100% - 28px)}}
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js .reveal{opacity:1;transform:none;filter:none}}
-  
-    /* Liquid Glass navigation refinement */
-    .site-header .nav-shell {
-      position: relative;
-      isolation: isolate;
-      background: linear-gradient(115deg, rgba(255,255,255,.31) 0%, rgba(255,255,255,.12) 43%, rgba(199,224,255,.26) 100%);
-      border-color: rgba(255,255,255,.70);
-      border-bottom-color: rgba(37,79,139,.18);
-      box-shadow: 0 8px 25px rgba(29,65,116,.08), inset 0 1px 0 rgba(255,255,255,.78), inset 0 -1px 0 rgba(59,111,181,.07);
-      backdrop-filter: blur(13px) saturate(142%);
-      -webkit-backdrop-filter: blur(13px) saturate(142%);
-      transition: min-height .3s var(--ease), background .3s ease, box-shadow .3s ease, border-color .3s ease, backdrop-filter .3s ease, -webkit-backdrop-filter .3s ease;
-    }
-    .site-header .nav-shell::before {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      z-index: 0;
-      height: 52%;
-      border-radius: inherit;
-      background: radial-gradient(circle at 16% -30%, rgba(255,255,255,.56), transparent 55%), linear-gradient(108deg, rgba(255,255,255,.45), rgba(255,255,255,.04) 42%, rgba(191,220,255,.28));
-      background-size: 145% 100%;
-      background-position: 0 0;
-      opacity: .72;
-      pointer-events: none;
-      transition: background-position .8s ease, opacity .3s ease;
-    }
-    .site-header .nav-shell > * { z-index: 1; }
-    .site-header .nav-shell:hover::before { background-position: 100% 0; opacity: .88; }
-    .site-header.is-scrolled .nav-shell {
-      background: linear-gradient(115deg, rgba(255,255,255,.49) 0%, rgba(248,252,255,.23) 44%, rgba(196,222,253,.30) 100%);
-      border-color: rgba(255,255,255,.84);
-      border-bottom-color: rgba(29,73,137,.24);
-      box-shadow: 0 11px 30px rgba(25,60,109,.12), inset 0 1px 0 rgba(255,255,255,.87), inset 0 -1px 0 rgba(53,106,179,.11);
-      backdrop-filter: blur(19px) saturate(150%);
-      -webkit-backdrop-filter: blur(19px) saturate(150%);
-    }
-    .site-header.is-scrolled .nav-shell::before { opacity: .82; }
-    .site-header .brand {
-      text-shadow: 0 1px 0 rgba(255,255,255,.72), 0 3px 11px rgba(23,61,115,.10);
-    }
-    .site-header .brand::before { filter: drop-shadow(0 1px 4px rgba(42,112,201,.28)); }
-    .site-header .nav-links a {
-      background: transparent;
-      box-shadow: none;
-      text-shadow: 0 1px 0 rgba(255,255,255,.60);
-      transition: color .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease, text-shadow .25s ease;
-    }
-    .site-header .nav-links a:hover,
-    .site-header .nav-links a:focus-visible {
-      color: var(--navy);
-      border-color: rgba(65,119,190,.12);
-      background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(199,223,253,.30));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 4px 11px rgba(35,77,140,.08);
-      text-shadow: 0 1px 0 rgba(255,255,255,.86);
-      transform: translateY(-1px);
-    }
-    .site-header .nav-links a[aria-current="page"] {
-      color: var(--navy);
-      border-color: rgba(63,118,190,.13);
-      background: linear-gradient(135deg, rgba(255,255,255,.54), rgba(190,219,255,.34));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.82), inset 0 0 0 1px rgba(63,118,190,.10), 0 4px 12px rgba(35,77,140,.09);
-    }
-    .site-header .nav-links a:focus-visible { outline: 2px solid rgba(37,103,190,.72); outline-offset: 2px; }
-    .site-header .menu-toggle {
-      background: linear-gradient(135deg, rgba(255,255,255,.46), rgba(202,226,255,.28));
-      border-color: rgba(65,119,190,.16);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.76), 0 4px 11px rgba(35,77,140,.07);
-    }
-    @media (max-width: 720px) {
-      .site-header .nav-shell .nav-links[data-open] {
-        background: linear-gradient(135deg, rgba(255,255,255,.63), rgba(219,235,255,.43));
-        border-color: rgba(65,119,190,.16);
-        box-shadow: 0 12px 28px rgba(25,60,109,.11), inset 0 1px 0 rgba(255,255,255,.82);
-        backdrop-filter: blur(18px) saturate(148%);
-        -webkit-backdrop-filter: blur(18px) saturate(148%);
-      }
-    }
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .site-header .nav-shell { background: rgba(249,253,255,.82); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .site-header .nav-shell, .site-header .nav-shell::before, .site-header .nav-links a { transition: none; }
-    }
-
-  
-    /* Protected public wallpaper previews: baked-in assets are the primary protection. */
-    .protected-preview-gallery,
-    .protected-preview-gallery * {
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-    }
-    .protected-preview-gallery img {
-      -webkit-user-drag: none;
-      user-drag: none;
-      pointer-events: none;
-    }
+    :root { --rox-ink:#102d4e; --rox-paper:#eaf5fb; --rox-line:rgba(255,255,255,.72); --rox-ease:cubic-bezier(.22,1,.36,1); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { min-width:320px; min-height:100vh; margin:0; color:var(--rox-ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(circle at 50% 16%,rgba(255,255,255,.88),transparent 29rem),radial-gradient(circle at 14% 78%,rgba(255,186,121,.24),transparent 27rem),linear-gradient(155deg,#6f91aa,#bdced7 52%,#6f8ea5); }
+    a { color:inherit; text-decoration:none; }
+    :focus-visible { outline:3px solid rgba(39,111,190,.62); outline-offset:4px; border-radius:12px; }
+    .site-header { position:relative; z-index:20; padding:18px 20px 0; }
+    .nav { width:min(1180px,100%); min-height:64px; margin:auto; padding:8px 10px 8px 19px; display:flex; align-items:center; justify-content:space-between; gap:18px; border:1px solid var(--rox-line); border-radius:999px; background:rgba(240,249,255,.52); box-shadow:0 14px 38px rgba(18,51,77,.15),inset 0 1px 0 rgba(255,255,255,.94); backdrop-filter:blur(18px) saturate(130%); -webkit-backdrop-filter:blur(18px) saturate(130%); }
+    .brand { padding:.4rem .55rem; color:var(--rox-ink); font-weight:900; letter-spacing:.13em; }
+    .nav-links { display:flex; gap:.25rem; padding:0; margin:0; list-style:none; }
+    .nav-links a { display:block; min-height:40px; padding:.62rem .9rem; border-radius:999px; font-size:.88rem; font-weight:760; }
+    main { min-height:calc(100vh - 100px); display:grid; place-items:center; padding:5.5rem 20px 8rem; }
+    .rox-bridge { width:min(650px,100%); padding:clamp(2rem,6vw,4rem); text-align:center; border:1px solid var(--rox-line); border-radius:34px; background:linear-gradient(135deg,rgba(248,253,255,.62),rgba(205,228,242,.31)); box-shadow:0 32px 72px rgba(13,43,70,.2),inset 0 1px 0 rgba(255,255,255,.95); backdrop-filter:blur(20px) saturate(128%); -webkit-backdrop-filter:blur(20px) saturate(128%); }
+    .rox-bridge img { width:clamp(76px,12vw,110px); height:auto; margin:0 auto 1.25rem; filter:drop-shadow(0 12px 22px rgba(16,58,98,.18)); }
+    .rox-bridge p { max-width:420px; margin:.75rem auto 1.7rem; color:#385775; line-height:1.65; }
+    .rox-bridge h1 { margin:0; font-size:clamp(2rem,5vw,3.5rem); letter-spacing:-.065em; line-height:1; }
+    .rox-bridge .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:.78rem 1.15rem; border-radius:999px; color:#fff; background:linear-gradient(135deg,#173d68,#326fa7); box-shadow:0 13px 25px rgba(18,62,106,.23),inset 0 1px 0 rgba(255,255,255,.3); font-size:.9rem; font-weight:800; transition:transform 220ms var(--rox-ease),box-shadow 220ms var(--rox-ease); }
+    .rox-bridge .button:hover { transform:translateY(-3px); box-shadow:0 18px 31px rgba(18,62,106,.3),inset 0 1px 0 rgba(255,255,255,.3); }
+    .site-footer { margin:0; padding:0 20px 24px; text-align:center; }
+    .footer-brand,.footer-links,.footer-email,.copyright { display:none; }
+    @media (max-width:720px) { .site-header { padding:12px 14px 0; } .nav { min-height:58px; } main { padding:4.5rem 16px 7rem; } .rox-bridge { border-radius:28px; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; transition-duration:.01ms!important; } }
   </style>
   <link rel="stylesheet" href="assets/css/rox-motion.css">
+  <script>
+    (function () {
+      var known = ["#glass-city", "#luminar", "#crystal-district", "#elevation", "#obsidian"];
+      var destination = known.indexOf(window.location.hash) > -1 ? window.location.hash : "#collection-world";
+      window.location.replace("index.html" + destination);
+    }());
+  </script>
   <script src="assets/js/rox-motion.js" defer></script>
 </head>
-<body class="rox-editorial-catalogue">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <nav class="nav-shell" aria-label="Main navigation">
+<body class="rox-collection-bridge">
+  <header class="site-header" aria-label="Primary navigation">
+    <nav class="nav">
       <a class="brand" href="index.html" aria-label="ROX home">ROX</a>
-      <ul class="nav-links">
-        <li><a href="collections.html" aria-current="page">Collections</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <ul class="nav-links"><li><a href="index.html#collection-world">Collections</a></li><li><a href="contact.html">Contact</a></li></ul>
     </nav>
   </header>
-  <main id="main-content">
-    <section class="section hero" aria-labelledby="page-title">
-      <div class="reveal">
-        <span class="eyebrow">ROX Collections</span>
-        <h1 id="page-title">Wallpaper Collections for Everyday Screens.</h1>
-        <p>Explore the current ROX releases and discover the collections being developed for future screens.</p>
-      </div>
+  <main>
+    <section class="rox-bridge" aria-labelledby="bridge-title">
+      <img src="assets/images/brand/rox-logo.png" width="1233" height="1275" alt="ROX">
+      <h1 id="bridge-title">Explore ROX.</h1>
+      <p>All five live wallpaper collections now live in one continuous ROX experience.</p>
+      <a class="button" href="index.html#collection-world">Enter the collection world</a>
     </section>
-    <nav class="rox-catalogue-strip reveal" aria-label="Explore ROX wallpaper collections">
-      <a href="#glass-city"><img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City collection artwork" decoding="async"><span>Glass City</span></a>
-      <a href="#luminar"><img src="assets/images/luminar/featured/rox-luminar-featured.webp" alt="Luminar collection artwork" decoding="async"><span>Luminar</span></a>
-      <a href="#crystal-district"><img src="assets/images/crystal-district/featured/rox-crystal-district-featured.webp" alt="Crystal District collection artwork" decoding="async"><span>Crystal District</span></a>
-      <a href="#elevation"><img src="assets/images/elevation/featured/rox-elevation-featured.webp" alt="Elevation collection artwork" decoding="async"><span>Elevation</span></a>
-      <a href="#obsidian"><img src="assets/images/obsidian/featured/rox-obsidian-featured.webp" alt="Obsidian collection artwork" decoding="async"><span>Obsidian</span></a>
-    </nav>
-    <section class="section" aria-labelledby="featured-title">
-      <div class="section-heading reveal">
-        <span class="eyebrow">Featured collection</span>
-        <h2 id="featured-title">A focused release, designed to elevate every screen.</h2>
-      </div>
-      <article id="glass-city" class="featured glass" aria-labelledby="glass-city-title">
-        <div class="artwork reveal"><img src="86D37BE9-D966-4042-B608-EF9773121786.PNG" alt="Glass City featured wallpaper artwork" fetchpriority="high"></div>
-        <div class="featured-copy reveal">
-          <span class="status">Available Now</span>
-          <h2 id="glass-city-title">Glass City.</h2>
-          <p class="featured-description">Glass City is a refined collection of 10 premium wallpapers inspired by luminous architecture, reflective surfaces and modern urban depth. One purchase gives you instant digital access to the complete collection.</p>
-          <ul class="badges" aria-label="Glass City collection details">
-            <li>10 Premium Wallpapers</li><li>One-Time Purchase</li><li>Instant Digital Access</li><li>Made for Everyday Screens</li>
-          </ul>
-          <div class="price-row"><span class="price">£2.99</span><span class="price-note">One-time purchase for all 10 wallpapers.</span></div>
-          <div class="actions">
-            <a class="button button-primary" href="https://buy.stripe.com/4gM7sFf8Cb7p3fz98pbMQ00">Buy Glass City <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="button button-secondary" href="index.html">View Glass City on Home</a>
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="section preview-section" aria-labelledby="preview-title">
-      <div class="preview-intro reveal"><h2 id="preview-title">Protected previews.</h2><p>Every image is previewed with ROX protection. Your purchased collection includes the complete premium wallpapers.</p></div>
-      <ul class="preview-grid protected-preview-gallery" aria-label="Protected Glass City wallpaper previews">
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-01.webp" draggable="false" alt="Protected Glass City wallpaper preview one" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-02.webp" draggable="false" alt="Protected Glass City wallpaper preview two" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-03.webp" draggable="false" alt="Protected Glass City wallpaper preview three" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-04.webp" draggable="false" alt="Protected Glass City wallpaper preview four" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-05.webp" draggable="false" alt="Protected Glass City wallpaper preview five" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-06.webp" draggable="false" alt="Protected Glass City wallpaper preview six" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-07.webp" draggable="false" alt="Protected Glass City wallpaper preview seven" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-08.webp" draggable="false" alt="Protected Glass City wallpaper preview eight" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-09.webp" draggable="false" alt="Protected Glass City wallpaper preview nine" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/glass-city/previews/rox-glass-city-preview-10.webp" draggable="false" alt="Protected Glass City wallpaper preview ten" loading="lazy" decoding="async"></li>
-      </ul>
-    </section>
-    <section id="luminar" class="section" aria-labelledby="luminar-title">
-      <article class="featured glass reveal" aria-labelledby="luminar-title">
-        <div class="artwork"><img src="assets/images/luminar/featured/rox-luminar-featured.webp" alt="Luminar Collection featured wallpaper artwork" fetchpriority="high" decoding="async"></div>
-        <div class="featured-copy">
-          <span class="status">Available Now</span>
-          <h2 id="luminar-title">Luminar Collection</h2>
-          <p class="featured-description">Luminar is a premium collection of 10 cinematic 4K phone wallpapers inspired by distant planets, glowing nebulae, stellar storms and futuristic worlds.</p>
-          <ul class="badges" aria-label="Luminar Collection details">
-            <li>10 Premium Wallpapers</li><li>4K Phone Wallpapers</li><li>Portrait Format</li><li>iPhone &amp; Android</li><li>One-Time Purchase</li><li>Instant Digital Access</li>
-          </ul>
-          <div class="price-row"><span class="price">£2.99</span><span class="price-note">One-time purchase for all 10 wallpapers.</span></div>
-          <div class="actions">
-            <a class="button button-primary" href="https://buy.stripe.com/00wcMZe4ycbtaI12K1bMQ01">Buy Luminar <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="button button-secondary" href="index.html#luminar-title">View Luminar on Homepage</a>
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="section preview-section" aria-labelledby="luminar-previews-title">
-      <div class="preview-intro reveal"><h2 id="luminar-previews-title">Luminar protected previews.</h2><p>Every image is previewed with ROX protection. Your purchased collection includes the complete premium wallpapers.</p></div>
-      <ul class="preview-grid protected-preview-gallery" aria-label="Protected Luminar wallpaper previews">
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-01.webp" draggable="false" alt="Protected Luminar wallpaper preview one" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-02.webp" draggable="false" alt="Protected Luminar wallpaper preview two" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-03.webp" draggable="false" alt="Protected Luminar wallpaper preview three" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-04.webp" draggable="false" alt="Protected Luminar wallpaper preview four" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-05.webp" draggable="false" alt="Protected Luminar wallpaper preview five" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-06.webp" draggable="false" alt="Protected Luminar wallpaper preview six" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-07.webp" draggable="false" alt="Protected Luminar wallpaper preview seven" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-08.webp" draggable="false" alt="Protected Luminar wallpaper preview eight" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-09.webp" draggable="false" alt="Protected Luminar wallpaper preview nine" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/luminar/previews/rox-luminar-preview-10.webp" draggable="false" alt="Protected Luminar wallpaper preview ten" loading="lazy" decoding="async"></li>
-      </ul>
-    </section>
-    <section id="crystal-district" class="section" aria-labelledby="crystal-district-title">
-      <article class="featured glass reveal" aria-labelledby="crystal-district-title">
-        <div class="artwork"><img src="assets/images/crystal-district/featured/rox-crystal-district-featured.webp" alt="Crystal District Collection featured wallpaper artwork showing reflective glass architecture at sunset" fetchpriority="high" decoding="async"></div>
-        <div class="featured-copy">
-          <span class="status">New</span>
-          <span class="status">Available Now</span>
-          <h2 id="crystal-district-title">Crystal District Collection</h2>
-          <p class="featured-description">Crystal District is a premium collection of 10 phone wallpapers inspired by sculptural glass architecture, crystalline structures, reflective surfaces and atmospheric modern city spaces.</p>
-          <ul class="badges" aria-label="Crystal District Collection details">
-            <li>10 Premium Wallpapers</li><li>High-Quality Phone Wallpapers</li><li>Portrait Format</li><li>iPhone &amp; Android</li><li>One-Time Purchase</li><li>Instant Digital Access</li>
-          </ul>
-          <div class="price-row"><span class="price">£3.99</span><span class="price-note">One-time purchase for all 10 wallpapers.</span></div>
-          <div class="actions">
-            <a class="button button-primary" href="https://buy.stripe.com/fZu9ANd0u0sLg2l4S9bMQ02">Buy Crystal District <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="button button-secondary" href="index.html#crystal-district">View Crystal District on Homepage</a>
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="section preview-section" aria-labelledby="crystal-district-previews-title">
-      <div class="preview-intro reveal"><h2 id="crystal-district-previews-title">Crystal District protected previews.</h2><p>Every image is previewed with ROX protection. Your purchased collection includes the complete premium wallpapers.</p></div>
-      <ul class="preview-grid protected-preview-gallery" aria-label="Protected Crystal District wallpaper previews">
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-01.webp" draggable="false" alt="Protected Crystal District wallpaper preview one" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-02.webp" draggable="false" alt="Protected Crystal District wallpaper preview two" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-03.webp" draggable="false" alt="Protected Crystal District wallpaper preview three" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-04.webp" draggable="false" alt="Protected Crystal District wallpaper preview four" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-05.webp" draggable="false" alt="Protected Crystal District wallpaper preview five" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-06.webp" draggable="false" alt="Protected Crystal District wallpaper preview six" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-07.webp" draggable="false" alt="Protected Crystal District wallpaper preview seven" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-08.webp" draggable="false" alt="Protected Crystal District wallpaper preview eight" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-09.webp" draggable="false" alt="Protected Crystal District wallpaper preview nine" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/crystal-district/previews/rox-crystal-district-preview-10.webp" draggable="false" alt="Protected Crystal District wallpaper preview ten" loading="lazy" decoding="async"></li>
-      </ul>
-    </section>
-    <section id="elevation" class="section" aria-labelledby="elevation-title">
-      <article class="featured glass reveal" aria-labelledby="elevation-title">
-        <div class="artwork"><img src="assets/images/elevation/featured/rox-elevation-featured.webp" alt="Elevation Collection featured wallpaper artwork showing a dramatic alpine peak above the clouds" loading="lazy" decoding="async"></div>
-        <div class="featured-copy">
-          <span class="status">New</span>
-          <span class="status">Available Now</span>
-          <h2 id="elevation-title">Elevation Collection.</h2>
-          <p class="featured-description">Elevation is a premium collection of 10 phone wallpapers built around towering alpine peaks, dramatic ridges, high-altitude landscapes, mist, cloud and cinematic light.</p>
-          <ul class="badges" aria-label="Elevation Collection details">
-            <li>10 Premium Wallpapers</li><li>High-Quality Phone Wallpapers</li><li>Portrait Format</li><li>iPhone &amp; Android</li><li>One-Time Purchase</li><li>Instant Digital Access</li>
-          </ul>
-          <div class="price-row"><span class="price">£3.99</span><span class="price-note">One-time purchase for all 10 wallpapers.</span></div>
-          <div class="actions">
-            <a class="button button-primary" href="https://buy.stripe.com/5kQ14h1hM4J1aI13O5bMQ03">Buy Elevation <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="button button-secondary" href="index.html#elevation">View Elevation on Homepage</a>
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="section preview-section" aria-labelledby="elevation-previews-title">
-      <div class="preview-intro reveal"><h2 id="elevation-previews-title">Elevation protected previews.</h2><p>Every image is previewed with ROX protection. Your purchased collection includes the complete premium wallpapers.</p></div>
-      <ul class="preview-grid protected-preview-gallery" aria-label="Protected Elevation wallpaper previews">
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-01.webp" draggable="false" alt="Protected Elevation wallpaper preview one" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-02.webp" draggable="false" alt="Protected Elevation wallpaper preview two" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-03.webp" draggable="false" alt="Protected Elevation wallpaper preview three" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-04.webp" draggable="false" alt="Protected Elevation wallpaper preview four" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-05.webp" draggable="false" alt="Protected Elevation wallpaper preview five" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-06.webp" draggable="false" alt="Protected Elevation wallpaper preview six" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-07.webp" draggable="false" alt="Protected Elevation wallpaper preview seven" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-08.webp" draggable="false" alt="Protected Elevation wallpaper preview eight" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-09.webp" draggable="false" alt="Protected Elevation wallpaper preview nine" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/elevation/previews/rox-elevation-preview-10.webp" draggable="false" alt="Protected Elevation wallpaper preview ten" loading="lazy" decoding="async"></li>
-      </ul>
-    </section>
-    <section id="obsidian" class="section" aria-labelledby="obsidian-title">
-      <article class="featured glass reveal" aria-labelledby="obsidian-title">
-        <div class="artwork"><img src="assets/images/obsidian/featured/rox-obsidian-featured.webp" alt="Obsidian Collection featured wallpaper artwork showing modern futuristic architecture" loading="lazy" decoding="async"></div>
-        <div class="featured-copy">
-          <span class="status">New</span>
-          <span class="status">Available Now</span>
-          <h2 id="obsidian-title">Obsidian Collection.</h2>
-          <p class="featured-description">Obsidian is a premium collection of 10 phone wallpapers built around striking modern architecture, dramatic light, refined environments and high-end futuristic visual design.</p>
-          <ul class="badges" aria-label="Obsidian Collection details">
-            <li>10 Premium Wallpapers</li><li>High-Quality Phone Wallpapers</li><li>Portrait Format</li><li>iPhone &amp; Android</li><li>One-Time Purchase</li><li>Instant Digital Access</li>
-          </ul>
-          <div class="price-row"><span class="price">&pound;3.99</span><span class="price-note">One-time purchase for all 10 wallpapers.</span></div>
-          <div class="actions">
-            <a class="button button-primary" href="https://buy.stripe.com/4gMbIV4tY2ATdUdckBbMQ04">Buy Obsidian <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="button button-secondary" href="index.html#obsidian">View Obsidian on Homepage</a>
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="section preview-section" aria-labelledby="obsidian-previews-title">
-      <div class="preview-intro reveal"><h2 id="obsidian-previews-title">Obsidian protected previews.</h2><p>Every image is previewed with ROX protection. Your purchased collection includes the complete premium wallpapers.</p></div>
-      <ul class="preview-grid protected-preview-gallery" aria-label="Protected Obsidian wallpaper previews">
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-01.webp" draggable="false" alt="Protected Obsidian wallpaper preview one" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-02.webp" draggable="false" alt="Protected Obsidian wallpaper preview two" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-03.webp" draggable="false" alt="Protected Obsidian wallpaper preview three" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-04.webp" draggable="false" alt="Protected Obsidian wallpaper preview four" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-05.webp" draggable="false" alt="Protected Obsidian wallpaper preview five" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-06.webp" draggable="false" alt="Protected Obsidian wallpaper preview six" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-07.webp" draggable="false" alt="Protected Obsidian wallpaper preview seven" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-08.webp" draggable="false" alt="Protected Obsidian wallpaper preview eight" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-09.webp" draggable="false" alt="Protected Obsidian wallpaper preview nine" loading="lazy" decoding="async"></li>
-        <li class="preview reveal"><img src="assets/images/obsidian/previews/rox-obsidian-preview-10.webp" draggable="false" alt="Protected Obsidian wallpaper preview ten" loading="lazy" decoding="async"></li>
-      </ul>
-    </section>
-    <section class="section" aria-labelledby="upcoming-title">
-      <div class="section-heading reveal"><span class="eyebrow">In development</span><h2 id="upcoming-title">Upcoming Collections</h2><p>More considered wallpaper sets are taking shape for the next ROX releases.</p></div>
-      <div class="upcoming-grid">
-        <article class="future-card glass future-horizon reveal"><div class="future-art" aria-hidden="true"></div><h3>Horizon Collection</h3><p>Soft atmospheric depth inspired by distance, light and open space.</p><span class="coming-soon">Coming Soon</span></article>
-        <article class="future-card glass future-horizon reveal"><div class="future-art" aria-hidden="true"></div><h3>Aether Collection</h3><p>Luminous, atmospheric compositions shaped by soft light, open space and futuristic calm.</p><span class="coming-soon">Coming Soon</span></article>
-        <article class="future-card glass future-horizon reveal"><div class="future-art" aria-hidden="true"></div><h3>Nocturne Collection</h3><p>Dark cinematic compositions built around night lighting, reflections and refined modern environments.</p><span class="coming-soon">Coming Soon</span></article>
-      </div>
-    </section>
-    <section class="section" aria-labelledby="info-title">
-      <div class="section-heading reveal"><span class="eyebrow">The ROX approach</span><h2 id="info-title">Designed as Complete Collections.</h2></div>
-      <div class="info-grid">
-        <article class="info-card glass reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div><h3>Complete Sets</h3><p>Each ROX release is designed as a cohesive wallpaper collection rather than a single standalone image.</p></article>
-        <article class="info-card glass reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4h10v16H7z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3>One-Time Purchase</h3><p>Available collections are sold as one-time digital purchases with no subscription.</p></article>
-        <article class="info-card glass reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg></div><h3>Instant Digital Access</h3><p>After successful checkout, customers receive access to the purchased collection.</p></article>
-      </div>
-    </section>
-    <section class="section back-home reveal" aria-label="Return to the ROX home page"><a class="button button-secondary" href="index.html">Back to Home</a></section>
   </main>
-  <footer class="site-footer glass">
-    <div class="footer-brand reveal">ROX</div>
-    <nav aria-label="Footer navigation" class="reveal"><ul class="footer-links"><li><a href="collections.html">Collections</a></li><li><a href="contact.html">Contact</a></li><li><a href="support.html">Support</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="refund.html">Refund</a></li><li><a href="terms.html">Terms</a></li></ul></nav>
-    <a class="footer-email reveal" href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a>
-    <p class="copyright reveal">© 2026 ROX All Rights Reserved</p>
+  <footer class="site-footer">
+    <a class="footer-brand" href="index.html">ROX</a>
+    <nav aria-label="Footer navigation"><ul class="footer-links"><li><a href="index.html#collection-world">Collections</a></li><li><a href="contact.html">Contact</a></li><li><a href="support.html">Support</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="refund.html">Refund</a></li><li><a href="terms.html">Terms</a></li></ul></nav>
+    <a class="footer-email" href="mailto:roxhelpp@gmail.com">roxhelpp@gmail.com</a>
+    <p class="copyright">© 2026 ROX All Rights Reserved</p>
   </footer>
-  <script>
-    document.documentElement.classList.add("js");
-    const header = document.querySelector(".site-header");
-    const setHeaderState = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
-    setHeaderState(); window.addEventListener("scroll", setHeaderState, { passive: true });
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver((entries, instance) => {
-        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); instance.unobserve(entry.target); } });
-      }, { threshold: .12, rootMargin: "0px 0px -26px" });
-      document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
-    } else { document.querySelectorAll(".reveal").forEach(element => element.classList.add("is-visible")); }
-  
-    (function () {
-      document.querySelectorAll('.protected-preview-gallery').forEach(function (gallery) {
-        gallery.addEventListener('contextmenu', function (event) { event.preventDefault(); });
-        gallery.addEventListener('dragstart', function (event) { event.preventDefault(); });
-        gallery.querySelectorAll('img').forEach(function (image) {
-          image.setAttribute('draggable', 'false');
-          image.addEventListener('dragstart', function (event) { event.preventDefault(); });
-        });
-      });
-    }());
-
-  </script>
 </body>
 </html>
